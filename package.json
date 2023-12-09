@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "push" : "git add . && git commit -m 'Updates on the person info' &&     git push --set-upstream origin Person-Info",
   },
   "dependencies": {
     "next": "14.0.3",
