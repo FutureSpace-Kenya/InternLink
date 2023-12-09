@@ -1,4 +1,5 @@
 import React from "react";
+import { imageUrl } from "../assets/images/";
 
 const Person = ({ imageUrl, name, profession }) => {
   return (
