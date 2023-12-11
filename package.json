@@ -9,17 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^5.7.0",
-    "font-awesome": "^4.7.0",
+    "mysql2": "^3.6.5",
     "next": "14.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sequelize": "^6.35.1",
+    "sequelize-cli": "^6.6.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
     "daisyui": "^4.4.19",
     "postcss": "^8",
-    "prisma": "^5.7.0",
     "tailwindcss": "^3.3.0"
   }
 }
