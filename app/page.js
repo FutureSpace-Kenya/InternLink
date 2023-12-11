@@ -4,6 +4,8 @@ export default function Home() {
         <div className="flex flex-col items-center">
             <h1 className="text-6xl font-bold">InternLink</h1>
             <p className="text-2xl text-center">
+                <i className={'text-4xl fas fa-link'}></i>
+                <br />
             A platform for connecting interns and attaches to companies
             </p>
         </div>
