@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "push-code" : "git add . && git commit -m 'Added Contributing.md' && git push --set-upstream origin Person-Info"
   },
   "dependencies": {
     "mysql2": "^3.6.5",
