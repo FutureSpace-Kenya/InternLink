@@ -3,13 +3,14 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
         <div className="flex relative flex-col items-center">
             <div className="w-fit relative flex flex-col items-center">
-                <h1 className="text-6xl font-bold">InternLink</h1>
+                <h1 className="text-6xl font-bold">
+                    InternLink
+                </h1>
                 <div className="absolute top-[55px] right-0 mb-4 text-xs font-medium text-orange-800">
                     By <a className={'text-blue-500'} href="https://futurespace.vercel.app">FutureSpace</a>
                 </div>
             </div>
             <p className="text-2xl text-center">
-                <i className={'text-4xl fas fa-link'}></i>
                 <br/>
                 Welcome to the future of internships
             </p>
