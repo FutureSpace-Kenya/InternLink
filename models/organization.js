@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = require('../db/connection');
+const sequelize = require('../db/sequelize');
 
 const Organization = sequelize.define('Organization', {
   id: {
