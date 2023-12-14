@@ -37,7 +37,7 @@ export default function Login() {
                                 Sign In
                             </button>
                         </div>
-                        <div class="flex text-[12px] underline underline-offset-2 gap-3">
+                        <div className="flex text-[12px] underline underline-offset-2 gap-3">
                             <a className="inline-block align-baseline my-2 text-blue-500 hover:text-blue-800"
                                href="#">
                                 Forgot Password?
@@ -49,12 +49,12 @@ export default function Login() {
                         </div>
 
                     </form>
-                    <p className="text-center text-gray-500 text-xs">
-                        &copy;2021 FutureSpace. All rights reserved.
-                    </p>
                 </div>
             </div>
 
+                <p className="text-center text-gray-500 bottom-0 py-12 bg-green-300 w-full absolute text-sm">
+                    &copy;{new Date().getFullYear()} InternLink. All rights reserved.
+                </p>
 
         </main>
     )
