@@ -19,68 +19,58 @@ const RegisterPage = () => {
 
                 <div className="w-full mt-8">
                     <form className="shadow-sm p-6 rounded">
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="firstName">
-                                First Name
-                            </label>
-                            <input className="input input-bordered input-md w-full max-w-md"
-                                   id="firstName" required type="text" placeholder="First Name"/>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="secondName">
-                                Second Name
-                            </label>
-                            <input className="input input-bordered input-md w-full max-w-md"
-                                   id="secondName" required type="text" placeholder="Second Name"/>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="university">
-                                University
-                            </label>
-                            <input className="input input-bordered input-md w-full max-w-md"
-                                   id="university" required type="text" placeholder="University"/>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="courseOfStudy">
-                                Course of Study
-                            </label>
-                            <input className="input input-bordered input-md w-full max-w-md"
-                                   id="courseOfStudy" required type="text" placeholder="Course of Study"/>
+Register                        <div className="flex gap-3">
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm mb-2" htmlFor="firstName">
+                                    First Name
+                                </label>
+                                <input className="input input-bordered input-md w-full max-w-md"
+                                       id="firstName" required type="text" placeholder="Future"/>
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm mb-2" htmlFor="secondName">
+                                    Second Name
+                                </label>
+                                <input className="input input-bordered input-md w-full max-w-md"
+                                       id="secondName" required type="text" placeholder="Space"/>
+                            </div>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
                                 Email
                             </label>
                             <input className="input input-bordered input-md w-full max-w-md"
-                                   id="email" required type="email" placeholder="Email"/>
+                                   id="email" required type="email" placeholder="user@gmail.com"/>
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="phoneNumber">
-                                Phone Number
+                            <label className="block text-gray-700 text-sm mb-2" htmlFor="university">
+                                University
                             </label>
                             <input className="input input-bordered input-md w-full max-w-md"
-                                   id="phoneNumber" required type="text" placeholder="Phone Number"/>
+                                   id="university" required type="text" placeholder="ie: Chuka University"/>
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="idNumber">
-                                ID Number
+                            <label className="block text-gray-700 text-sm mb-2" htmlFor="courseOfStudy">
+                                Course of Study
                             </label>
                             <input className="input input-bordered input-md w-full max-w-md"
-                                   id="idNumber" required type="text" placeholder="ID Number"/>
+                                   id="courseOfStudy" required type="text" placeholder="Computer Science"/>
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="regNumber">
-                                Registration Number
-                            </label>
-                            <input className="input input-bordered input-md w-full max-w-md"
-                                   id="regNumber" required type="text" placeholder="Registration Number"/>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="countyOfResidency">
-                                County of Residency
-                            </label>
-                            <input className="input input-bordered input-md w-full max-w-md"
-                                   id="countyOfResidency" required type="text" placeholder="County of Residency"/>
+                        <div className="flex gap-3">
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm mb-2" htmlFor="phoneNumber">
+                                    Phone Number
+                                </label>
+                                <input className="input input-bordered input-md w-full max-w-md"
+                                       id="phoneNumber" required type="text" placeholder="07********"/>
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm mb-2" htmlFor="idNumber">
+                                    ID Number
+                                </label>
+                                <input className="input input-bordered input-md w-full max-w-md"
+                                       id="idNumber" required type="text" placeholder="ID Number"/>
+                            </div>
                         </div>
                         <div className="mb-6">
                             <label className="block text-gray-700 text-sm mb-2" htmlFor="password">
@@ -110,11 +100,11 @@ const RegisterPage = () => {
                 </div>
             </div>
 
-            <p className="text-center text-gray-500 bottom-0 sticky py-12 bg-green-300 w-full absolute text-sm">
-                &copy;{new Date().getFullYear()} FutureSpace™. All rights reserved.
-            </p>
+        <p className="text-center text-gray-500 bottom-0 sticky py-12 bg-green-300 w-full absolute text-sm">
+            &copy;{new Date().getFullYear()} FutureSpace™. All rights reserved.
+        </p>
 
-        </main>)
+    </main>)
 }
 
 export default RegisterPage
