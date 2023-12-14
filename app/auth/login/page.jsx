@@ -7,7 +7,10 @@ export default function Login() {
                 <center>
                     <div className="w-fit relative flex flex-col items-center">
                         <h2 className="">
-                            InternLink Auth
+                            <span className="text-green-400">
+                                 Intern
+                            </span>
+                            Link&trade; Auth
                         </h2>
                         <div className="absolute top-[35px] right-0 mb-4 text-xs font-medium text-orange-800">
                             By <a className={'text-blue-500'} href="https://futurespace.vercel.app">FutureSpace</a>
@@ -53,7 +56,7 @@ export default function Login() {
             </div>
 
                 <p className="text-center text-gray-500 bottom-0 py-12 bg-green-300 w-full absolute text-sm">
-                    &copy;{new Date().getFullYear()} InternLink. All rights reserved.
+                    &copy;{new Date().getFullYear()} FutureSpace™. All rights reserved.
                 </p>
 
         </main>
