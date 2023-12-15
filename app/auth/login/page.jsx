@@ -41,10 +41,9 @@ export default function Login() {
                             </button>
                         </div>
                         <div className="flex text-[12px] underline underline-offset-2 gap-3">
-                            <a className="inline-block align-baseline my-2 text-blue-500 hover:text-blue-800"
-                               href="#">
-                                Forgot Password?
-                            </a>
+                                <Link className="inline-block align-baseline my-2 text-blue-500 hover:text-blue-800" href={"/auth/recovery"}>
+                                    Forgot Password?
+                                </Link>
                             <Link className={'inline-block align-baseline my-2 text-blue-500 hover:text-blue-800'}
                                   href={'/auth/register'}>
                                 New User? Sign Up

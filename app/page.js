@@ -4,7 +4,10 @@ export default function Home() {
             <div className="flex relative flex-col items-center">
                 <div className="w-fit relative flex flex-col items-center">
                     <h1 className="text-6xl font-bold">
-                        InternLink
+                     <span className="text-green-400">
+                                 Intern
+                            </span>
+                        Link&trade;
                     </h1>
                     <div className="absolute top-[55px] right-0 mb-4 text-xs font-medium text-orange-800">
                         By <a className={'text-blue-500'} href="https://futurespace.vercel.app">FutureSpace</a>
@@ -15,7 +18,6 @@ export default function Home() {
                     Welcome to the future of internships
                 </p>
 
-                {/*    Buttons */}
                 <div className="flex space-x-4 mt-8">
                     <a href="auth/login">
                         <button className="btn btn-outline btn-primary ring-1 ring-secondary ring-offset-1">

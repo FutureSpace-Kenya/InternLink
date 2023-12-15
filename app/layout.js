@@ -13,7 +13,7 @@ export default function RootLayout({children}) {
         <html lang="en" data-theme={'winter'}>
         <body className={inter.className}>
             {children}
-            <script src="https://kit.fontawesome.com/af6aba113a.js" crossOrigin="anonymous"></script>
+            <script src="/icons/fontawesome.js" crossOrigin="anonymous"></script>
         </body>
         </html>
     )
