@@ -33,3 +33,10 @@
 
 # TODO: Implement Add response structure
 
+# Apply to Company
+
+# Endpoint: /api/interns/apply
+# Method: POST
+
+# TODO: Implement Add endpoint and method
+
