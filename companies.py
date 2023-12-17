@@ -26,3 +26,10 @@
 
 # TODO: Implement Add request body details
 
+# Create Company Profile
+
+# Endpoint: /api/companies/create
+# Method: POST
+
+# TODO: Implement Add response structure
+
