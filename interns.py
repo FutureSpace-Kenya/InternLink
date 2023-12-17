@@ -26,3 +26,10 @@
 
 # TODO: Implement Add request body details
 
+# Create Intern Profile
+
+# Endpoint: /api/interns/create
+# Method: POST
+
+# TODO: Implement Add response structure
+
