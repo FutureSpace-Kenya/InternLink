@@ -47,3 +47,10 @@
 
 # TODO: Implement Add request body details
 
+# Apply to Company
+
+# Endpoint: /api/interns/apply
+# Method: POST
+
+# TODO: Implement Add response structure
+
