@@ -40,3 +40,10 @@
 
 # TODO: Implement Add endpoint and method
 
+# Apply to Company
+
+# Endpoint: /api/interns/apply
+# Method: POST
+
+# TODO: Implement Add request body details
+
