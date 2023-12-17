@@ -54,3 +54,10 @@
 
 # TODO: Implement Add endpoint and method
 
+# Review Intern Applications
+
+# Endpoint: /api/companies/review
+# Method: POST
+
+# TODO: Implement Add request body details
+
