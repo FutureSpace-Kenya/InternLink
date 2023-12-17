@@ -47,3 +47,10 @@
 
 # TODO: Implement Add response structure
 
+# Review Intern Applications
+
+# Endpoint: /api/companies/review
+# Method: POST
+
+# TODO: Implement Add endpoint and method
+
