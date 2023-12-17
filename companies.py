@@ -40,3 +40,10 @@
 
 # TODO: Implement Add endpoint and method
 
+# Browse Intern Profiles
+
+# Endpoint: /api/companies/interns
+# Method: GET
+
+# TODO: Implement Add response structure
+
