@@ -61,3 +61,10 @@
 
 # TODO: Implement Add request body details
 
+# Review Intern Applications
+
+# Endpoint: /api/companies/review
+# Method: POST
+
+# TODO: Implement Add response structure
+
