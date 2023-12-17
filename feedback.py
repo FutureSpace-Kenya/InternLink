@@ -12,3 +12,10 @@
 
 # TODO: Implement Add request body details
 
+# User Feedback
+
+# Endpoint: /api/feedback
+# Method: POST
+
+# TODO: Implement Add response structure
+
