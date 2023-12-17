@@ -12,3 +12,10 @@
 
 # TODO: Implement Add request body details
 
+# Data Privacy Management
+
+# Endpoint: /api/privacy
+# Method: POST
+
+# TODO: Implement Add response structure
+
