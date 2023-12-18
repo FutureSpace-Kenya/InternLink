@@ -86,10 +86,9 @@ const RegisterPage = () => {
                         </button>
                     </div>
                     <div className="flex text-[12px] underline underline-offset-2 gap-3">
-                        <a className="inline-block align-baseline my-2 text-blue-500 hover:text-blue-800"
-                           href="#">
+                        <Link className="inline-block align-baseline my-2 text-blue-500 hover:text-blue-800" href={"/auth/recovery"}>
                             Forgot Password?
-                        </a>
+                        </Link>
                         <Link className={'inline-block align-baseline my-2 text-blue-500 hover:text-blue-800'}
                               href={'/auth/login'}>
                             Already have an account? Sign In
