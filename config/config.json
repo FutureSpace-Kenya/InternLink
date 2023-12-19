@@ -1,23 +1,44 @@
 {
   "development": {
-    "username": "root",
-    "password": "",
-    "database": "internlink",
-    "host": "localhost",
-    "dialect": "mysql"
+    "username": "db",
+    "password": "AVNS_94DZd_MTAy6qSkoBBUy",
+    "database": "db",
+    "host": "app-20f5b245-3c3c-4677-ab07-4e3658666b01-do-user-14539128-0.c.db.ondigitalocean.com",
+    "port": 25060,
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "test": {
-    "username": "root",
-    "password": "",
-    "database": "internlink",
-    "host": "localhost",
-    "dialect": "mysql"
+    "username": "db",
+    "password": "AVNS_94DZd_MTAy6qSkoBBUy",
+    "database": "db",
+    "host": "app-20f5b245-3c3c-4677-ab07-4e3658666b01-do-user-14539128-0.c.db.ondigitalocean.com",
+    "port": 25060,
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "production": {
-    "username": "root",
-    "password": "",
-    "database": "internlink",
-    "host": "localhost",
-    "dialect": "mysql"
+    "username": "db",
+    "password": "AVNS_94DZd_MTAy6qSkoBBUy",
+    "database": "db",
+    "host": "app-20f5b245-3c3c-4677-ab07-4e3658666b01-do-user-14539128-0.c.db.ondigitalocean.com",
+    "port": 25060,
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }
