@@ -8,6 +8,13 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   host: DB_HOST,
   dialect: "postgres",
   logging: true,
+  port: 25060,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
   dialectModule: require('pg'),
 });
 

@@ -1,11 +1,12 @@
 {
   "development": {
     "username": "db",
-    "password": "AVNS_94DZd_MTAy6qSkoBBUy",
+    "password": "AVNS_8GVIAWV9J855cDQ8xcU",
     "database": "db",
-    "host": "app-20f5b245-3c3c-4677-ab07-4e3658666b01-do-user-14539128-0.c.db.ondigitalocean.com",
+    "host": "app-43731062-2819-40e8-b06a-c0d9d43d0e2c-do-user-14539128-0.c.db.ondigitalocean.com",
     "port": 25060,
     "dialect": "postgres",
+    "logging": "console.log",
     "dialectOptions": {
       "ssl": {
         "require": true,
@@ -15,11 +16,12 @@
   },
   "test": {
     "username": "db",
-    "password": "AVNS_94DZd_MTAy6qSkoBBUy",
+    "password": "AVNS_8GVIAWV9J855cDQ8xcU",
     "database": "db",
-    "host": "app-20f5b245-3c3c-4677-ab07-4e3658666b01-do-user-14539128-0.c.db.ondigitalocean.com",
+    "host": "app-43731062-2819-40e8-b06a-c0d9d43d0e2c-do-user-14539128-0.c.db.ondigitalocean.com",
     "port": 25060,
     "dialect": "postgres",
+    "logging": "console.log",
     "dialectOptions": {
       "ssl": {
         "require": true,
@@ -29,11 +31,12 @@
   },
   "production": {
     "username": "db",
-    "password": "AVNS_94DZd_MTAy6qSkoBBUy",
+    "password": "AVNS_8GVIAWV9J855cDQ8xcU",
     "database": "db",
-    "host": "app-20f5b245-3c3c-4677-ab07-4e3658666b01-do-user-14539128-0.c.db.ondigitalocean.com",
+    "host": "app-43731062-2819-40e8-b06a-c0d9d43d0e2c-do-user-14539128-0.c.db.ondigitalocean.com",
     "port": 25060,
     "dialect": "postgres",
+    "logging": "console.log",
     "dialectOptions": {
       "ssl": {
         "require": true,

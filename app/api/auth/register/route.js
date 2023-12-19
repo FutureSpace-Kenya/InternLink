@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { User, InternProfile, Company } from "../../../../models/user";
+import { User, InternProfile } from "../../../../models/user";
 import {Sequelize} from "sequelize";
 
 export async function GET() {
@@ -8,7 +8,8 @@ export async function GET() {
 
 export async function POST(req) {
     // Get the body of the request
-    const { firstName, secondName, email, university, courseOfStudy, phoneNumber, idNumber, password } = req.body;
+    const body = await req.json();
+    const { firstName, secondName, email, university, courseOfStudy, phoneNumber, idNumber, password } = body;
 
     if (!firstName || !secondName || !email || !university || !courseOfStudy || !phoneNumber || !idNumber || !password) {
         return NextResponse.json({ error: 'Missing required fields in request body' });
@@ -17,14 +18,18 @@ export async function POST(req) {
     try {
         // Check if a user with the same email, idNumber, or phoneNumber already exists
         const existingUser = await User.findOne({
+            include: [{
+                model: InternProfile,
+                where: {
+                    [Sequelize.Op.or]: [
+                        { IdNumber: idNumber },  // Change this line
+                        { PhoneNumber: phoneNumber }  // And this line
+                    ]
+                }
+            }],
             where: {
-                [Sequelize.Op.or]: [
-                    { Email: email },
-                    { 'InternProfile.idNumber': idNumber },
-                    { 'InternProfile.phoneNumber': phoneNumber }
-                ]
-            },
-            include: InternProfile
+                Email: email
+            }
         });
 
         if (existingUser) {
@@ -37,13 +42,17 @@ export async function POST(req) {
             Email: email,
             Password: password, // Make sure to hash the password before saving it to the database
             UserType: 'Intern',
+            FirstName: firstName,
+            SecondName: secondName
         });
 
         // Create a new intern profile
         await InternProfile.create({
             UserID: newUser.UserID,
-            Name: `${firstName} ${secondName}`,
-            ContactInfo: phoneNumber,
+            University: university,
+            CourseOfStudy: courseOfStudy,
+            PhoneNumber: phoneNumber,
+            IdNumber: idNumber
         });
 
         return NextResponse.json({ message: 'User registered successfully' });

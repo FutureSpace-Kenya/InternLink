@@ -29,6 +29,14 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW
+      },
+      FirstName: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      SecondName: {
+        type: Sequelize.STRING,
+        allowNull: false
       }
     });
 
@@ -47,40 +55,13 @@ module.exports = {
           key: 'UserID'
         }
       },
-      Name: Sequelize.STRING,
-      Age: Sequelize.INTEGER,
-      Skills: Sequelize.ARRAY(Sequelize.STRING),
-      Resume: Sequelize.TEXT,
-      EducationDetails: Sequelize.TEXT,
-      Experience: Sequelize.TEXT,
-      ContactInfo: Sequelize.STRING
-    });
-
-    await queryInterface.createTable('Companies', {
-      CompanyID: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      UserID: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Users',
-          key: 'UserID'
-        }
-      },
-      CompanyName: Sequelize.STRING,
-      Industry: Sequelize.STRING,
-      Size: Sequelize.INTEGER,
-      Description: Sequelize.TEXT,
-      Location: Sequelize.STRING,
-      ContactInfo: Sequelize.STRING
+      University: Sequelize.STRING,
+      CourseOfStudy: Sequelize.STRING,
+      PhoneNumber: Sequelize.STRING,
+      IdNumber: Sequelize.STRING,
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Companies');
     await queryInterface.dropTable('InternProfiles');
     await queryInterface.dropTable('Users');
   }
