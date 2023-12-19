@@ -98,6 +98,9 @@ const RegisterPage = () => {
                                     })
                                 }}
                             />
+                            <p className={'text-red-400 text-sm font-semibold p-1 ' + (emailError ? '' : 'none')}>
+                                {emailError}
+                            </p>
                         </div>
                         <div className="mb-2">
                             <label className="block text-gray-700 text-sm mb-2" htmlFor="university">
@@ -112,6 +115,9 @@ const RegisterPage = () => {
                                     })
                                 }}
                             />
+                            <p className={'text-red-400 text-sm font-semibold p-1 ' + (universityError ? '' : 'none')}>
+                                {universityError}
+                            </p>
                         </div>
                         <div className="mb-2">
                             <label className="block text-gray-700 text-sm mb-2" htmlFor="courseOfStudy">
@@ -126,6 +132,9 @@ const RegisterPage = () => {
                                     })
                                 }}
                             />
+                            <p className={'text-red-400 text-sm font-semibold p-1 ' + (courseOfStudyError ? '' : 'none')}>
+                                {courseOfStudyError}
+                            </p>
                         </div>
                         <div className="flex gap-3">
                             <div className="mb-2">
@@ -141,6 +150,9 @@ const RegisterPage = () => {
                                         })
                                     }}
                                 />
+                                <p className={'text-red-400 text-sm font-semibold p-1 ' + (phoneNumberError ? '' : 'none')}>
+                                    {phoneNumberError}
+                                </p>
                             </div>
                             <div className="mb-2">
                                 <label className="block text-gray-700 text-sm mb-2" htmlFor="idNumber">
@@ -155,6 +167,9 @@ const RegisterPage = () => {
                                         })
                                     }}
                                 />
+                                <p className={'text-red-400 text-sm font-semibold p-1 ' + (idNumberError ? '' : 'none')}>
+                                    {idNumberError}
+                                </p>
                             </div>
                         </div>
                         <div className="mb-6">
@@ -170,6 +185,9 @@ const RegisterPage = () => {
                                     })
                                 }}
                             />
+                            <p className={'text-red-400 text-sm font-semibold p-1 ' + (passwordError ? '' : 'none')}>
+                                {passwordError}
+                            </p>
                         </div>
                         <div className="flex items-center justify-between">
                             <button className="btn btn-outline btn-secondary ring-2  ring-offset-1 w-full"
