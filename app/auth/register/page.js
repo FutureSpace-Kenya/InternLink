@@ -1,6 +1,15 @@
-'use client';
+'use client'
 import React, { useState } from 'react';
 import Link from "next/link";
+
+const validateInput = (input, setInputError, validationFunction) => {
+    setInputError(validationFunction(input) ? '' : 'Invalid input');
+};
+
+const setInput = (value, setState, setInputError, validationFunction) => {
+    setState(value);
+    validateInput(value, setInputError, validationFunction);
+}
 
 const RegisterPage = () => {
     const [firstName, setFirstName] = useState('');
@@ -19,21 +28,6 @@ const RegisterPage = () => {
     const [idNumberError, setIdNumberError] = useState('');
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
-
-    const validateInput = (input, setInputError) => {
-        // Add your validation logic here
-        // For example, to validate the email field:
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        setInputError(!emailRegex.test(email) ? 'Invalid email format' : '');
-        // Add similar checks for other fields
-    };
-
-    const setInput = (value, setState, setInputError) => {
-        //call set state
-        setState(value);
-        //validate input
-        validateInput(value, setInputError);
-    }
 
     return (
         <main className="min-h-screen grid place-items-center w-full">
@@ -60,18 +54,16 @@ const RegisterPage = () => {
                                     First Name
                                 </label>
                                 <input className="input input-bordered input-md w-full max-w-md"
-                                    id="firstName" required type="text" placeholder="Future"
-                                    value={firstName}
-                                       onBlur={(e) => {
-                                             validateInput(e.target.value, setFirstNameError);
+                                       id="firstName" required type="text" placeholder="Future"
+                                       value={firstName}
+                                       onChange={(e) => {
+                                           setInput(e.target.value, setFirstName, setFirstNameError, (input) => {
+                                               return input.trim() !== '';
+                                           })
                                        }}
-                                    onChange={(e) => {
-                                        setInput(e.target.value, setFirstName, setFirstNameError)
-                                    }}
                                 />
-
-                                <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (firstNameError ? '' : 'none')}>
-                                       {firstNameError}
+                                <p className={'text-red-400 text-sm font-semibold p-1 ' + (firstNameError ? '' : 'none')}>
+                                    {firstNameError}
                                 </p>
                             </div>
                             <div className="mb-2">
@@ -82,11 +74,12 @@ const RegisterPage = () => {
                                     id="secondName" required type="text" placeholder="Space"
                                     value={secondName}
                                     onChange={(e) => {
-                                        setInput(e.target.value, setSecondName, setSecondNameError)
+                                        setInput(e.target.value, setSecondName, setSecondNameError, (input) => {
+                                            return input.trim() !== '';
+                                        })
                                     }}
                                 />
-
-                                <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (secondNameError ? '' : 'none')}>
+                                <p className={'text-red-400 text-sm font-semibold p-1 ' + (secondNameError ? '' : 'none')}>
                                     {secondNameError}
                                 </p>
                             </div>
@@ -99,13 +92,12 @@ const RegisterPage = () => {
                                 id="email" required type="email" placeholder="user@gmail.com"
                                 value={email}
                                 onChange={(e) => {
-                                    setInput(e.target.value, setEmail, setEmailError)
+                                    setInput(e.target.value, setEmail, setEmailError, (input) => {
+                                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                        return emailRegex.test(input);
+                                    })
                                 }}
                             />
-
-                            <p className={'text-red-400 text-sm font-semibold text-center p-1' + (emailError ? '' : 'none')}>
-                                {emailError}
-                            </p>
                         </div>
                         <div className="mb-2">
                             <label className="block text-gray-700 text-sm mb-2" htmlFor="university">
@@ -115,12 +107,11 @@ const RegisterPage = () => {
                                 id="university" required type="text" placeholder="ie: Chuka University"
                                 value={university}
                                 onChange={(e) => {
-                                    setInput(e.target.value, setUniversity, setUniversityError)
+                                    setInput(e.target.value, setUniversity, setUniversityError, (input) => {
+                                        return input.trim() !== '';
+                                    })
                                 }}
                             />
-
-                            <p className="text-red-400 text-sm font-semibold text-center p-1 {}">
-                                {universityError}</p>
                         </div>
                         <div className="mb-2">
                             <label className="block text-gray-700 text-sm mb-2" htmlFor="courseOfStudy">
@@ -130,13 +121,11 @@ const RegisterPage = () => {
                                 id="courseOfStudy" required type="text" placeholder="Computer Science"
                                 value={courseOfStudy}
                                 onChange={(e) => {
-                                    setInput(e.target.value, setCourseOfStudy, setCourseOfStudyError)
+                                    setInput(e.target.value, setCourseOfStudy, setCourseOfStudyError, (input) => {
+                                        return input.trim() !== '';
+                                    })
                                 }}
                             />
-
-                            <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (courseOfStudyError ? '' : 'none')}>
-                                   {courseOfStudyError}
-                            </p>
                         </div>
                         <div className="flex gap-3">
                             <div className="mb-2">
@@ -147,13 +136,11 @@ const RegisterPage = () => {
                                     id="phoneNumber" required type="text" placeholder="07********"
                                     value={phoneNumber}
                                     onChange={(e) => {
-                                        setInput(e.target.value, setPhoneNumber, setPhoneNumberError)
+                                        setInput(e.target.value, setPhoneNumber, setPhoneNumberError, (input) => {
+                                            return input.trim() !== '';
+                                        })
                                     }}
                                 />
-
-                                <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (phoneNumberError ? '' : 'none')}>
-                                       {phoneNumberError}
-                                </p>
                             </div>
                             <div className="mb-2">
                                 <label className="block text-gray-700 text-sm mb-2" htmlFor="idNumber">
@@ -163,13 +150,11 @@ const RegisterPage = () => {
                                     id="idNumber" required type="text" placeholder="ID Number"
                                     value={idNumber}
                                     onChange={(e) => {
-                                        setInput(e.target.value, setIdNumber, setIdNumberError)
+                                        setInput(e.target.value, setIdNumber, setIdNumberError, (input) => {
+                                            return input.trim() !== '';
+                                        })
                                     }}
                                 />
-
-                            <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (idNumberError ? '' : 'none')}>
-                                    {idNumberError}
-                            </p>
                             </div>
                         </div>
                         <div className="mb-6">
@@ -180,13 +165,11 @@ const RegisterPage = () => {
                                 type="password" placeholder="******************"
                                 value={password}
                                 onChange={(e) => {
-                                    setInput(e.target.value, setPassword, setPasswordError)
+                                    setInput(e.target.value, setPassword, setPasswordError, (input) => {
+                                        return input.trim() !== '';
+                                    })
                                 }}
                             />
-
-                            <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (passwordError ? '' : 'none')}>
-                                   {passwordError}
-                            </p>
                         </div>
                         <div className="flex items-center justify-between">
                             <button className="btn btn-outline btn-secondary ring-2  ring-offset-1 w-full"
@@ -203,15 +186,9 @@ const RegisterPage = () => {
                                 Already have an account? Sign In
                             </Link>
                         </div>
-
                     </form>
                 </div>
             </div>
-
-            {/*<p className="text-center text-gray-500 bottom-0 sticky py-12 bg-green-300 w-full text-sm">*/}
-            {/*    &copy;{new Date().getFullYear()} FutureSpace™. All rights reserved.*/}
-            {/*</p>*/}
-
         </main>
     );
 }
