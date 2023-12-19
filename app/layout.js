@@ -1,5 +1,7 @@
 import {Inter} from 'next/font/google'
 import './globals.css'
+import {SessionProvider} from "next-auth/react";
+import {NextAuthProvider} from "./AuthProvider";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -11,10 +13,13 @@ export const metadata = {
 export default function RootLayout({children}) {
     return (
         <html lang="en" data-theme={'winter'}>
-        <body className={inter.className}>
-            {children}
-            <script src="/icons/fontawesome.js" crossOrigin="anonymous"></script>
-        </body>
+            <body className={inter.className}>
+                <NextAuthProvider>
+                    {children}
+                    <script src="/icons/fontawesome.js" crossOrigin="anonymous">
+                    </script>
+                </NextAuthProvider>
+            </body>
         </html>
     )
 }
