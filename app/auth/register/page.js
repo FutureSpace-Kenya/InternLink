@@ -208,9 +208,9 @@ const RegisterPage = () => {
                 </div>
             </div>
 
-            <p className="text-center text-gray-500 bottom-0 sticky py-12 bg-green-300 w-full text-sm">
-                &copy;{new Date().getFullYear()} FutureSpace™. All rights reserved.
-            </p>
+            {/*<p className="text-center text-gray-500 bottom-0 sticky py-12 bg-green-300 w-full text-sm">*/}
+            {/*    &copy;{new Date().getFullYear()} FutureSpace™. All rights reserved.*/}
+            {/*</p>*/}
 
         </main>
     );
