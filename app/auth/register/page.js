@@ -1,109 +1,219 @@
+'use client';
+import React, { useState } from 'react';
 import Link from "next/link";
 
 const RegisterPage = () => {
-    return (<main className="min-h-screen grid place-items-center w-full">
-        <div className="w-full max-w-md m-4 p-4 ">
-            <center>
-                <div className="w-fit relative flex flex-col items-center">
-                    <h2 className="">
+    const [firstName, setFirstName] = useState('');
+    const [firstNameError, setFirstNameError] = useState('');
+    const [secondName, setSecondName] = useState('');
+    const [secondNameError, setSecondNameError] = useState('');
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [university, setUniversity] = useState('');
+    const [universityError, setUniversityError] = useState('');
+    const [courseOfStudy, setCourseOfStudy] = useState('');
+    const [courseOfStudyError, setCourseOfStudyError] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [phoneNumberError, setPhoneNumberError] = useState('');
+    const [idNumber, setIdNumber] = useState('');
+    const [idNumberError, setIdNumberError] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+
+    const validateInput = (input, setInputError) => {
+        // Add your validation logic here
+        // For example, to validate the email field:
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setInputError(!emailRegex.test(email) ? 'Invalid email format' : '');
+        // Add similar checks for other fields
+    };
+
+    const setInput = (value, setState, setInputError) => {
+        //call set state
+        setState(value);
+        //validate input
+        validateInput(value, setInputError);
+    }
+
+    return (
+        <main className="min-h-screen grid place-items-center w-full">
+            <div className="w-full max-w-md m-4 p-4 ">
+                <center>
+                    <div className="w-fit relative flex flex-col items-center">
+                        <h2 className="">
                             <span className="text-green-400">
-                                 Intern
+                                Intern
                             </span>
-                        Link&trade; Auth
-                    </h2>
-                    <div className="absolute top-[35px] right-0 mb-4 text-xs font-medium text-orange-800">
-                        By <a className={'text-blue-500'} href="https://futurespace.vercel.app">FutureSpace</a>
+                            Link&trade; Auth
+                        </h2>
+                        <div className="absolute top-[35px] right-0 mb-2 text-sm font-semibold text-orange-800">
+                            By <a className={'text-blue-500'} href="https://futurespace.vercel.app">FutureSpace</a>
+                        </div>
                     </div>
-                </div>
-            </center>
+                </center>
 
-            <div className="w-full mt-8">
-                <form className="shadow-sm p-6 rounded">
-                    <div className="flex gap-3">
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="firstName">
-                                First Name
+                <div className="w-full mt-8">
+                    <form className="shadow-sm p-6 rounded">
+                        <div className="flex gap-3">
+                            <div className="mb-2">
+                                <label className="block text-gray-700 text-sm mb-2" htmlFor="firstName">
+                                    First Name
+                                </label>
+                                <input className="input input-bordered input-md w-full max-w-md"
+                                    id="firstName" required type="text" placeholder="Future"
+                                    value={firstName}
+                                       onBlur={(e) => {
+                                             validateInput(e.target.value, setFirstNameError);
+                                       }}
+                                    onChange={(e) => {
+                                        setInput(e.target.value, setFirstName, setFirstNameError)
+                                    }}
+                                />
+
+                                <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (firstNameError ? '' : 'none')}>
+                                       {firstNameError}
+                                </p>
+                            </div>
+                            <div className="mb-2">
+                                <label className="block text-gray-700 text-sm mb-2" htmlFor="secondName">
+                                    Second Name
+                                </label>
+                                <input className="input input-bordered input-md w-full max-w-md"
+                                    id="secondName" required type="text" placeholder="Space"
+                                    value={secondName}
+                                    onChange={(e) => {
+                                        setInput(e.target.value, setSecondName, setSecondNameError)
+                                    }}
+                                />
+
+                                <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (secondNameError ? '' : 'none')}>
+                                    {secondNameError}
+                                </p>
+                            </div>
+                        </div>
+                        <div className="mb-2">
+                            <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
+                                Email
                             </label>
                             <input className="input input-bordered input-md w-full max-w-md"
-                                   id="firstName" required type="text" placeholder="Future"/>
+                                id="email" required type="email" placeholder="user@gmail.com"
+                                value={email}
+                                onChange={(e) => {
+                                    setInput(e.target.value, setEmail, setEmailError)
+                                }}
+                            />
+
+                            <p className={'text-red-400 text-sm font-semibold text-center p-1' + (emailError ? '' : 'none')}>
+                                {emailError}
+                            </p>
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="secondName">
-                                Second Name
+                        <div className="mb-2">
+                            <label className="block text-gray-700 text-sm mb-2" htmlFor="university">
+                                University
                             </label>
                             <input className="input input-bordered input-md w-full max-w-md"
-                                   id="secondName" required type="text" placeholder="Space"/>
+                                id="university" required type="text" placeholder="ie: Chuka University"
+                                value={university}
+                                onChange={(e) => {
+                                    setInput(e.target.value, setUniversity, setUniversityError)
+                                }}
+                            />
+
+                            <p className="text-red-400 text-sm font-semibold text-center p-1 {}">
+                                {universityError}</p>
                         </div>
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
-                            Email
-                        </label>
-                        <input className="input input-bordered input-md w-full max-w-md"
-                               id="email" required type="email" placeholder="user@gmail.com"/>
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm mb-2" htmlFor="university">
-                            University
-                        </label>
-                        <input className="input input-bordered input-md w-full max-w-md"
-                               id="university" required type="text" placeholder="ie: Chuka University"/>
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm mb-2" htmlFor="courseOfStudy">
-                            Course of Study
-                        </label>
-                        <input className="input input-bordered input-md w-full max-w-md"
-                               id="courseOfStudy" required type="text" placeholder="Computer Science"/>
-                    </div>
-                    <div className="flex gap-3">
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="phoneNumber">
-                                Phone Number
+                        <div className="mb-2">
+                            <label className="block text-gray-700 text-sm mb-2" htmlFor="courseOfStudy">
+                                Course of Study
                             </label>
                             <input className="input input-bordered input-md w-full max-w-md"
-                                   id="phoneNumber" required type="text" placeholder="07********"/>
+                                id="courseOfStudy" required type="text" placeholder="Computer Science"
+                                value={courseOfStudy}
+                                onChange={(e) => {
+                                    setInput(e.target.value, setCourseOfStudy, setCourseOfStudyError)
+                                }}
+                            />
+
+                            <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (courseOfStudyError ? '' : 'none')}>
+                                   {courseOfStudyError}
+                            </p>
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm mb-2" htmlFor="idNumber">
-                                ID Number
+                        <div className="flex gap-3">
+                            <div className="mb-2">
+                                <label className="block text-gray-700 text-sm mb-2" htmlFor="phoneNumber">
+                                    Phone Number
+                                </label>
+                                <input className="input input-bordered input-md w-full max-w-md"
+                                    id="phoneNumber" required type="text" placeholder="07********"
+                                    value={phoneNumber}
+                                    onChange={(e) => {
+                                        setInput(e.target.value, setPhoneNumber, setPhoneNumberError)
+                                    }}
+                                />
+
+                                <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (phoneNumberError ? '' : 'none')}>
+                                       {phoneNumberError}
+                                </p>
+                            </div>
+                            <div className="mb-2">
+                                <label className="block text-gray-700 text-sm mb-2" htmlFor="idNumber">
+                                    ID Number
+                                </label>
+                                <input className="input input-bordered input-md w-full max-w-md"
+                                    id="idNumber" required type="text" placeholder="ID Number"
+                                    value={idNumber}
+                                    onChange={(e) => {
+                                        setInput(e.target.value, setIdNumber, setIdNumberError)
+                                    }}
+                                />
+
+                            <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (idNumberError ? '' : 'none')}>
+                                    {idNumberError}
+                            </p>
+                            </div>
+                        </div>
+                        <div className="mb-6">
+                            <label className="block text-gray-700 text-sm mb-2" htmlFor="password">
+                                Password
                             </label>
-                            <input className="input input-bordered input-md w-full max-w-md"
-                                   id="idNumber" required type="text" placeholder="ID Number"/>
+                            <input className="input input-bordered input-md w-full max-w-md" id="password"
+                                type="password" placeholder="******************"
+                                value={password}
+                                onChange={(e) => {
+                                    setInput(e.target.value, setPassword, setPasswordError)
+                                }}
+                            />
+
+                            <p className={'text-red-400 text-sm font-semibold text-center p-1 ' + (passwordError ? '' : 'none')}>
+                                   {passwordError}
+                            </p>
                         </div>
-                    </div>
-                    <div className="mb-6">
-                        <label className="block text-gray-700 text-sm mb-2" htmlFor="password">
-                            Password
-                        </label>
-                        <input className="input input-bordered input-md w-full max-w-md" id="password"
-                               type="password" placeholder="******************"/>
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <button className="btn btn-outline btn-secondary ring-2  ring-offset-1 w-full"
+                        <div className="flex items-center justify-between">
+                            <button className="btn btn-outline btn-secondary ring-2  ring-offset-1 w-full"
                                 type="button">
-                            Register
-                        </button>
-                    </div>
-                    <div className="flex text-[12px] underline underline-offset-2 gap-3">
-                        <Link className="inline-block align-baseline my-2 text-blue-500 hover:text-blue-800" href={"/auth/recovery"}>
-                            Forgot Password?
-                        </Link>
-                        <Link className={'inline-block align-baseline my-2 text-blue-500 hover:text-blue-800'}
-                              href={'/auth/login'}>
-                            Already have an account? Sign In
-                        </Link>
-                    </div>
+                                Register
+                            </button>
+                        </div>
+                        <div className="flex text-[12px] underline underline-offset-2 gap-3">
+                            <Link className="inline-block align-baseline my-2 text-blue-500 hover:text-blue-800" href={"/auth/recovery"}>
+                                Forgot Password?
+                            </Link>
+                            <Link className={'inline-block align-baseline my-2 text-blue-500 hover:text-blue-800'}
+                                href={'/auth/login'}>
+                                Already have an account? Sign In
+                            </Link>
+                        </div>
 
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
 
-        <p className="text-center text-gray-500 bottom-0 sticky py-12 bg-green-300 w-full absolute text-sm">
-            &copy;{new Date().getFullYear()} FutureSpace™. All rights reserved.
-        </p>
+            <p className="text-center text-gray-500 bottom-0 sticky py-12 bg-green-300 w-full text-sm">
+                &copy;{new Date().getFullYear()} FutureSpace™. All rights reserved.
+            </p>
 
-    </main>)
+        </main>
+    );
 }
 
-export default RegisterPage
+export default RegisterPage;
