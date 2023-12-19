@@ -29,6 +29,74 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
+    function validateAll() {
+        if (firstName.trim() === '') {
+            setFirstNameError('First name is required');
+        }
+        if (secondName.trim() === '') {
+            setSecondNameError('Second name is required');
+        }
+        if (email.trim() === '') {
+            setEmailError('Email is required');
+        }
+        if (university.trim() === '') {
+            setUniversityError('University is required');
+        }
+        if (courseOfStudy.trim() === '') {
+            setCourseOfStudyError('Course of study is required');
+        }
+        if (phoneNumber.trim() === '') {
+            setPhoneNumberError('Phone number is required');
+        }
+        if (idNumber.trim() === '') {
+            setIdNumberError('ID number is required');
+        }
+        if (password.trim() === '') {
+            setPasswordError('Password is required');
+        }
+
+        return firstName.trim() !== '' && secondName.trim() !== '' && email.trim() !== '' && university.trim() !== '' && courseOfStudy.trim() !== '' && phoneNumber.trim() !== '' && idNumber.trim() !== '' && password.trim() !== '';
+    }
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        if (!validateAll()) {
+            return;
+        }
+        const formData = {
+            firstName: firstName,
+            secondName: secondName,
+            email: email,
+            university: university,
+            courseOfStudy: courseOfStudy,
+            phoneNumber: phoneNumber,
+            idNumber: idNumber,
+            password: password,
+        }
+
+        fetch('/api/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData),
+        }).then((response) => {
+            if (response.status === 200) {
+                response.json().then((data) => {
+                    if (data.message) {
+                        alert(data.message);
+                    }
+                });
+            } else {
+                response.json().then((data) => {
+                    if (data.error) {
+                        alert(data.error);
+                    }
+                });
+            }
+        })
+    }
+
     return (
         <main className="min-h-screen grid place-items-center w-full">
             <div className="w-full max-w-md m-4 p-4 ">
@@ -195,7 +263,7 @@ const RegisterPage = () => {
                             </p>
                         </div>
                         <div className="flex items-center justify-between">
-                            <button className="btn btn-outline btn-secondary ring-2  ring-offset-1 w-full"
+                            <button className="btn btn-outline btn-secondary ring-2  ring-offset-1 w-full" onClick={submitForm}
                                     type="button">
                                 Register
                             </button>
