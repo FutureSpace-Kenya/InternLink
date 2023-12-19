@@ -20,8 +20,6 @@ export default function Home() {
                     Welcome to the future of internships
                 </p>
 
-                <LoginButton/>
-
 
                 <div className="flex space-x-4 mt-8">
                     <a href="auth/login">

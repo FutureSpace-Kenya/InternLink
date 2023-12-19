@@ -1,4 +1,6 @@
 import Link from "next/link";
+import LoginButton from "../../components/LoginButton";
+import React from "react";
 
 export default function Login() {
     return (
@@ -34,11 +36,20 @@ export default function Login() {
                             <input className="input input-bordered input-md w-full max-w-md" id="password"
                                    type="password" placeholder="******************"/>
                         </div>
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-col gap-3 items-center justify-between">
                             <button className="btn btn-outline btn-secondary ring-2  ring-offset-1 w-full"
                                     type="button">
                                 Sign In
                             </button>
+                            <div className="flex w-full items-center justify-center">
+                                {/*Line*/}
+                                <hr className="w-full border-gray-300"/>
+                                {/*Text*/}
+                                <span className="text-gray-500 mx-3">or</span>
+                                {/*Line*/}
+                                <hr className="w-full border-gray-300"/>
+                            </div>
+                            <LoginButton/>
                         </div>
                         <div className="flex text-[12px] underline underline-offset-2 gap-3">
                                 <Link className="inline-block align-baseline my-2 text-blue-500 hover:text-blue-800" href={"/auth/recovery"}>
