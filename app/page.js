@@ -1,3 +1,5 @@
+import React from 'react'
+import LoginButton from "./components/LoginButton";
 export default function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-center p-24">
@@ -17,6 +19,9 @@ export default function Home() {
                     <br/>
                     Welcome to the future of internships
                 </p>
+
+                <LoginButton/>
+
 
                 <div className="flex space-x-4 mt-8">
                     <a href="auth/login">
