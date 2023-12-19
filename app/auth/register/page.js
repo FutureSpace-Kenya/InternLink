@@ -58,44 +58,44 @@ const RegisterPage = () => {
         return firstName.trim() !== '' && secondName.trim() !== '' && email.trim() !== '' && university.trim() !== '' && courseOfStudy.trim() !== '' && phoneNumber.trim() !== '' && idNumber.trim() !== '' && password.trim() !== '';
     }
 
-    const submitForm = (e) => {
-        e.preventDefault();
-        if (!validateAll()) {
-            return;
-        }
-        const formData = {
-            firstName: firstName,
-            secondName: secondName,
-            email: email,
-            university: university,
-            courseOfStudy: courseOfStudy,
-            phoneNumber: phoneNumber,
-            idNumber: idNumber,
-            password: password,
-        }
-
-        fetch('/api/auth/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData),
-        }).then((response) => {
-            if (response.status === 200) {
-                response.json().then((data) => {
-                    if (data.message) {
-                        alert(data.message);
-                    }
-                });
-            } else {
-                response.json().then((data) => {
-                    if (data.error) {
-                        alert(data.error);
-                    }
-                });
-            }
-        })
+const submitForm = (e) => {
+    e.preventDefault();
+    if (!validateAll()) {
+        return;
     }
+    const formData = {
+        firstName: firstName,
+        secondName: secondName,
+        email: email,
+        university: university,
+        courseOfStudy: courseOfStudy,
+        phoneNumber: phoneNumber,
+        idNumber: idNumber,
+        password: password,
+    }
+
+    fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData),
+    }).then((response) => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    }).then((data) => {
+        // Handle the data
+        if (data.message) {
+            alert(data.message);
+        }
+    }).catch((error) => {
+        // Handle the error
+        alert('An error occurred: ' + error.message);
+    });
+}
 
     return (
         <main className="min-h-screen grid place-items-center w-full">

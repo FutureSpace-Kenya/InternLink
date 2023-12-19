@@ -80,4 +80,7 @@ const Company = sequelize.define('Company', {
   ContactInfo: DataTypes.STRING
 });
 
+User.hasOne(InternProfile, {foreignKey: 'UserID'});
+InternProfile.belongsTo(User, {foreignKey: 'UserID'});
+
 module.exports = { User, InternProfile, Company };
