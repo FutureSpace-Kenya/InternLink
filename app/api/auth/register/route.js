@@ -10,6 +10,10 @@ export async function POST(req) {
     // Get the body of the request
     const { firstName, secondName, email, university, courseOfStudy, phoneNumber, idNumber, password } = req.body;
 
+    if (!firstName || !secondName || !email || !university || !courseOfStudy || !phoneNumber || !idNumber || !password) {
+        return NextResponse.json({ error: 'Missing required fields in request body' });
+    }
+
     try {
         // Check if a user with the same email, idNumber, or phoneNumber already exists
         const existingUser = await User.findOne({
