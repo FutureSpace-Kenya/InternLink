@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Link from "next/link";
 
 const validateInput = (input, setInputError, validationFunction) => {
@@ -71,13 +71,13 @@ const RegisterPage = () => {
                                     Second Name
                                 </label>
                                 <input className="input input-bordered input-md w-full max-w-md"
-                                    id="secondName" required type="text" placeholder="Space"
-                                    value={secondName}
-                                    onChange={(e) => {
-                                        setInput(e.target.value, setSecondName, setSecondNameError, (input) => {
-                                            return input.trim() !== '';
-                                        })
-                                    }}
+                                       id="secondName" required type="text" placeholder="Space"
+                                       value={secondName}
+                                       onChange={(e) => {
+                                           setInput(e.target.value, setSecondName, setSecondNameError, (input) => {
+                                               return input.trim() !== '';
+                                           })
+                                       }}
                                 />
                                 <p className={'text-red-400 text-sm font-semibold p-1 ' + (secondNameError ? '' : 'none')}>
                                     {secondNameError}
@@ -89,14 +89,14 @@ const RegisterPage = () => {
                                 Email
                             </label>
                             <input className="input input-bordered input-md w-full max-w-md"
-                                id="email" required type="email" placeholder="user@gmail.com"
-                                value={email}
-                                onChange={(e) => {
-                                    setInput(e.target.value, setEmail, setEmailError, (input) => {
-                                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                                        return emailRegex.test(input);
-                                    })
-                                }}
+                                   id="email" required type="email" placeholder="user@gmail.com"
+                                   value={email}
+                                   onChange={(e) => {
+                                       setInput(e.target.value, setEmail, setEmailError, (input) => {
+                                           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                           return emailRegex.test(input);
+                                       })
+                                   }}
                             />
                             <p className={'text-red-400 text-sm font-semibold p-1 ' + (emailError ? '' : 'none')}>
                                 {emailError}
@@ -107,13 +107,13 @@ const RegisterPage = () => {
                                 University
                             </label>
                             <input className="input input-bordered input-md w-full max-w-md"
-                                id="university" required type="text" placeholder="ie: Chuka University"
-                                value={university}
-                                onChange={(e) => {
-                                    setInput(e.target.value, setUniversity, setUniversityError, (input) => {
-                                        return input.trim() !== '';
-                                    })
-                                }}
+                                   id="university" required type="text" placeholder="ie: Chuka University"
+                                   value={university}
+                                   onChange={(e) => {
+                                       setInput(e.target.value, setUniversity, setUniversityError, (input) => {
+                                           return input.trim() !== '';
+                                       })
+                                   }}
                             />
                             <p className={'text-red-400 text-sm font-semibold p-1 ' + (universityError ? '' : 'none')}>
                                 {universityError}
@@ -124,13 +124,13 @@ const RegisterPage = () => {
                                 Course of Study
                             </label>
                             <input className="input input-bordered input-md w-full max-w-md"
-                                id="courseOfStudy" required type="text" placeholder="Computer Science"
-                                value={courseOfStudy}
-                                onChange={(e) => {
-                                    setInput(e.target.value, setCourseOfStudy, setCourseOfStudyError, (input) => {
-                                        return input.trim() !== '';
-                                    })
-                                }}
+                                   id="courseOfStudy" required type="text" placeholder="Computer Science"
+                                   value={courseOfStudy}
+                                   onChange={(e) => {
+                                       setInput(e.target.value, setCourseOfStudy, setCourseOfStudyError, (input) => {
+                                           return input.trim() !== '';
+                                       })
+                                   }}
                             />
                             <p className={'text-red-400 text-sm font-semibold p-1 ' + (courseOfStudyError ? '' : 'none')}>
                                 {courseOfStudyError}
@@ -142,13 +142,18 @@ const RegisterPage = () => {
                                     Phone Number
                                 </label>
                                 <input className="input input-bordered input-md w-full max-w-md"
-                                    id="phoneNumber" required type="text" placeholder="07********"
-                                    value={phoneNumber}
-                                    onChange={(e) => {
-                                        setInput(e.target.value, setPhoneNumber, setPhoneNumberError, (input) => {
-                                            return input.trim() !== '';
-                                        })
-                                    }}
+                                       id="phoneNumber" required type="text" placeholder="07********"
+                                       value={phoneNumber}
+                                       onChange={(e) => {
+                                           let value = e.target.value;
+                                           if (value.startsWith('0')) {
+                                               value = '254' + value.slice(1);
+                                           }
+                                           setInput(value, setPhoneNumber, setPhoneNumberError, (input) => {
+                                               const phoneRegex = /^254\d{9}$/;
+                                               return phoneRegex.test(input);
+                                           })
+                                       }}
                                 />
                                 <p className={'text-red-400 text-sm font-semibold p-1 ' + (phoneNumberError ? '' : 'none')}>
                                     {phoneNumberError}
@@ -159,13 +164,13 @@ const RegisterPage = () => {
                                     ID Number
                                 </label>
                                 <input className="input input-bordered input-md w-full max-w-md"
-                                    id="idNumber" required type="text" placeholder="ID Number"
-                                    value={idNumber}
-                                    onChange={(e) => {
-                                        setInput(e.target.value, setIdNumber, setIdNumberError, (input) => {
-                                            return input.trim() !== '';
-                                        })
-                                    }}
+                                       id="idNumber" required type="text" placeholder="ID Number"
+                                       value={idNumber}
+                                       onChange={(e) => {
+                                           setInput(e.target.value, setIdNumber, setIdNumberError, (input) => {
+                                               return input.trim() !== '';
+                                           })
+                                       }}
                                 />
                                 <p className={'text-red-400 text-sm font-semibold p-1 ' + (idNumberError ? '' : 'none')}>
                                     {idNumberError}
@@ -177,13 +182,13 @@ const RegisterPage = () => {
                                 Password
                             </label>
                             <input className="input input-bordered input-md w-full max-w-md" id="password"
-                                type="password" placeholder="******************"
-                                value={password}
-                                onChange={(e) => {
-                                    setInput(e.target.value, setPassword, setPasswordError, (input) => {
-                                        return input.trim() !== '';
-                                    })
-                                }}
+                                   type="password" placeholder="******************"
+                                   value={password}
+                                   onChange={(e) => {
+                                       setInput(e.target.value, setPassword, setPasswordError, (input) => {
+                                           return input.trim() !== '';
+                                       })
+                                   }}
                             />
                             <p className={'text-red-400 text-sm font-semibold p-1 ' + (passwordError ? '' : 'none')}>
                                 {passwordError}
@@ -191,16 +196,17 @@ const RegisterPage = () => {
                         </div>
                         <div className="flex items-center justify-between">
                             <button className="btn btn-outline btn-secondary ring-2  ring-offset-1 w-full"
-                                type="button">
+                                    type="button">
                                 Register
                             </button>
                         </div>
                         <div className="flex text-[12px] underline underline-offset-2 gap-3">
-                            <Link className="inline-block align-baseline my-2 text-blue-500 hover:text-blue-800" href={"/auth/recovery"}>
+                            <Link className="inline-block align-baseline my-2 text-blue-500 hover:text-blue-800"
+                                  href={"/auth/recovery"}>
                                 Forgot Password?
                             </Link>
                             <Link className={'inline-block align-baseline my-2 text-blue-500 hover:text-blue-800'}
-                                href={'/auth/login'}>
+                                  href={'/auth/login'}>
                                 Already have an account? Sign In
                             </Link>
                         </div>
