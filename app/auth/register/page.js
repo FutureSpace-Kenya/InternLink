@@ -90,9 +90,11 @@ const submitForm = (e) => {
         // Handle the data
         if (data.message) {
             alert(data.message);
+        }else if (data.error) {
+            alert(data.error);
         }
     }).catch((error) => {
-        // Handle the error
+        console.log(error)
         alert('An error occurred: ' + error.message);
     });
 }
