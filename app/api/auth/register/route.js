@@ -22,8 +22,8 @@ export async function POST(req) {
                 model: InternProfile,
                 where: {
                     [Sequelize.Op.or]: [
-                        { IdNumber: idNumber },  // Change this line
-                        { PhoneNumber: phoneNumber }  // And this line
+                        { IdNumber: idNumber },
+                        { PhoneNumber: phoneNumber }
                     ]
                 }
             }],
@@ -40,7 +40,7 @@ export async function POST(req) {
         const newUser = await User.create({
             Username: email,
             Email: email,
-            Password: password, // Make sure to hash the password before saving it to the database
+            Password: password, // TODO: Hash the password
             UserType: 'Intern',
             FirstName: firstName,
             SecondName: secondName
