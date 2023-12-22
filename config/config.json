@@ -1,47 +1,51 @@
-{
+require('dotenv').config();
+
+const config = {
   "development": {
-    "username": "db",
-    "password": "AVNS_8GVIAWV9J855cDQ8xcU",
-    "database": "db",
-    "host": "app-43731062-2819-40e8-b06a-c0d9d43d0e2c-do-user-14539128-0.c.db.ondigitalocean.com",
-    "port": 25060,
+    "username": process.env.DB_USER,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_NAME,
+    "host": process.env.DB_HOST,
+    "port": process.env.DB_PORT,
     "dialect": "postgres",
-    "logging": "console.log",
+    "logging": console.log,
     "dialectOptions": {
       "ssl": {
-        "require": true,
+        "require": process.env.DB_SSLMOD === 'require' ? true : false,
         "rejectUnauthorized": false
       }
     }
   },
   "test": {
-    "username": "db",
-    "password": "AVNS_8GVIAWV9J855cDQ8xcU",
-    "database": "db",
-    "host": "app-43731062-2819-40e8-b06a-c0d9d43d0e2c-do-user-14539128-0.c.db.ondigitalocean.com",
-    "port": 25060,
+    "username": process.env.DB_USER,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_NAME,
+    "host": process.env.DB_HOST,
+    "port": process.env.DB_PORT,
     "dialect": "postgres",
-    "logging": "console.log",
+    "logging": console.log,
     "dialectOptions": {
       "ssl": {
-        "require": true,
+        "require": process.env.DB_SSLMOD === 'require' ? true : false,
         "rejectUnauthorized": false
       }
     }
   },
   "production": {
-    "username": "db",
-    "password": "AVNS_8GVIAWV9J855cDQ8xcU",
-    "database": "db",
-    "host": "app-43731062-2819-40e8-b06a-c0d9d43d0e2c-do-user-14539128-0.c.db.ondigitalocean.com",
-    "port": 25060,
+    "username": process.env.DB_USER,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_NAME,
+    "host": process.env.DB_HOST,
+    "port": process.env.DB_PORT,
     "dialect": "postgres",
-    "logging": "console.log",
+    "logging": console.log,
     "dialectOptions": {
       "ssl": {
-        "require": true,
+        "require": process.env.DB_SSLMOD === 'require' ? true : false,
         "rejectUnauthorized": false
       }
     }
   }
-}
+};
+
+module.exports = config;
