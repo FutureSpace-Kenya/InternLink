@@ -29,7 +29,7 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     function validateAll() {
         if (firstName.trim() === '') {
@@ -117,6 +117,9 @@ const RegisterPage = () => {
     return (
         <main className="min-h-screen grid place-items-center w-full">
             <div className="w-full max-w-md m-4 p-4 ">
+                <div className="absolute z-50 right-3 pz-4 error bg-red-400">
+                    You have an error
+                </div>
                 <center>
                     <div className="w-fit relative flex flex-col items-center">
                         <h2 className="">
