@@ -33,7 +33,7 @@ To use Internlink, follow these steps:
 ## Contributing to Internlink
 
 To contribute to Internlink, follow these steps:
- 
+  
 1. Fork the repository.
 2. Create a new branch: `git checkout -b <branch_name>`
 3. Make your changes and commit them: `git commit -m '<commit_message>'`
