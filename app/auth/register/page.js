@@ -29,6 +29,8 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
+    const [isLoading, setIsLoading] = useState(true);
+
     function validateAll() {
         if (firstName.trim() === '') {
             setFirstNameError('First name is required');
@@ -63,6 +65,9 @@ const RegisterPage = () => {
         if (!validateAll()) {
             return;
         }
+
+        setIsLoading(true);
+
         const formData = {
             firstName: firstName,
             secondName: secondName,
@@ -81,12 +86,14 @@ const RegisterPage = () => {
             },
             body: JSON.stringify(formData),
         }).then((response) => {
+            setIsLoading(false);
             if (response.ok) {
                 return response.json();
             } else {
                 throw new Error('Network response was not ok');
             }
         }).then((data) => {
+            setIsLoading(false);
             // Handle the data
             if (data.message) {
                 alert(data.message);
@@ -97,6 +104,14 @@ const RegisterPage = () => {
             console.log(error)
             alert('An error occurred: ' + error.message);
         });
+    }
+
+    if (isLoading) {
+        return (
+            <main className="min-h-screen grid place-items-center w-full">
+                <span className="loading loading-ring loading-lg"></span>
+            </main>
+        );
     }
 
     return (
