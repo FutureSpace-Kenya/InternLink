@@ -117,7 +117,8 @@ const RegisterPage = () => {
     return (
         <main className="min-h-screen grid place-items-center w-full">
             <div className="w-full max-w-md m-4 p-4 ">
-                <div className="absolute z-50 right-3 pz-4 error bg-red-400">
+                <div className="absolute z-50 right-3 px-4 py-2 text-red-400 hidden sm:block rounded error bg-red-100 ring-1 ring-red-600">
+                    <i className={'fas fa-exclamation-circle mr-2'}></i>
                     You have an error
                 </div>
                 <center>
