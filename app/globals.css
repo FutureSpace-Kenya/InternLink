@@ -28,3 +28,38 @@ h4 {
 h5 {
   @apply text-lg font-bold text-gray-900;
 }
+
+.notification {
+  @apply z-50 right-3 px-4 py-2 flex rounded-md shadow-sm;
+  opacity: 0;
+  transform: translateX(100px);
+  animation: slideIn 0.5s forwards;
+}
+
+.notification.hide {
+  animation: slideOut 0.5s forwards;
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}

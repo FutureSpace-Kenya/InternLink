@@ -1,6 +1,7 @@
 'use client'
 import React, {useState} from 'react';
 import Link from "next/link";
+import Notification from "/app/Notification";
 
 const validateInput = (input, setInputError, validationFunction) => {
     setInputError(validationFunction(input) ? '' : 'Invalid input');
@@ -30,6 +31,19 @@ const RegisterPage = () => {
     const [passwordError, setPasswordError] = useState('');
 
     const [isLoading, setIsLoading] = useState(false);
+    const [notifications, setNotifications] = useState([]);
+
+    function filterNotifications(notifications) {
+    // Convert the notifications to strings for comparison
+    const stringNotifications = notifications.map(JSON.stringify);
+
+    // Create a new Set from the array to remove duplicates
+    const uniqueStringNotifications = new Set(stringNotifications);
+
+    // Convert the strings back to objects and set the state
+    const uniqueNotifications = Array.from(uniqueStringNotifications, JSON.parse);
+    setNotifications(uniqueNotifications);
+}
 
     function validateAll() {
         if (firstName.trim() === '') {
@@ -57,12 +71,19 @@ const RegisterPage = () => {
             setPasswordError('Password is required');
         }
 
+        //if any error is present, return false
+        if (firstNameError.trim() !== '' || secondNameError.trim() !== '' || emailError.trim() !== '' || universityError.trim() !== '' || courseOfStudyError.trim() !== '' || phoneNumberError.trim() !== '' || idNumberError.trim() !== '' || passwordError.trim() !== '') {
+            return false;
+        }
+
         return firstName.trim() !== '' && secondName.trim() !== '' && email.trim() !== '' && university.trim() !== '' && courseOfStudy.trim() !== '' && phoneNumber.trim() !== '' && idNumber.trim() !== '' && password.trim() !== '';
     }
 
     const submitForm = (e) => {
+        setNotifications([]);
         e.preventDefault();
         if (!validateAll()) {
+            notifications.push({type: 'error', content: 'Please fill in all the required fields'});
             return;
         }
 
@@ -96,9 +117,13 @@ const RegisterPage = () => {
             setIsLoading(false);
             // Handle the data
             if (data.message) {
-                alert(data.message);
+                // Show a success notification
+                notifications.push({type: 'success', content: data.message});
+                filterNotifications(notifications)
             } else if (data.error) {
-                alert(data.error);
+                // Show an error notification
+                notifications.push({type: 'error', content: data.error});
+                filterNotifications(notifications);
             }
         }).catch((error) => {
             console.log(error)
@@ -117,10 +142,9 @@ const RegisterPage = () => {
     return (
         <main className="min-h-screen grid place-items-center w-full">
             <div className="w-full max-w-md m-4 p-4 ">
-                <div className="absolute z-50 right-3 px-4 py-2 text-red-400 hidden sm:block rounded error bg-red-100 ring-1 ring-red-600">
-                    <i className={'fas fa-exclamation-circle mr-2'}></i>
-                    You have an error
-                </div>
+
+                <Notification notifications={notifications}/>
+
                 <center>
                     <div className="w-fit relative flex flex-col items-center">
                         <h2 className="">

@@ -10,6 +10,7 @@
     "push-code": "git add . && git commit -m 'Added Contributing.md' && git push --set-upstream origin Person-Info"
   },
   "dependencies": {
+    "gsap": "^3.12.4",
     "mysql2": "^3.6.5",
     "next": "14.0.3",
     "next-auth": "^4.24.5",
