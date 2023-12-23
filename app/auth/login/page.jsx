@@ -2,11 +2,12 @@
 import Link from "next/link";
 import LoginButton from "../../components/LoginButton";
 import React, {useEffect, useState} from "react";
-import {signIn}  from "next-auth/react";
+import {signIn, useSession} from "next-auth/react";
 import {redirect} from "next/navigation";
 import Notification from "/app/Notification";
 
 export default function Login() {
+    const { data: session } = useSession()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -61,7 +62,7 @@ export default function Login() {
             email: email,
             password: password,
             redirect: true,
-            callbackUrl: '/dashboard'
+            callbackUrl: '/intern/dashboard'
         })
 
         setIsLoading(false);
@@ -91,6 +92,35 @@ export default function Login() {
                 <span className="loading loading-ring loading-lg"></span>
             </main>
         );
+    }
+
+    if (session) {
+        return (
+            <main className="min-h-screen grid place-items-center w-full">
+                <div className="w-full max-w-md m-4 p-4 ">
+                    <Notification notifications={notifications}/>
+                    <center>
+                        <div className="w-fit relative flex flex-col items-center">
+                            <h2 className="">
+                            <span className="text-green-400">
+                                 Intern
+                            </span>
+                                Link&trade; Auth
+                            </h2>
+                            <div className="absolute top-[35px] right-0 mb-4 text-xs font-medium text-orange-800">
+                                By <a className={'text-blue-500'} href="https://futurespace.vercel.app">FutureSpace</a>
+                            </div>
+                        </div>
+                    </center>
+                    <div className="w-full mt-8">
+                        <p>
+                            You are already signed in as {session.user.email}
+                        </p>
+                        <LoginButton/>
+                    </div>
+                    </div>
+            </main>
+    );
     }
 
 return (
