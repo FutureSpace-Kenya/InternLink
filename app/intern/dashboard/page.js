@@ -1,9 +1,12 @@
 'use client'
-import LoginButton from '../../components/LoginButton';
-import {useSession} from "next-auth/react";
+import React from 'react';
+import { useSession } from "next-auth/react";
 
 const Dashboard = () => {
     const { data: session } = useSession();
+
+    // Function to generate a random number between 1 and 3
+    const randomSpan = () => Math.floor(Math.random() * 3) + 1;
 
     // Dummy data
     const internProfile = {
@@ -30,46 +33,68 @@ const Dashboard = () => {
         type: 'Gold',
     };
 
-    if (!session) return <div>Loading...</div>;
+    if (!session) return <div className="flex justify-center items-center h-screen"><p>Loading...</p></div>;
 
     return (
-        <div className="min-h-screen w-full bg-gray-100">
-            <nav className="bg-green-500 p-4">
-                <p className="text-white text-lg"><i className="fas fa-user-circle"></i> Welcome, {session.user.email}</p>
+        <div className="min-h-screen bg-gray-100">
+            <nav className="bg-green-500 p-4 flex justify-between items-center text-white">
+                <p className="text-lg">
+                    {session.user.email}</p>
+                <button className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
+                    <i className={session.user ? "fa-solid fa-leaf" : "fas fa-sign-in-alt"}></i>
+                </button>
             </nav>
-            <main className="w-full max-w-2xl mx-auto mt-4 p-4">
-                <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-                <p className="text-lg mb-4">Hello {session.user.email}, welcome to your dashboard!</p>
-                <div className="bg-white shadow rounded p-4 mb-4">
-                    <h2 className="text-xl font-bold mb-2">Your Profile</h2>
-                    <p><strong>Name:</strong> {internProfile.name}</p>
-                    <p><strong>Age:</strong> {internProfile.age}</p>
-                    <p><strong>Skills:</strong> {internProfile.skills.join(', ')}</p>
-                    <p><strong>Education:</strong> {internProfile.education}</p>
-                    <p><strong>Experience:</strong> {internProfile.experience}</p>
-                </div>
-                <div className="bg-white shadow rounded p-4 mb-4">
-                    <h2 className="text-xl font-bold mb-2">Companies</h2>
-                    {companies.map((company, index) => (
-                        <div key={index} className="mb-2">
-                            <h3 className="text-lg font-semibold">{company.name}</h3>
-                            <p><strong>Industry:</strong> {company.industry}</p>
-                            <p><strong>Size:</strong> {company.size}</p>
-                            <p><strong>Location:</strong> {company.location}</p>
-                        </div>
-                    ))}
-                </div>
-                <div className="bg-white shadow rounded p-4 mb-4">
-                    <h2 className="text-xl font-bold mb-2">Your Applications</h2>
-                    {applications.map((application, index) => (
-                        <p key={index}><strong>Job ID:</strong> {application.jobId}, <strong>Status:</strong> {application.status}</p>
-                    ))}
-                </div>
-                <div className="bg-white shadow rounded p-4 mb-4">
-                    <h2 className="text-xl font-bold mb-2">Premium Membership</h2>
-                    <p><strong>Type:</strong> {premiumMembership.type}</p>
-                    <p><strong>Start Date:</strong> {premiumMembership.startDate}</p>
-                    <p><strong>End Date:</strong> {premiumMembership.endDate}</p>
+            <main className="px-5 md:px-10 py-6">
+                <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <section className={`bg-white shadow rounded-lg p-6 mb-6 col-span-${randomSpan()}`}>
+                        <h2 className="text-xl font-bold mb-4">Your Profile</h2>
+                        <table className="table w-full">
+                            <tbody>
+                                <tr><td>Name</td><td>{internProfile.name}</td></tr>
+                                <tr><td>Age</td><td>{internProfile.age}</td></tr>
+                                <tr><td>Skills</td><td>{internProfile.skills.join(', ')}</td></tr>
+                                <tr><td>Education</td><td>{internProfile.education}</td></tr>
+                                <tr><td>Experience</td><td>{internProfile.experience}</td></tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section className={`bg-white shadow rounded-lg p-6 mb-6 col-span-${randomSpan()}`}>
+                        <h2 className="text-xl font-bold mb-4">Companies</h2>
+                        {companies.map((company, index) => (
+                            <table key={index} className="table w-full mb-4">
+                                <tbody>
+                                    <tr><td>Name</td><td>{company.name}</td></tr>
+                                    <tr><td>Industry</td><td>{company.industry}</td></tr>
+                                    <tr><td>Size</td><td>{company.size}</td></tr>
+                                    <tr><td>Location</td><td>{company.location}</td></tr>
+                                </tbody>
+                            </table>
+                        ))}
+                    </section>
+
+                    <section className={`bg-white shadow rounded-lg p-6 mb-6 col-span-${randomSpan()}`}>
+                        <h2 className="text-xl font-bold mb-4">Your Applications</h2>
+                        {applications.map((application, index) => (
+                            <table key={index} className="table w-full mb-4">
+                                <tbody>
+                                    <tr><td>Job ID</td><td>{application.jobId}</td></tr>
+                                    <tr><td>Status</td><td>{application.status}</td></tr>
+                                </tbody>
+                            </table>
+                        ))}
+                    </section>
+
+                    <section className={`bg-white shadow rounded-lg p-6 col-span-${randomSpan()}`}>
+                        <h2 className="text-xl font-bold mb-4">Premium Membership</h2>
+                        <table className="table w-full">
+                            <tbody>
+                                <tr><td>Type</td><td>{premiumMembership.type}</td></tr>
+                                <tr><td>Start Date</td><td>{premiumMembership.startDate}</td></tr>
+                                <tr><td>End Date</td><td>{premiumMembership.endDate}</td></tr>
+                            </tbody>
+                        </table>
+                    </section>
                 </div>
             </main>
         </div>
