@@ -79,8 +79,14 @@ const RegisterPage = () => {
         return firstName.trim() !== '' && secondName.trim() !== '' && email.trim() !== '' && university.trim() !== '' && courseOfStudy.trim() !== '' && phoneNumber.trim() !== '' && idNumber.trim() !== '' && password.trim() !== '';
     }
 
+    function removeNotifications(notifications) {
+       //remove all notifications
+         notifications.splice(0, notifications.length);
+            filterNotifications(notifications);
+    }
+
     const submitForm = (e) => {
-        setNotifications([]);
+        removeNotifications(notifications);
         e.preventDefault();
         if (!validateAll()) {
             notifications.push({type: 'error', content: 'Please fill in all the required fields'});
@@ -111,7 +117,7 @@ const RegisterPage = () => {
             if (response.ok) {
                 return response.json();
             } else {
-                throw new Error('Network response was not ok');
+                notifications.push({type: 'error', content: 'An error occurred while processing your request'});
             }
         }).then((data) => {
             setIsLoading(false);
@@ -120,6 +126,7 @@ const RegisterPage = () => {
                 // Show a success notification
                 notifications.push({type: 'success', content: data.message});
                 filterNotifications(notifications)
+                location.href = '/auth/login';
             } else if (data.error) {
                 // Show an error notification
                 notifications.push({type: 'error', content: data.error});
