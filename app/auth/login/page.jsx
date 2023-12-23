@@ -138,7 +138,7 @@ export default function Login() {
                             </div>
                             <Link className={'w-full'} href={'/intern/dashboard'}>
                                 <button className={'btn btn-outline btn-secondary ring-2  ring-offset-1 w-full'}>
-                                    Go to Dashboard <i className="fas fa-arrow-right"> </i>
+                                    Dashboard <i className="fas fa-arrow-right"> </i>
                                 </button>
                             </Link>
                         </div>
