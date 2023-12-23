@@ -33,7 +33,9 @@ const Dashboard = () => {
         type: 'Gold',
     };
 
-    if (!session) return <div className="flex justify-center items-center h-screen"><p>Loading...</p></div>;
+    if (!session) return <div className="min-h-screen grid place-items-center w-full">
+        <span className="loading loading-ring loading-lg"></span>
+    </div>;
 
     return (
         <div className="min-h-screen bg-gray-100">
