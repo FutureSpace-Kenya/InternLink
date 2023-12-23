@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { User, InternProfile } from "../../../../models/user";
 import {Sequelize} from "sequelize";
+import { hash } from "bcrypt";
 
 export async function GET() {
     return NextResponse.json({message: 'Hello from Next.js!'})
@@ -36,11 +37,13 @@ export async function POST(req) {
             return NextResponse.json({ error: 'A user with this email, ID, or phone number already exists' });
         }
 
+        const hashedPassword = await hash(password, 10);
+
         // Create a new user
         const newUser = await User.create({
             Username: email,
             Email: email,
-            Password: password, // TODO: Hash the password
+            Password: hashedPassword,
             UserType: 'Intern',
             FirstName: firstName,
             SecondName: secondName
