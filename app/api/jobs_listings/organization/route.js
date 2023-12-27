@@ -21,4 +21,17 @@ export async function POST(request) {
       return NextResponse.json({message: "Error creating organization"})
     }
   }
-  
+
+export async function GET () {
+    try {
+        // Fetch all organizations from the database
+        const organizations = await Organization.findAll();
+
+        // Send a successful response with the organizations data
+        return NextResponse.json({message: "Fetched all organizations successfully",organizations})
+    } catch (error) {
+        // Handle any errors that may occur during the fetch process
+        console.error(error);
+        return NextResponse.json({message: "Error fetching organizations", error})
+    }
+}  
