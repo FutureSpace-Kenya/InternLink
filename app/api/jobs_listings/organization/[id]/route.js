@@ -51,26 +51,26 @@ export async function PATCH (request, {params}) {
     }
 }
 
-// export async function DELETE(request, { params }) {
-//     try {
-//         const { id } = params;
+export async function DELETE(request, { params }) {
+    try {
+        const { id } = params;
 
-//         // Find the organization with the specified ID
-//         const organization = await Organization.findByPk(id);
+        // Find the organization with the specified ID
+        const organization = await Organization.findByPk(id);
 
-//         // Check if the organization was found
-//         if (!organization) {
-//         return NextResponse.json({message: "Organization not found"})
-//         }
+        // Check if the organization was found
+        if (!organization) {
+        return NextResponse.json({message: "Organization not found"})
+        }
 
-//         // Delete the organization
-//         await organization.destroy();
+        // Delete the organization
+        await organization.destroy();
 
-//         // Send a successful response
-//         return NextResponse.json({message: "Organization deleted successfully!"})
-//     } catch (error) {
-//         console.error(error);
-//         return NextResponse.json({message: "Error deleting organization", error})
-//     }
-// }
+        // Send a successful response
+        return NextResponse.json({message: "Organization deleted successfully!"})
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({message: "Error deleting organization", error})
+    }
+}
   
