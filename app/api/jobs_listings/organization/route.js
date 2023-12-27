@@ -34,4 +34,21 @@ export async function GET () {
         console.error(error);
         return NextResponse.json({message: "Error fetching organizations", error})
     }
-}  
+} 
+
+export async function DELETE (request) {
+    try {
+        // Delete all organizations from the database
+        await Organization.destroy({
+            where: {},
+            truncate: true
+        });
+
+        // Send a successful response
+        return NextResponse.json({message: "Deleted all organizations successfully"})
+    } catch (error) {
+        // Handle any errors that may occur during the delete process
+        console.error(error);
+        return NextResponse.json({message: "Error deleting organizations", error})
+    }
+}
