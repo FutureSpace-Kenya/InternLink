@@ -26,16 +26,16 @@ export async function POST(request) {
     }
 }
 
-// export async function GET () {
-//     try {
-//         // Fetch all departments from the database
-//         const departments = await Department.findAll();
+export async function GET () {
+    try {
+        // Fetch all departments from the database
+        const departments = await Department.findAll();
 
-//         // Send a successful response with the departments data
-//         return NextResponse.json({message: "Fetched all departments successfully",departments})
-//     } catch (error) {
-//         // Handle any errors that may occur during the fetch process
-//         console.error(error);
-//         return NextResponse.json({message: "Error fetching departments", error})
-//     }
-// }
+        // Send a successful response with the departments data
+        return NextResponse.json({message: "Fetched all departments successfully",departments})
+    } catch (error) {
+        // Handle any errors that may occur during the fetch process
+        console.error(error);
+        return NextResponse.json({message: "Error fetching departments", error})
+    }
+}
