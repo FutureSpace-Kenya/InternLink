@@ -54,25 +54,25 @@ export async function PATCH (request, { params }) {
     }
 }
 
-// export async function DELETE (request, { params }) {
-//     try {
-//       const { id } = params;
+export async function DELETE (request, { params }) {
+    try {
+      const { id } = params;
   
-//       // Find the job with the specified ID
-//       const job = await Job.findByPk(id);
+      // Find the job with the specified ID
+      const job = await Job.findByPk(id);
   
-//       // Check if the job was found
-//       if (!job) {
-//         return NextResponse.json({message: "Job not found"})
-//       }
+      // Check if the job was found
+      if (!job) {
+        return NextResponse.json({message: "Job not found"})
+      }
   
-//       // Delete the job
-//       await job.destroy();
+      // Delete the job
+      await job.destroy();
   
-//       // Send a successful response
-//       return NextResponse.json({message: "Job deleted successfully!"})
-//     } catch (error) {
-//       console.error(error);
-//         return NextResponse.json({message: "Error deleting job", error})
-//     }
-// }
+      // Send a successful response
+      return NextResponse.json({message: "Job deleted successfully!"})
+    } catch (error) {
+      console.error(error);
+        return NextResponse.json({message: "Error deleting job", error})
+    }
+}
