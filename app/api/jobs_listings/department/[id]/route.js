@@ -7,9 +7,7 @@ export async function GET(request, { params }) {
       const { id } = params;
   
       // Find the department with the specified ID
-      const department = await Department.findByPk(id, {
-        include: [Organization] // Eager load the associated organization
-      });
+      const department = await Department.findByPk(id);
   
       // Check if the department was found
       if (!department) {
