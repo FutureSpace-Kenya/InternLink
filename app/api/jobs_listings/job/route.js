@@ -28,19 +28,19 @@ export async function POST (request) {
     }
 }
 
-// export async function GET () {
-//     try {
-//         // Fetch all jobs from the database
-//         const jobs = await Job.findAll();
+export async function GET () {
+    try {
+        // Fetch all jobs from the database
+        const jobs = await Job.findAll();
   
-//         // Send a successful response with the jobs data
-//         return NextResponse.json({message: "Fetched all jobs successfully",jobs})
-//     } catch (error) {
-//         // Handle any errors that may occur during the fetch process
-//         console.error(error);
-//         return NextResponse.json({message: "Error fetching jobs", error})
-//     }
-// }
+        // Send a successful response with the jobs data
+        return NextResponse.json({message: "Fetched all jobs successfully",jobs})
+    } catch (error) {
+        // Handle any errors that may occur during the fetch process
+        console.error(error);
+        return NextResponse.json({message: "Error fetching jobs", error})
+    }
+}
 
 // export async function DELETE (request) {
 //     try {
