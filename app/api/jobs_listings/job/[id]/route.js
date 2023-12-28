@@ -23,36 +23,36 @@ export async function GET(request, { params }) {
     }
 }
 
-// export async function PATCH (request, { params }) {
-//     try {
-//       const { id } = params;
+export async function PATCH (request, { params }) {
+    try {
+      const { id } = params;
   
-//       // Find the job with the specified ID
-//       const job = await Job.findByPk(id);
+      // Find the job with the specified ID
+      const job = await Job.findByPk(id);
   
-//       // Check if the job was found
-//       if (!job) {
-//         return NextResponse.json({message: "Job not found"})
-//       }
+      // Check if the job was found
+      if (!job) {
+        return NextResponse.json({message: "Job not found"})
+      }
   
-//       // Get job data from the request body
-//       const { description, skills, status, departmentId } = await request.json();
+      // Get job data from the request body
+      const { description, skills, status, departmentId } = await request.json();
   
-//       // Update the job with the new data
-//       await job.update({
-//         description,
-//         skills,
-//         status,
-//         departmentId
-//       });
+      // Update the job with the new data
+      await job.update({
+        description,
+        skills,
+        status,
+        departmentId
+      });
   
-//       // Send a successful response with the updated job data
-//       return NextResponse.json({message: "Job updated successfully!", job})
-//     } catch (error) {
-//       console.error(error);
-//         return NextResponse.json({message: "Error updating job", error})
-//     }
-// }
+      // Send a successful response with the updated job data
+      return NextResponse.json({message: "Job updated successfully!", job})
+    } catch (error) {
+      console.error(error);
+        return NextResponse.json({message: "Error updating job", error})
+    }
+}
 
 // export async function DELETE (request, { params }) {
 //     try {
