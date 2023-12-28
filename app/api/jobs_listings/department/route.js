@@ -39,3 +39,20 @@ export async function GET () {
         return NextResponse.json({message: "Error fetching departments", error})
     }
 }
+
+export async function DELETE (request) {
+    try {
+        // Delete all departments from the database
+        await Department.destroy({
+            where: {},
+            truncate: true
+        });
+
+        // Send a successful response
+        return NextResponse.json({message: "Deleted all departments successfully"})
+    } catch (error) {
+        // Handle any errors that may occur during the delete process
+        console.error(error);
+        return NextResponse.json({message: "Error deleting departments", error})
+    }
+}
