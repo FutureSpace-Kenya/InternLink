@@ -52,3 +52,26 @@ export async function PATCH (request, {params}) {
         return NextResponse.json({message: "Error updating department", error})
     }
 }
+
+export async function DELETE(request, { params }) {
+    try {
+        const { id } = params;
+
+        // Find the department with the specified ID
+        const department = await Department.findByPk(id);
+
+        // Check if the department was found
+        if (!department) {
+            return NextResponse.json({message: "Department not found"})
+        }
+
+        // Delete the department
+        await department.destroy();
+
+        // Send a successful response
+        return NextResponse.json({message: "Department deleted successfully!"})
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({message: "Error deleting department", error})
+    }
+}
