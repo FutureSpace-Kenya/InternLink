@@ -6,9 +6,7 @@ export async function GET(request, { params }) {
       const { id } = params;
   
       // Find the job with the specified ID
-      const job = await Job.findByPk(id, {
-        include: [Department] // Eager load the associated department
-      });
+      const job = await Job.findByPk(id);
   
       // Check if the job was found
       if (!job) {
