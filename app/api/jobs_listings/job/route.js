@@ -42,19 +42,19 @@ export async function GET () {
     }
 }
 
-// export async function DELETE (request) {
-//     try {
-//         // Delete all jobs from the database
-//         await Job.destroy({
-//             where: {},
-//             truncate: true
-//         });
+export async function DELETE (request) {
+    try {
+        // Delete all jobs from the database
+        await Job.destroy({
+            where: {},
+            truncate: true
+        });
   
-//         // Send a successful response
-//         return NextResponse.json({message: "Deleted all jobs successfully"})
-//     } catch (error) {
-//         // Handle any errors that may occur during the delete process
-//         console.error(error);
-//         return NextResponse.json({message: "Error deleting jobs", error})
-//     }
-// }
+        // Send a successful response
+        return NextResponse.json({message: "Deleted all jobs successfully"})
+    } catch (error) {
+        // Handle any errors that may occur during the delete process
+        console.error(error);
+        return NextResponse.json({message: "Error deleting jobs", error})
+    }
+}
