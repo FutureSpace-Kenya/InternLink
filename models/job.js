@@ -26,6 +26,10 @@ Job.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    departmentId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,
