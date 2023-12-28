@@ -20,6 +20,10 @@ Department.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    organizationId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
   },
   {
     sequelize,
