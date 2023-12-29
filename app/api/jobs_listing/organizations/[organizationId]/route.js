@@ -3,7 +3,7 @@ import Organization from '../../../../../models/organization';
 
 export async function GET(request, { params }) {
     try {
-        const { id } = params;
+        const { organizationId: id } = params;
 
         // Find the organization with the specified ID
         const organization = await Organization.findByPk(id);
