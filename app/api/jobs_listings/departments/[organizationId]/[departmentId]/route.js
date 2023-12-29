@@ -57,3 +57,28 @@ export async function PATCH(request, { params }) {
   }
 }
 
+// Next.js API route function for deleting a department in the specified organization
+export async function DELETE(request, { params }) {
+  try {
+    // Extract organizationId and departmentId from the request parameters
+    const { organizationId, departmentId } = params;
+
+    // Delete the specified department belonging to the specified organization
+    const deletedRows = await Department.destroy({
+      where: { id: parseInt(departmentId, 10), organizationId: parseInt(organizationId, 10) },
+    });
+
+    // Check if any rows were deleted
+    if (deletedRows === 0) {
+      return NextResponse.json({ message: 'Department not found' });
+    }
+
+    // Send a successful response indicating the deletion
+    return NextResponse.json({ message: 'Department deleted successfully!' });
+  } catch (error) {
+    // Log any errors that occur and send an error response
+    console.error(error);
+    return NextResponse.json({ message: 'Error deleting department', error });
+  }
+}
+
