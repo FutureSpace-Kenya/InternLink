@@ -30,3 +30,23 @@ export async function POST(request, { params }) {
     return NextResponse.json({ message: 'Error creating department', error });
   }
 }
+
+// Next.js API route function for retrieving all departments of a specified organization
+export async function GET(request, { params }) {
+    try {
+      // Extract organizationId from the request parameters
+      const { organizationId } = params;
+  
+      // Retrieve all departments belonging to the specified organization
+      const departments = await Department.findAll({
+        where: { organizationId: parseInt(organizationId, 10) },
+      });
+  
+      // Send a successful response with the retrieved departments
+      return NextResponse.json(departments);
+    } catch (error) {
+      // Log any errors that occur and send an error response
+      console.error(error);
+      return NextResponse.json({ message: 'Error retrieving departments', error });
+    }
+}
