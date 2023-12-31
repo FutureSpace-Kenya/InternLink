@@ -1,9 +1,9 @@
 'use client'
 import React from 'react';
-import { useSession } from "next-auth/react";
+import {useSession} from "next-auth/react";
 
 const Dashboard = () => {
-    const { data: session } = useSession();
+    const {data: session} = useSession();
 
     // Function to generate a random number between 1 and 3
     const randomSpan = () => Math.floor(Math.random() * 3) + 1;
@@ -18,13 +18,13 @@ const Dashboard = () => {
     };
 
     const companies = [
-        { name: 'Company 1', industry: 'Software', size: '100-500', location: 'City A' },
-        { name: 'Company 2', industry: 'Hardware', size: '500-1000', location: 'City B' },
+        {name: 'Company 1', industry: 'Software', size: '100-500', location: 'City A'},
+        {name: 'Company 2', industry: 'Hardware', size: '500-1000', location: 'City B'},
     ];
 
     const applications = [
-        { jobId: '1', status: 'Pending' },
-        { jobId: '2', status: 'Accepted' },
+        {jobId: '1', status: 'Pending'},
+        {jobId: '2', status: 'Accepted'},
     ];
 
     const premiumMembership = {
@@ -40,63 +40,72 @@ const Dashboard = () => {
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="bg-green-500 p-4 flex justify-between items-center text-white">
-                <p className="text-lg">
-                    {session.user.email}</p>
-                <button className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
-                    <i className={session.user ? "fa-solid fa-leaf" : "fas fa-sign-in-alt"}></i>
-                </button>
+                <p className="text-2xl font-semibold">
+                    InternLink™
+                </p>
+                <div className="flex gap-2">
+                    <button
+                        className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
+                        <i className="fa-solid fa-bell-slash"></i>
+                    </button>
+                    <button
+                        className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
+                        <i className={session.user ? "fa-solid fa-user" : "fas fa-sign-in-alt"}></i>
+                    </button>
+                </div>
             </nav>
-            <main className="px-5 md:px-10 py-6">
-                <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <section className={`bg-white shadow rounded-lg p-6 mb-6 col-span-${randomSpan()}`}>
-                        <h2 className="text-xl font-bold mb-4">Your Profile</h2>
-                        <table className="table w-full">
-                            <tbody>
-                                <tr><td>Name</td><td>{internProfile.name}</td></tr>
-                                <tr><td>Age</td><td>{internProfile.age}</td></tr>
-                                <tr><td>Skills</td><td>{internProfile.skills.join(', ')}</td></tr>
-                                <tr><td>Education</td><td>{internProfile.education}</td></tr>
-                                <tr><td>Experience</td><td>{internProfile.experience}</td></tr>
-                            </tbody>
-                        </table>
-                    </section>
+            <main className="">
+                <div className="w-full bg-green-100 grid grid-cols-1 place-items-center h-72 gap-6">
+                    <div className="landing-page">
+                        <div className="text-center">
+                            <p className={`text-gray-500 text-sm font-semibold sm:text-base`}>
+                                Shape your career with InternLink™
+                            </p>
+                            <h1 className={`text-5xl font-bold mt-3 sm:font-black`}>
+                                Find your dream : <span className="text-green-500">internship</span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-col justify-center p-4">
+                    <h1 className={`text-3xl mb-6 sm:text-4xl font-bold sm:font-black`}>
+                        Featured companies hiring now
+                    </h1>
+                    <div className="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                        <div className="border rounded-md p-4 border-gray-300 w-full">
+                            <div className="flex gap-4 items-center">
+                                <div className="logo grid place-items-center bg-green-500 w-14 h-14 rounded-md">
+                                    <i className={`fa-brands fa-google text-2xl`}></i>
+                                </div>
+                                <div className="info">
+                                    <h1 className="text-2xl font-bold">Google</h1>
+                                    <p className="text-sm text-gray-500">3000+ employees</p>
+                                </div>
+                            </div>
 
-                    <section className={`bg-white shadow rounded-lg p-6 mb-6 col-span-${randomSpan()}`}>
-                        <h2 className="text-xl font-bold mb-4">Companies</h2>
-                        {companies.map((company, index) => (
-                            <table key={index} className="table w-full mb-4">
-                                <tbody>
-                                    <tr><td>Name</td><td>{company.name}</td></tr>
-                                    <tr><td>Industry</td><td>{company.industry}</td></tr>
-                                    <tr><td>Size</td><td>{company.size}</td></tr>
-                                    <tr><td>Location</td><td>{company.location}</td></tr>
-                                </tbody>
-                            </table>
-                        ))}
-                    </section>
+                            <div className="mt-4 font-medium">
+                                Create space for everyone to find belonging at Google.
+                            </div>
+                            <div className="flex gap-2 mt-4">
+                                <div className="badge-custom">
+                                    <i className={`fa-solid fa-cube`}></i>
+                                    Software
+                                </div>
+                                <div className="badge-custom">
+                                    Hardware
+                                </div>
+                            </div>
 
-                    <section className={`bg-white shadow rounded-lg p-6 mb-6 col-span-${randomSpan()}`}>
-                        <h2 className="text-xl font-bold mb-4">Your Applications</h2>
-                        {applications.map((application, index) => (
-                            <table key={index} className="table w-full mb-4">
-                                <tbody>
-                                    <tr><td>Job ID</td><td>{application.jobId}</td></tr>
-                                    <tr><td>Status</td><td>{application.status}</td></tr>
-                                </tbody>
-                            </table>
-                        ))}
-                    </section>
+                            <div className="line">
 
-                    <section className={`bg-white shadow rounded-lg p-6 col-span-${randomSpan()}`}>
-                        <h2 className="text-xl font-bold mb-4">Premium Membership</h2>
-                        <table className="table w-full">
-                            <tbody>
-                                <tr><td>Type</td><td>{premiumMembership.type}</td></tr>
-                                <tr><td>Start Date</td><td>{premiumMembership.startDate}</td></tr>
-                                <tr><td>End Date</td><td>{premiumMembership.endDate}</td></tr>
-                            </tbody>
-                        </table>
-                    </section>
+                            </div>
+                            <div className="open">
+                                3 Open Positions
+                                <i className={`fa-solid fa-chevron-right text-sm`}></i>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </main>
         </div>
