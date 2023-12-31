@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import {useSession} from "next-auth/react";
+import Link from "next/link";
 
 const Dashboard = () => {
     const {data: session} = useSession();
@@ -72,8 +73,8 @@ const Dashboard = () => {
                         Featured companies hiring now
                     </h1>
                     <div className="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                        <div className="border rounded-md p-4 border-gray-300 w-full">
-                            <div className="flex gap-4 items-center">
+                        <div className="border rounded-md p-1 border-gray-300 w-full">
+                            <div className="flex px-3 pt-3 gap-4 items-center">
                                 <div className="logo grid place-items-center bg-green-500 w-14 h-14 rounded-md">
                                     <i className={`fa-brands fa-google text-2xl`}></i>
                                 </div>
@@ -83,25 +84,36 @@ const Dashboard = () => {
                                 </div>
                             </div>
 
-                            <div className="mt-4 font-medium">
+                            <div className="mt-4 px-3 font-medium">
                                 Create space for everyone to find belonging at Google.
                             </div>
-                            <div className="flex gap-2 mt-4">
-                                <div className="badge-custom">
+
+                            <div className="flex px-3 flex-wrap gap-2 mt-4">
+                                <div className="ring-1 ring-green-500 badge-custom">
                                     <i className={`fa-solid fa-cube`}></i>
                                     Software
                                 </div>
-                                <div className="badge-custom">
+                                <div className="ring-1 ring-green-500 badge-custom">
+                                    <i className={`fa-brands fa-hashnode`}></i>
                                     Hardware
+                                </div>
+
+                                <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
+                                    <i className={`fa-solid fa-circle-check`}></i>
+                                    Actively hiring
                                 </div>
                             </div>
 
-                            <div className="line">
+                            <div className="border-b-2 border-gray-300 w-full mt-4">
 
                             </div>
-                            <div className="open">
-                                3 Open Positions
-                                <i className={`fa-solid fa-chevron-right text-sm`}></i>
+                            <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
+                                <Link className={'flex positions-link justify-between items-center'} href={`/intern/company/1`}>
+                                    <span className={`text-md font-semibold hover:underline underline-offset-1`}>
+                                        3 Open Positions
+                                    </span>
+                                    <i className={`fa-solid fa-chevron-right text-sm`}></i>
+                                </Link>
                             </div>
                         </div>
                     </div>

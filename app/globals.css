@@ -85,4 +85,3 @@ h5 {
 .badge-custom{
   @apply flex justify-center gap-2 items-center text-gray-500 text-sm px-2.5 py-0.5 rounded-full font-medium bg-red-100;
 }
-
