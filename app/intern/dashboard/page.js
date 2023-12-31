@@ -72,10 +72,12 @@ const Dashboard = () => {
                     <h1 className={`text-3xl mb-6 sm:text-4xl font-bold sm:font-black`}>
                         Featured companies hiring now
                     </h1>
-                    <div className="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                        <div className="border rounded-md p-1 border-gray-300 w-full">
+
+                    <div className="cards gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+
+                        <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
                             <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div className="logo grid place-items-center bg-green-500 w-14 h-14 rounded-md">
+                                <div className="logo grid place-items-center bg-primary text-white w-14 h-14 rounded-md">
                                     <i className={`fa-brands fa-google text-2xl`}></i>
                                 </div>
                                 <div className="info">
@@ -84,38 +86,88 @@ const Dashboard = () => {
                                 </div>
                             </div>
 
-                            <div className="mt-4 px-3 font-medium">
-                                Create space for everyone to find belonging at Google.
-                            </div>
-
-                            <div className="flex px-3 flex-wrap gap-2 mt-4">
-                                <div className="ring-1 ring-green-500 badge-custom">
-                                    <i className={`fa-solid fa-cube`}></i>
-                                    Software
-                                </div>
-                                <div className="ring-1 ring-green-500 badge-custom">
-                                    <i className={`fa-brands fa-hashnode`}></i>
-                                    Hardware
+                            <div className="middle">
+                                <div className="mt-4 px-3 font-medium">
+                                    Create space for everyone to find belonging at Google.
                                 </div>
 
-                                <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
-                                    <i className={`fa-solid fa-circle-check`}></i>
-                                    Actively hiring
+                                <div className="flex px-3 flex-wrap gap-2 mt-4">
+                                    <div className="ring-1 ring-green-500 badge-custom">
+                                        <i className={`fa-solid fa-cube`}></i>
+                                        Software
+                                    </div>
+                                    <div className="ring-1 ring-green-500 badge-custom">
+                                        <i className={`fa-brands fa-hashnode`}></i>
+                                        Hardware
+                                    </div>
+
+                                    <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
+                                        <i className={`fa-solid fa-circle-check`}></i>
+                                        Actively hiring
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="border-b-2 border-gray-300 w-full mt-4">
+                            <div className="bottom">
+                                <div className="border-b-2 border-gray-300 w-full mt-4">
 
-                            </div>
-                            <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
-                                <Link className={'flex positions-link justify-between items-center'} href={`/intern/company/1`}>
+                                </div>
+                                <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
+                                    <Link className={'flex positions-link justify-between items-center'}
+                                          href={`/intern/company/1`}>
                                     <span className={`text-md font-semibold hover:underline underline-offset-1`}>
                                         3 Open Positions
                                     </span>
-                                    <i className={`fa-solid fa-chevron-right text-sm`}></i>
-                                </Link>
+                                        <i className={`fa-solid fa-chevron-right text-sm`}></i>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
+
+                        <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
+                            <div className="flex px-3 pt-3 gap-4 items-center">
+                                <div className="logo grid place-items-center bg-primary text-white w-14 h-14 rounded-md">
+                                    <i className={`fa-brands fa-facebook text-2xl`}></i>
+                                </div>
+                                <div className="info">
+                                    <h1 className="text-2xl font-bold">Facebook</h1>
+                                    <p className="text-sm text-gray-500">3000+ employees</p>
+                                </div>
+                            </div>
+
+                            <div className="middle">
+                                <div className="mt-4 px-3 font-medium">
+                                    Learn about our culture, our people, and career opportunities at the Facebook
+                                </div>
+
+                                <div className="flex px-3 flex-wrap gap-2 mt-4">
+                                    <div className="ring-1 ring-green-500 badge-custom">
+                                        <i className={`fa-brands fa-hashnode`}></i>
+                                        Hardware
+                                    </div>
+
+                                    <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
+                                        <i className={`fa-solid fa-circle-check`}></i>
+                                        Actively hiring
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bottom">
+                                <div className="border-b-2 border-gray-300 w-full mt-4">
+
+                                </div>
+                                <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
+                                    <Link className={'flex positions-link justify-between items-center'}
+                                          href={`/intern/company/2`}>
+                                    <span className={`text-md font-semibold hover:underline underline-offset-1`}>
+                                        3 Open Positions
+                                    </span>
+                                        <i className={`fa-solid fa-chevron-right text-sm`}></i>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
