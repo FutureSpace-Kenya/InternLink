@@ -85,3 +85,11 @@ h5 {
 .badge-custom{
   @apply flex justify-center gap-2 items-center text-gray-500 text-sm px-2.5 py-0.5 rounded-full font-medium bg-red-100;
 }
+
+.custom-card{
+  @apply border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full transition duration-200 ease-in-out transform hover:scale-105;
+}
+
+.custom-card:hover{
+  @apply border-gray-500 shadow-md scale-105 bg-gray-100;
+}
