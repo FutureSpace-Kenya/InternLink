@@ -222,7 +222,7 @@ const Dashboard = () => {
                         <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
                             <div className="flex px-3 pt-3 gap-4 items-center">
                                 <div
-                                    className="logo grid place-items-center bg-red-400 text-white w-14 h-14 rounded-md">
+                                    className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
                                     <i className={`fa-brands fa-apple text-2xl`}></i>
                                 </div>
                                 <div className="info">
