@@ -93,3 +93,7 @@ h5 {
 .custom-card:hover{
   @apply border-gray-500 shadow-md scale-105 bg-gray-100;
 }
+
+.internship-card{
+  @apply border-b border-gray-800 py-4 flex justify-between items-center flex-wrap gap-4;
+}
