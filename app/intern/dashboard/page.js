@@ -62,7 +62,7 @@ const Dashboard = () => {
                             <p className={`text-gray-500 text-sm font-semibold sm:text-base`}>
                                 Shape your career with InternLink™
                             </p>
-                            <h1 className={`text-5xl font-bold mt-3 sm:font-black`}>
+                            <h1 className={`text-3xl sm:text-4xl md:text-5xl font-bold mt-3 sm:font-black`}>
                                 Find your dream : <span className="text-green-500">internship</span>
                             </h1>
                         </div>
@@ -75,9 +75,59 @@ const Dashboard = () => {
 
                     <div className="cards gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
+
                         <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
                             <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div className="logo grid place-items-center bg-primary text-white w-14 h-14 rounded-md">
+                                <div
+                                    className="logo grid place-items-center bg-gray-800 text-white w-14 h-14 rounded-md">
+                                    <img className={'h-12 object-cover'}
+                                         src={'https://futurespace.vercel.app/resources/FsOutline.png'}
+                                         alt={'FutureSpace'}/>
+                                </div>
+                                <div className="info">
+                                    <h1 className="text-2xl font-bold">FutureSpace</h1>
+                                    <p className="text-sm text-gray-500">3000+ employees</p>
+                                </div>
+                            </div>
+
+                            <div className="middle">
+                                <div className="mt-4 px-3 font-medium">
+                                    FutureSpace Kenya is a software development company that builds enterprise software
+                                    solutions.
+                                </div>
+
+                                <div className="flex px-3 flex-wrap gap-2 mt-4">
+                                    <div className="ring-1 ring-green-500 badge-custom">
+                                        <i className={`fa-solid fa-gear fa-spin`}></i>
+                                        Solutions
+                                    </div>
+
+                                    <div className="ring-1 ring-yellow-500 badge p-3 badge-warning gap-2">
+                                        <i className={`fa-solid fa-rocket`}></i>
+                                        Premium
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bottom">
+                                <div className="border-b-2 border-gray-300 w-full mt-4">
+
+                                </div>
+                                <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
+                                    <Link className={'flex positions-link justify-between items-center'}
+                                          href={`/intern/company/4`}>
+                                    <span className={`text-md font-semibold hover:underline underline-offset-1`}>
+                                        0 Open Positions
+                                    </span>
+                                        <i className={`fa-solid fa-chevron-right text-sm`}></i>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
+                            <div className="flex px-3 pt-3 gap-4 items-center">
+                                <div
+                                    className="logo grid place-items-center bg-orange-400 text-white w-14 h-14 rounded-md">
                                     <i className={`fa-brands fa-google text-2xl`}></i>
                                 </div>
                                 <div className="info">
@@ -126,7 +176,8 @@ const Dashboard = () => {
 
                         <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
                             <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div className="logo grid place-items-center bg-primary text-white w-14 h-14 rounded-md">
+                                <div
+                                    className="logo grid place-items-center bg-primary text-white w-14 h-14 rounded-md">
                                     <i className={`fa-brands fa-facebook text-2xl`}></i>
                                 </div>
                                 <div className="info">
@@ -159,6 +210,51 @@ const Dashboard = () => {
                                 <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
                                     <Link className={'flex positions-link justify-between items-center'}
                                           href={`/intern/company/2`}>
+                                    <span className={`text-md font-semibold hover:underline underline-offset-1`}>
+                                        3 Open Positions
+                                    </span>
+                                        <i className={`fa-solid fa-chevron-right text-sm`}></i>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
+                            <div className="flex px-3 pt-3 gap-4 items-center">
+                                <div
+                                    className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
+                                    <i className={`fa-brands fa-apple text-2xl`}></i>
+                                </div>
+                                <div className="info">
+                                    <h1 className="text-2xl font-bold">Apple</h1>
+                                    <p className="text-sm text-gray-500">3000+ employees</p>
+                                </div>
+                            </div>
+
+                            <div className="middle">
+                                <div className="mt-4 px-3 font-medium">
+                                    Apple is a place where extraordinary people gather to do their best work.
+                                </div>
+
+                                <div className="flex px-3 flex-wrap gap-2 mt-4">
+                                    <div className="ring-1 ring-green-500 badge-custom">
+                                        <i className={`fa-solid fa-headphones`}></i>
+                                        Music
+                                    </div>
+
+                                    <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
+                                        <i className={`fa-solid fa-circle-check`}></i>
+                                        Actively hiring
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bottom">
+                                <div className="border-b-2 border-gray-300 w-full mt-4">
+
+                                </div>
+                                <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
+                                    <Link className={'flex positions-link justify-between items-center'}
+                                          href={`/intern/company/3`}>
                                     <span className={`text-md font-semibold hover:underline underline-offset-1`}>
                                         3 Open Positions
                                     </span>
