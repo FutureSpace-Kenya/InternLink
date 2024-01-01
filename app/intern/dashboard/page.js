@@ -62,7 +62,7 @@ const Dashboard = () => {
                             <p className={`text-gray-500 text-sm font-semibold sm:text-base`}>
                                 Shape your career with InternLink™
                             </p>
-                            <h1 className={`text-5xl font-bold mt-3 sm:font-black`}>
+                            <h1 className={`text-3xl sm:text-4xl md:text-5xl font-bold mt-3 sm:font-black`}>
                                 Find your dream : <span className="text-green-500">internship</span>
                             </h1>
                         </div>
