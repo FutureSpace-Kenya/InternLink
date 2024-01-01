@@ -68,6 +68,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
+
                 <div className="flex flex-col justify-center p-4">
                     <h1 className={`text-3xl mb-6 sm:text-4xl font-bold sm:font-black`}>
                         Featured companies hiring now
@@ -76,7 +77,7 @@ const Dashboard = () => {
                     <div className="cards gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
 
-                        <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
+                        <div className="custom-card">
                             <div className="flex px-3 pt-3 gap-4 items-center">
                                 <div
                                     className="logo grid place-items-center bg-gray-800 text-white w-14 h-14 rounded-md">
@@ -124,7 +125,7 @@ const Dashboard = () => {
                             </div>
                         </div>
 
-                        <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
+                        <div className="custom-card">
                             <div className="flex px-3 pt-3 gap-4 items-center">
                                 <div
                                     className="logo grid place-items-center bg-orange-400 text-white w-14 h-14 rounded-md">
@@ -174,7 +175,7 @@ const Dashboard = () => {
                             </div>
                         </div>
 
-                        <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
+                        <div className="custom-card">
                             <div className="flex px-3 pt-3 gap-4 items-center">
                                 <div
                                     className="logo grid place-items-center bg-primary text-white w-14 h-14 rounded-md">
@@ -219,7 +220,7 @@ const Dashboard = () => {
                             </div>
                         </div>
 
-                        <div className="border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full">
+                        <div className="custom-card">
                             <div className="flex px-3 pt-3 gap-4 items-center">
                                 <div
                                     className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
@@ -262,6 +263,90 @@ const Dashboard = () => {
                                     </Link>
                                 </div>
                             </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div className="flex flex-col mt-4 justify-center p-4">
+                    <h1 className={`text-3xl mb-6 sm:text-4xl font-bold sm:font-black`}>
+                        Trending internship opportunities
+                    </h1>
+
+                    <a href={`/intern/jobs`} className="underline underline-offset-1">View all jobs</a>
+
+                    <div className="main flex mt-4">
+
+                        <div className="left w-full md:w-3/4">
+                            <div className="internship-card">
+                                <div className="start flex gap-4 justify-center">
+                                    <div
+                                        className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
+                                        <img className={'h-12 object-cover'}
+                                             src={'https://futurespace.vercel.app/resources/FsOutline.png'}
+                                             alt={'FutureSpace'}/>
+                                    </div>
+                                    <div className="info flex flex-col gap-1">
+                                        <h1 className="text-2xl font-bold">Software Engineering</h1>
+                                        <div className="text-[1rem] text-gray-500 flex flex-wrap gap-2 font-medium">
+                                            <p className="text-gray-800 font-bold">FutureSpace</p>
+                                            |
+                                            <p className="">Nairobi, Kenya</p>
+                                            |
+                                            <p className="">Ksh. 100,000</p>
+                                            |
+                                            <p className="">1 day ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="button-container flex gap-3">
+                                    <button className="btn btn-outline">
+                                        Save
+                                    </button>
+                                    <button className="btn btn-primary">
+                                        Apply
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className={`internship-card`}>
+                                <div className="start flex gap-4 justify-center">
+                                    <div
+                                        className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
+                                        <img className={'h-12 object-cover'}
+                                             src={'https://futurespace.vercel.app/resources/FsOutline.png'}
+                                             alt={'FutureSpace'}/>
+                                    </div>
+                                    <div className="info flex flex-col gap-1">
+                                        <h1 className="text-2xl font-bold">Software Engineering</h1>
+                                        <div className="text-[1rem] text-gray-500 flex flex-wrap gap-2 font-medium">
+                                            <p className="text-gray-800 font-bold">FutureSpace</p>
+                                            |
+                                            <p className="">Nairobi, Kenya</p>
+                                            |
+                                            <p className="">Ksh. 100,000</p>
+                                            |
+                                            <p className="">1 day ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="button-container flex gap-3">
+                                    <button className="btn btn-outline">
+                                        Save
+                                    </button>
+                                    <button className="btn btn-primary">
+                                        Apply
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div className="right hidden md:w-1/4">
                         </div>
 
                     </div>
