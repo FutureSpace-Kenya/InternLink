@@ -28,7 +28,7 @@ export async function GET () {
         const applications = await Applications.findAll();
 
         // Send a successful response with the applications data
-        return NextResponse.json({message: "Fetched all applications successfully",applications})
+        return NextResponse.json({message: "Fetched all applications successfully",data:applications})
     } catch (error) {
         // Handle any errors that may occur during the fetch process
         console.error(error);
