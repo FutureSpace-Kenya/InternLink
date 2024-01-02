@@ -4,13 +4,13 @@ import Applications from '../../../models/applications';
 export async function POST(request) {
     try {
         // Access the application data from the request body
-        const { userid, organizationid, jobid } = await request.json();
+        const { UserID,OrganizationID,JobID } = await request.json();
 
         // Create a new instance of the application model
         const application = await Applications.create({
-            userid,
-            organizationid,
-            jobid
+            UserID,
+            OrganizationID,
+            JobID
         });
 
         // Send a successful response with the created application data

@@ -1,53 +1,25 @@
 import { NextResponse } from 'next/server'
-import Organization from '../../../../../models/organization';
+import Applications from "../../../../../models/applications"
 
 export async function GET(request, { params }) {
     try {
-        const { organizationId: id } = params;
+        const { id } = params;
 
         // Find the organization with the specified ID
-        const organization = await Organization.findByPk(id);
+        const applications = await Applications.findAll({
+            where: {OrganizationID: id}
+        });
 
         // Check if the organization was found
-        if (!organization) {
-            return NextResponse.json({message: "Organization not found"})
+        if (!applications) {
+            return NextResponse.json({message: "Organization does not have any applications"})
         }
 
         // Send a successful response with the organization data
         return NextResponse.json({message: `Applications for organization ${id} successfully retrieved`})
     } catch (error) {
         console.error(error);
-        return NextResponse.json({message: "Error fetching organization", error})
-    }
-}
-
-export async function PATCH (request, {params}) {
-    try {
-        const { id } = params;
-
-        // Find the organization with the specified ID
-        const organization = await Organization.findByPk(id);
-
-        // Check if the organization was found
-        if (!organization) {
-            return NextResponse.json({message: "Organization not found"})
-        }
-
-        // Access the organization data from the request body
-        const { name, location, contact } = await request.json();
-
-        // Update the organization with the new data
-        await organization.update({
-            name,
-            location,
-            contact
-        });
-
-        // Send a successful response with the updated organization data
-        return NextResponse.json({message: "Organization updated successfully!", organization})
-    } catch (error) {
-        console.error(error);
-        return NextResponse.json({message: "Error updating organization", error})
+        return NextResponse.json({message: "Error fetching applications", error})
     }
 }
 
@@ -56,20 +28,14 @@ export async function DELETE(request, { params }) {
         const { id } = params;
 
         // Find the organization with the specified ID
-        const organization = await Organization.findByPk(id);
-
-        // Check if the organization was found
-        if (!organization) {
-            return NextResponse.json({message: "Organization not found"})
-        }
-
-        // Delete the organization
-        await organization.destroy();
+        await Applications.destroy({
+            where: {OrganizationID: id}
+        });
 
         // Send a successful response
-        return NextResponse.json({message: "Organization deleted successfully!"})
+        return NextResponse.json({message: "Applications deleted successfully!"},)
     } catch (error) {
         console.error(error);
-        return NextResponse.json({message: "Error deleting organization", error})
+        return NextResponse.json({message: "Error deleting applications", error})
     }
 }
