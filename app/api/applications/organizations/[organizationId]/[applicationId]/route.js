@@ -30,10 +30,10 @@ export async function PATCH (request, {params}) {
 
 
         // Access the organization data from the request body
-        const { Status, ResumeLink, CoverLetter } = await request.json();
+        const { Status} = await request.json();
 
         // Find the organization with the specified ID
-        await Applications.update({Status, ResumeLink, CoverLetter},{
+        await Applications.update(Status,{
             where: {OrganizationID: organizationId, ApplicationID:applicationId}
         });
 
