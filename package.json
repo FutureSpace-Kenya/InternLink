@@ -20,14 +20,14 @@
     "process": "^0.11.10",
     "react": "^18",
     "react-dom": "^18",
-    "sequelize": "^6.35.2",
-    "sequelize-cli": "^6.6.2"
+    "sequelize": "^6.35.2"
   },
   "devDependencies": {
     "@types/react": "18.2.45",
     "autoprefixer": "^10.0.1",
     "daisyui": "^4.4.19",
     "postcss": "^8",
+    "sequelize-cli": "^6.6.2",
     "tailwindcss": "^3.3.0",
     "typescript": "5.3.3"
   }
