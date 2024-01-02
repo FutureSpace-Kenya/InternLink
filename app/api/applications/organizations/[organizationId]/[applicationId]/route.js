@@ -29,7 +29,7 @@ export async function PATCH (request, {params}) {
         const { organizationId, applicationId } = params;
 
 
-        // Access the organization data from the request body
+        // Access the application status from the request body
         const { Status} = await request.json();
 
         // Find the organization with the specified ID

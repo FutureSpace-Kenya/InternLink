@@ -51,7 +51,7 @@ export async function DELETE(request, { params }) {
 
         // Find the organization with the specified ID
         await Applications.destroy({
-            where: {UserID: organizationId, ApplicationID:applicationId}
+            where: {UserID: userId, ApplicationID:applicationId}
         });
 
         // Send a successful response
