@@ -61,7 +61,7 @@ export function CompanyLogo() {
 export function SignUp() {
   return (
     <div style={{ maxHeight: "50px" }}>
-      <button className="btn btn-primary bg-green-500">Sign Up</button>
+      <button className="btn btn-primary ">Sign Up</button>
     </div>
   );
 }
