@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import data from "../utils/data";
 import "daisyui/dist/full.css";
@@ -7,6 +9,10 @@ export default function JobListing() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
       {data.map((job) => (
         <div key={job.randomId} className="card bg-base-100 shadow-xl">
+          <figure className="px-10 pt-10">
+            <img src={job.image} alt="Role image" className="rounded-xl" />{" "}
+            <p> Role Title</p>
+          </figure>
           <div className="card-body">
             <h2 className="card-title">{job.title}</h2>
             <p className="text-lg">{job.description}</p>
@@ -21,7 +27,7 @@ export default function JobListing() {
                 ))}
               </ul>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mt-4">
               <div className="form-control">
                 <label className="label cursor-pointer">
                   <span className="label-text mr-4">Interested?</span>
