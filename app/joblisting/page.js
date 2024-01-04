@@ -21,7 +21,13 @@ export default function JobListing() {
                 ))}
               </ul>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-between items-center">
+              <div className="form-control">
+                <label className="label cursor-pointer">
+                  <span className="label-text mr-4">Interested?</span>
+                  <input type="checkbox" className="toggle toggle-primary" />
+                </label>
+              </div>
               <p
                 className={`badge ${
                   job.status ? "badge-success" : "badge-error"
@@ -33,19 +39,6 @@ export default function JobListing() {
           </div>
         </div>
       ))}
-    </div>
-  );
-}
-export function InternLinkLogo() {
-  return (
-    <div className="flex" style={{ maxHeight: "50px" }}>
-      <div className="w-fit relative flex flex-col items-center cursor-pointer">
-        <h1 className="text-6xl font-bold">
-          <span className="text-green-400">Intern</span>
-          Link&trade;
-        </h1>
-        <div className="absolute top-[55px] right-0 mb-4 text-xs font-medium text-orange-800 flex flex-col items-end"></div>
-      </div>
     </div>
   );
 }
