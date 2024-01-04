@@ -32,7 +32,7 @@ export function Header() {
         style={{ minHeight: "67px" }}
       >
         <div className="absolute top-0 left-0 ml-2">
-          <CompanyLogo />
+          <InternLinkLogo />
         </div>
         <div className="flex absolute top-0 right-0 mt-2 mr-2">
           <SignUp />
@@ -44,7 +44,7 @@ export function Header() {
   );
 }
 
-export function CompanyLogo() {
+export function InternLinkLogo() {
   return (
     <div className="flex" style={{ maxHeight: "50px" }}>
       <div className="w-fit relative flex flex-col items-center cursor-pointer">
