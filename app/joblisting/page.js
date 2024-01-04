@@ -5,13 +5,12 @@ import "daisyui/dist/full.css";
 export default function JobListing() {
   return (
     <div className="grid grid-cols-1 gap-4 p-4">
-      {" "}
-      {/* Ensure only one column */}
       {data.map((job) => (
-        <div key={job.randomId} className="card bg-base-100 shadow-xl w-full">
-          {" "}
-          {/* Set width to full */}
-          <div className="internship-card m-1 p-1 w-full">
+        <div
+          key={job.randomId}
+          className="card bg-base-100 shadow-xl w-full transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          <div className="internship-card m-4 p-4">
             <div className="start flex gap-4 justify-center">
               <div className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
                 <img
@@ -49,12 +48,6 @@ export default function JobListing() {
               </ul>
             </div>
             <div className="flex justify-between items-center mt-4">
-              <div className="form-control">
-                <label className="label cursor-pointer">
-                  <span className="label-text mr-4">Interested?</span>
-                  <input type="checkbox" className="toggle toggle-primary" />
-                </label>
-              </div>
               <p
                 className={`badge ${
                   job.status ? "badge-success" : "badge-error"
