@@ -10,9 +10,15 @@ export default function JobListing() {
       {data.map((job) => (
         <div key={job.randomId} className="card bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
-            <img src={job.image} alt="Role image" className="rounded-xl" />{" "}
-            <p> Role Title</p>
+            <img
+              src={job.image}
+              alt="Role image"
+              className="rounded-xl border-solid border-3 border-[#B5B5B1]"
+            />
+            <p className="text-2xl"> Role Title</p>{" "}
+            {/* Assuming the base size is 1xl, 2xl will double the size */}
           </figure>
+
           <div className="card-body">
             <h2 className="card-title">{job.title}</h2>
             <p className="text-lg">{job.description}</p>
