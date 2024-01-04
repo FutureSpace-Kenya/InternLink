@@ -1,18 +1,40 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+
 export default function Layout({ children }) {
+  // Simulate user login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Here you would normally check the user's logged-in status
+    // For this example, we'll just toggle the status every 5 seconds
+    const interval = setInterval(() => {
+      setIsLoggedIn((prev) => !prev);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <body className="flex flex-col">
       <header className="sticky top-0 z-50 bg-white shadow">
-        <div className="py-2" style={{ minHeight: "67px" }}>
-          <div className="absolute top-0 left-0 ml-2">
-            <div className="flex" style={{ maxHeight: "50px" }}>
-              <div className="w-fit relative flex flex-col items-center cursor-pointer">
-                <h1 className="text-6xl font-bold">
-                  <span className="text-green-400">Intern</span>
-                  Link&trade;
-                </h1>
-                <div className="absolute top-[55px] right-0 mb-4 text-xs font-medium text-orange-800 flex flex-col items-end"></div>
-              </div>
-            </div>
+        <div className="flex justify-between items-center py-2 px-4">
+          <div className="flex items-center">
+            <h1 className="text-6xl font-bold">
+              <span className="text-green-400">Intern</span>Link&trade;
+            </h1>
+          </div>
+          <div>
+            {isLoggedIn ? (
+              <img
+                src="path_to_profile_pic.jpg"
+                alt="Profile"
+                className="w-10 h-10 rounded-full border-2 border-gray-400"
+              />
+            ) : (
+              <button className="btn btn-primary">Sign In</button>
+            )}
           </div>
         </div>
       </header>
