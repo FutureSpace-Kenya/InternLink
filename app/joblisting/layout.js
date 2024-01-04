@@ -27,8 +27,12 @@ export default function Layout({ children }) {
   }, []);
 
   return (
-    <body className={`flex flex-col ${isBlurred ? "bg-blur" : ""}`}>
-      <header className="sticky top-0 z-50 bg-white shadow">
+    <body className="flex flex-col">
+      <header
+        className={`sticky top-0 z-50 ${
+          isBlurred ? "bg-yellow-300" : "bg-white"
+        } shadow`}
+      >
         <div className="flex justify-between items-center py-2 px-4">
           <div className="flex items-center">
             <h1 className="text-6xl font-bold">
@@ -49,17 +53,6 @@ export default function Layout({ children }) {
         </div>
       </header>
       <div className="container mx-auto p-4 flex-grow">{children}</div>
-      <style jsx>{`
-        .bg-blur {
-          background-color: rgba(
-            255,
-            255,
-            255,
-            0.5
-          ); /* semi-transparent white */
-          backdrop-filter: blur(5px);
-        }
-      `}</style>
     </body>
   );
 }
