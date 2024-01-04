@@ -52,7 +52,7 @@ export default function Layout({ children }) {
           </div>
         </div>
       </header>
-      <div className="container mx-auto p-4 flex-grow">{children}</div>
+      <div className="container mx-auto px-0 py-4 flex-grow">{children}</div>
       <style jsx>{`
         .header-blur {
           backdrop-filter: blur(5px);
