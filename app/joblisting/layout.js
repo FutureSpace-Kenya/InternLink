@@ -3,21 +3,31 @@
 import React, { useState, useEffect } from "react";
 
 export default function Layout({ children }) {
-  // Simulate user login status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isBlurred, setIsBlurred] = useState(false);
 
   useEffect(() => {
-    // Here you would normally check the user's logged-in status
-    // For this example, we'll just toggle the status every 5 seconds
-    const interval = setInterval(() => {
+    // Toggle login status every 5 seconds
+    const loginInterval = setInterval(() => {
       setIsLoggedIn((prev) => !prev);
     }, 5000);
 
-    return () => clearInterval(interval);
+    // Event listener for scroll
+    const handleScroll = () => {
+      const position = window.scrollY;
+      setIsBlurred(position > 50); // Adjust the value based on when you want the blur to activate
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      clearInterval(loginInterval);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
-    <body className="flex flex-col">
+    <body className={`flex flex-col ${isBlurred ? "bg-blur" : ""}`}>
       <header className="sticky top-0 z-50 bg-white shadow">
         <div className="flex justify-between items-center py-2 px-4">
           <div className="flex items-center">
@@ -39,6 +49,17 @@ export default function Layout({ children }) {
         </div>
       </header>
       <div className="container mx-auto p-4 flex-grow">{children}</div>
+      <style jsx>{`
+        .bg-blur {
+          background-color: rgba(
+            255,
+            255,
+            255,
+            0.5
+          ); /* semi-transparent white */
+          backdrop-filter: blur(5px);
+        }
+      `}</style>
     </body>
   );
 }
