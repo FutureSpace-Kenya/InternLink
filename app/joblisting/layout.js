@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   useEffect(() => {
     // Toggle login status every 5 seconds
     const loginInterval = setInterval(() => {
-      setIsLoggedIn((prev) => !prev);
+      setIsLoggedIn((prev) => prev);
     }, 5000);
 
     // Event listener for scroll
