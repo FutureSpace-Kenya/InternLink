@@ -68,5 +68,27 @@
         "status": true,
         "departmentId": "Dept010",
         "randomId": "0J0j0J0JJ0jJ0J0jJ0Jj0J0J0J0J0J0j"
+    },
+    {
+        "description": "Experienced in web development and UI/UX design.",
+        "skills": ["Web Development", "UI/UX Design", "JavaScript"],
+        "status": true,
+        "departmentId": "WebDept01",
+        "randomId": "1A1a1A1a1A1a1A1a1A1a1A1a1A1a1A1a"
+    },
+    {
+        "description": "Expert in data analysis and machine learning.",
+        "skills": ["Data Analysis", "Machine Learning", "Python"],
+        "status": false,
+        "departmentId": "DataDept02",
+        "randomId": "2B2b2B2b2B2b2B2b2B2b2B2b2B2b2B2b"
+    },
+    {
+        "description": "Skilled in marketing strategy and digital advertising.",
+        "skills": ["Marketing Strategy", "Digital Advertising", "SEO"],
+        "status": true,
+        "departmentId": "MktDept03",
+        "randomId": "3C3c3C3c3C3c3C3c3C3c3C3c3C3c3C3c"
     }
+    
 ]
