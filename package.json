@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "push-code": "git add . && git commit -m 'Added Contributing.md' && git push --set-upstream origin Person-Info"
+    "push-code": "git add . && git commit -m 'Added Contributing.md' && git push --set-upstream origin Person-Info",
+    "raccoon": "git add . && git commit -m 'Push to raccoon' && git push --set-upstream origin Racoon"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -27,6 +28,8 @@
     "@types/react": "18.2.45",
     "autoprefixer": "^10.0.1",
     "daisyui": "^4.4.19",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.0.4",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "5.3.3"
