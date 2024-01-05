@@ -7,19 +7,18 @@ import "daisyui/dist/full.css";
 export default function JobListing() {
   const [visibleJobId, setVisibleJobId] = useState(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const jobsPerPage = 10;
+  const indexOfLastJob = currentPage * jobsPerPage;
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+
   const toggleJobDetails = (jobId) => {
     setVisibleJobId(visibleJobId === jobId ? null : jobId);
   };
 
   return (
     <div>
-      <div
-        style={{
-          width: window.innerWidth - 50,
-          height: window.innerHeight / 2,
-          backgroundColor: "#B5B5B1",
-        }}
-      ></div>
+      <div className="w-[calc(100vw-50px)] h-[calc(50vh)] bg-gray-400"></div>
       <ul className="flex">
         <div className="m-5 p-3 cursor-pointer">
           <p className="font-bold hover:border-b-2 hover:border-blue-500 hover:transition hover:duration-400">
