@@ -1,4 +1,29 @@
-const DepartmentsForm = () => {
+import React, { useState, useEffect } from "react";
+
+const DepartmentEditForm = ({ department }) => {
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [isModified, setIsModified] = useState(false);
+
+    useEffect(() => {
+        setName(department.name);
+        setDescription(department.description);
+    }, [department]);
+
+    useEffect(() => {
+        setIsModified(
+            name !== department.name || description !== department.description
+        );
+    }, [name, description, department]);
+
+    const handleNameChange = (event) => {
+        setName(event.target.value);
+    };
+
+    const handleDescriptionChange = (event) => {
+        setDescription(event.target.value);
+    };
+
     return (
         <>
             <dialog id="department-form" className="modal">
@@ -13,6 +38,8 @@ const DepartmentsForm = () => {
                                 type="text"
                                 placeholder="Department Name"
                                 className="input input-bordered w-full"
+                                value={name}
+                                onChange={handleNameChange}
                             />
                             {/* <input
                                 type="text"
@@ -22,13 +49,15 @@ const DepartmentsForm = () => {
                             <textarea
                                 className="textarea textarea-bordered h-24"
                                 placeholder="Department Description"
+                                value={description}
+                                onChange={handleDescriptionChange}
                             ></textarea>
                             <input
                                 type="submit"
                                 value={"Submit"}
-                                className=" input-bordered w-full cursor-pointer btn btn-primary"
+                                className=" input-bordered w-full cursor-pointer btn bg-green-300"
                                 // Implement disabling when data is changed
-                                // disabled
+                                disabled={!isModified}
                             />
                         </div>
                     </form>
@@ -38,4 +67,4 @@ const DepartmentsForm = () => {
     );
 };
 
-export default DepartmentsForm;
+export default DepartmentEditForm;
