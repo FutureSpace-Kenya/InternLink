@@ -3,8 +3,11 @@ import LoginButton from "./components/LoginButton";
 export default function Home() {
     return (
         <>
-        <main className="flex min-h-screen bg-gray-300 flex-col items-center justify-center p-24">
-                    <img className="absolute blur-[1px] top-0 opacity-60 filter backdrop-filter h-full md:w-full object-cover" src="/student.jpg" alt="Student"/>
+        <main className="flex min-h-screen flex-col items-center justify-center p-24">
+                    <img className="absolute blur-[1px] top-0 filter backdrop-filter h-full md:w-full object-cover" src="/student.jpg" alt="Student"/>
+            <div className="absolute custom-gradient top-0 left-0 w-full h-full">
+
+            </div>
             <div className="flex bg-student w-full relative flex-col items-center">
                 <div className="w-fit relative flex flex-col items-center">
                     <h1 className="text-6xl font-bold">
