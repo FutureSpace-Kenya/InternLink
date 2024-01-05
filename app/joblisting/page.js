@@ -11,6 +11,9 @@ export default function JobListing() {
   const jobsPerPage = 10;
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = data.slice(indexOfFirstJob, indexOfLastJob);
+  const noOfPages = Math.ceil(data.length / jobsPerPage);
+  const pageNumbers = [...Array(noOfPages + 1).keys()].slice(1);
 
   const toggleJobDetails = (jobId) => {
     setVisibleJobId(visibleJobId === jobId ? null : jobId);
@@ -127,6 +130,33 @@ export default function JobListing() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="join">
+        <input
+          className="join-item btn btn-square"
+          type="radio"
+          name="options"
+          aria-label="1"
+          checked
+        />
+        <input
+          className="join-item btn btn-square"
+          type="radio"
+          name="options"
+          aria-label="2"
+        />
+        <input
+          className="join-item btn btn-square"
+          type="radio"
+          name="options"
+          aria-label="3"
+        />
+        <input
+          className="join-item btn btn-square"
+          type="radio"
+          name="options"
+          aria-label="4"
+        />
       </div>
     </div>
   );
