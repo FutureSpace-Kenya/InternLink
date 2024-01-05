@@ -117,6 +117,13 @@ h5 {
   opacity: 0.75;
   box-sizing: content-box;
 }
+
+.mousey:hover{
+  animation-name: scroll;
+  background: rgba(138, 43, 226, 0.14);
+  cursor: pointer;
+}
+
 .scroller {
   width: 4px;
   height: 10px;
@@ -127,6 +134,14 @@ h5 {
   animation-timing-function: cubic-bezier(.15,.41,.69,.94);
   animation-iteration-count: infinite;
 }
+
+.scroller:hover{
+  animation-name: scroll;
+  background: rgba(138, 43, 226, 0.14);
+  cursor: pointer;
+  transform: scale(1.5);
+}
+
 @keyframes scroll {
   0% { opacity: 0; }
   10% { transform: translateY(0); opacity: 1; }
@@ -135,4 +150,8 @@ h5 {
 
 .text-rgba{
   color: rgba(66, 17, 33, 0.83) !important;
+}
+
+.custom-gradient {
+    background: linear-gradient(0deg, rgb(255, 255, 255) 0%,  rgb(255, 255, 255) 10% , rgb(255, 255, 255,0.4) 40%);
 }
