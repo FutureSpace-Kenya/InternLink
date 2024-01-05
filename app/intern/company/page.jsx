@@ -4,6 +4,7 @@ import Link from "next/link";
 import NavBar from "app/components/NavBar";
 import CompanyStats from "app/components/CompanyStats";
 import React, { useState } from "react";
+import DepartmentsForm from "app/components/DepartmentsForm";
 
 const Company = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -67,26 +68,26 @@ const Company = () => {
                                     </h1>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="flex items-center gap-2">
-                                            <i className="fa-solid fa-building"></i>
+                                            <i className="text-sm fa-solid fa-building"></i>
                                             <p className="text-sm">
                                                 {company.size}
                                             </p>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <i className="fa-solid fa-location-dot"></i>
+                                            <i className="text-sm fa-solid fa-location-dot"></i>
                                             <p className="text-sm">
                                                 {company.location}
                                             </p>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <i className="fa-solid fa-phone"></i>
-                                            <p className="text-xs">
+                                            <i className="text-sm fa-solid fa-phone"></i>
+                                            <p className="text-sm">
                                                 {company.contactInfo.phone}
                                             </p>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <i className="fa-solid fa-envelope"></i>
-                                            <p className="text-xs">
+                                            <i className="text-sm fa-solid fa-envelope"></i>
+                                            <p className="text-sm">
                                                 {company.contactInfo.email}
                                             </p>
                                         </div>
@@ -101,7 +102,16 @@ const Company = () => {
                             <div className="collapse collapse-open border border-base-300 bg-base-200">
                                 <div className="flex items-center justify-between w-full p-4 rounded-md bg-white collapse-title text-xl font-medium">
                                     Departments
-                                    <i class="text-lg fa-solid fa-plus"></i>
+                                    <i
+                                        class="text-lg fa-solid fa-plus cursor-pointer"
+                                        onClick={() =>
+                                            document
+                                                .getElementById(
+                                                    "department-form"
+                                                )
+                                                .showModal()
+                                        }
+                                    ></i>
                                 </div>
                                 <div className="collapse-content mt-4">
                                     {company.departments.map(
@@ -118,7 +128,16 @@ const Company = () => {
                                                         {department.description}
                                                     </p>
                                                 </div>
-                                                <button className="btn btn-success btn-sm">
+                                                <button
+                                                    className="btn btn-success btn-sm"
+                                                    onClick={() =>
+                                                        document
+                                                            .getElementById(
+                                                                "department-form"
+                                                            )
+                                                            .showModal()
+                                                    }
+                                                >
                                                     Edit
                                                 </button>
                                             </div>
@@ -131,6 +150,7 @@ const Company = () => {
                     <div className="w-full sm:w-2/3 bg-blue-500">
                         <h1>Company Engagement</h1>
                     </div>
+                    <DepartmentsForm />
                 </div>
             </div>
         </div>
