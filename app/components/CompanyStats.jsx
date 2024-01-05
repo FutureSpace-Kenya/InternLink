@@ -15,9 +15,11 @@ const CompanyStats = () => {
                     key={index}
                     className="stat text-sm p-2 flex flex-col items-center"
                 >
-                    <div className="stat-title">{stat.title}</div>
-                    <div className="stat-value">{stat.value}</div>
-                    {/* <div className="stat-desc text-secondary">{stat.desc}</div> */}
+                    <div className="stat-title text-base">{stat.title}</div>
+                    <div className="stat-value text-sm">{stat.value}</div>
+                    {/* <div className="stat-desc text-xs selection:text-secondary">
+                        {stat.desc}
+                    </div> */}
                 </div>
             ))}
         </div>

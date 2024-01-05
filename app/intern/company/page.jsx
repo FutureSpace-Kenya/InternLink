@@ -55,24 +55,28 @@ const Company = () => {
             status: "Pending",
             name: "John Doe",
             position: "Software Developer",
+            department: "Engineering",
         },
         {
             submissionDate: "2022-01-02",
             status: "Accepted",
             name: "Jane Doe",
             position: "Data Analyst",
+            department: "Data Science",
         },
         {
             submissionDate: "2022-01-03",
             status: "Rejected",
             name: "Jim Doe",
             position: "Product Manager",
+            department: "Product",
         },
         {
             submissionDate: "2022-01-03",
             status: "Accepted",
             name: "Ken Doe",
             position: "UI/UX Designer",
+            department: "Design",
         },
     ];
 
@@ -83,6 +87,7 @@ const Company = () => {
             requirements: "Knowledge in JavaScript, React, and Node.js",
             duration: "Full Time",
             deadline: "2022-12-31",
+            department: "Engineering",
         },
         {
             title: "Data Analyst",
@@ -91,6 +96,7 @@ const Company = () => {
                 "Knowledge in SQL, Python, and data visualization tools",
             duration: "Part Time",
             deadline: "2022-11-30",
+            department: "Data Science",
         },
         {
             title: "Product Manager",
@@ -99,20 +105,17 @@ const Company = () => {
                 "Experience in product management and business strategy",
             duration: "Contract",
             deadline: "2022-10-31",
+            department: "Product",
         },
         {
             title: "UI/UX Designer",
-            description: "Design responsive and user-friendly interfaces",
-            requirements: "Experience in UI/UX design and prototyping",
-            duration: "Contract",
-            deadline: "2022-10-31",
+            description: "Design user interfaces and user experiences",
+            requirements: "Knowledge in design tools like Sketch and Figma",
+            duration: "Full Time",
+            deadline: "2022-09-30",
+            department: "Design",
         },
     ];
-
-    const handleEditClick = (department) => {
-        setCurrentDepartment(department);
-        setIsOpen(true);
-    };
 
     const getStatusBadge = (status) => {
         let badgeClass = "badge badge-ghost badge-sm";
@@ -141,7 +144,7 @@ const Company = () => {
             <div className="p-x-4 w-screen">
                 <div className="flex flex-wrap w-full">
                     {/* Company details */}
-                    <div className="w-full sm:w-1/3">
+                    <div className="w-full sm:w-1/3 md:w-full lg:w-1/3">
                         <div className="w-full p-5 ">
                             <div className="p-5 rounded-md bg-white shadow">
                                 {/* Company Profile Picture and Name */}
@@ -157,7 +160,7 @@ const Company = () => {
                                 </div>
                                 {/* Company details */}
                                 <div className="flex flex-col gap-4">
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="lg:grid lg:grid-cols-2 grid grid-cols-2 gap-4 md:flex md:items-center md:w-full md:justify-center">
                                         <div className="flex items-center gap-2">
                                             <i className="text-sm fa-solid fa-location-dot"></i>
                                             <p className="text-sm">
@@ -246,10 +249,10 @@ const Company = () => {
                     </div>
 
                     {/* Company Engagement */}
-                    <div className="w-full sm:w-2/3">
+                    <div className="w-full sm:w-2/3 md:w-full lg:w-2/3">
                         <div className="w-full p-5">
-                            {/* Applications section */}
-                            <div className="w-full p-5 rounded-md bg-white shadow mb-10">
+                            {/* Applications desktop section */}
+                            <div className="hidden lg:block w-full p-5 rounded-md bg-white shadow mb-10">
                                 <div className="flex justify-between items-center p-4">
                                     <h1 className="text-2xl font-bold">
                                         Applications
@@ -257,7 +260,7 @@ const Company = () => {
                                     <Link
                                         className="btn btn-primary btn-sm"
                                         style={{ display: "none" }}
-                                        href="/intern/company/engagement"
+                                        href="/intern/company/"
                                     >
                                         View
                                     </Link>
@@ -281,6 +284,7 @@ const Company = () => {
                                                 <th>Name</th>
                                                 <th>Status</th>
                                                 <th>Position</th>
+                                                <th>Department</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -338,10 +342,20 @@ const Company = () => {
                                                                 application.position
                                                             }
                                                         </td>
+                                                        <td>
+                                                            {
+                                                                application.department
+                                                            }
+                                                        </td>
                                                         <th>
-                                                            <button className="btn btn-ghost btn-sm bg-green-500 text-white">
+                                                            {/* <button className="btn btn-ghost btn-sm bg-green-500 text-white">
                                                                 View
-                                                            </button>
+                                                            </button> */}
+                                                            <Link
+                                                                href={`/intern/company/applicant`}
+                                                            >
+                                                                <i class="cursor-pointer text-lg fa-solid fa-pen-to-square"></i>
+                                                            </Link>
                                                         </th>
                                                     </tr>
                                                 )
@@ -360,21 +374,21 @@ const Company = () => {
                                     </table>
                                 </div>
                             </div>
-                            {/* Joblistings section */}
-                            <div className="w-full p-5 rounded-md bg-white shadow">
+                            {/* Joblistings desktop section */}
+                            <div className="hidden lg:block w-full p-5 rounded-md bg-white shadow">
                                 <div className="flex justify-between items-center p-4">
                                     <h1 className="text-2xl font-bold">
                                         Job Listings
                                     </h1>
                                     <Link
                                         // className="btn btn-sm bg-green-500 text-white"
-                                        href="/intern/company/engagement"
+                                        href="/intern/company"
                                     >
                                         <i class="text-lg fa-solid fa-plus cursor-pointer"></i>
                                     </Link>
                                 </div>
 
-                                {/* Applications Table */}
+                                {/* Listings Table */}
                                 <div className="overflow-x-auto">
                                     <table className="table">
                                         {/* head */}
@@ -389,12 +403,17 @@ const Company = () => {
                                                         Index
                                                     </label> */}
                                                 </th>
-                                                <th>Title</th>
+                                                <th className="whitespace-nowrap">
+                                                    Title
+                                                </th>
+                                                <th className="w-38">
+                                                    Department
+                                                </th>
                                                 <th>Requirements</th>
-                                                <th className="w-40">
+                                                <th className="w-38">
                                                     Duration
                                                 </th>
-                                                <th className="w-44">
+                                                <th className="w-40">
                                                     Deadline
                                                 </th>
                                                 {/* <th>Action</th> */}
@@ -415,21 +434,7 @@ const Company = () => {
                                                             </label>
                                                         </th>
                                                         <td>
-                                                            <div className="flex items-center gap-3">
-                                                                <div
-                                                                    className="avatar"
-                                                                    style={{
-                                                                        display:
-                                                                            "none",
-                                                                    }}
-                                                                >
-                                                                    <div className="mask mask-squircle w-12 h-12">
-                                                                        <img
-                                                                            src="/tailwind-css-component-profile-2@56w.png"
-                                                                            alt="Avatar Tailwind CSS Component"
-                                                                        />
-                                                                    </div>
-                                                                </div>
+                                                            <div className="flex items-center gap-y-4">
                                                                 <div>
                                                                     <div className="font-bold">
                                                                         {
@@ -441,8 +446,20 @@ const Company = () => {
                                                                             listing.description
                                                                         }
                                                                     </div>
+                                                                    {/* <span className="badge badge-ghost badge-sm bg-green-100">
+                                                                        {
+                                                                            listing.department
+                                                                        }
+                                                                    </span> */}
                                                                 </div>
                                                             </div>
+                                                        </td>
+                                                        <td>
+                                                            <span>
+                                                                {
+                                                                    listing.department
+                                                                }
+                                                            </span>
                                                         </td>
                                                         <td>
                                                             <span className="text-sm">
@@ -459,11 +476,14 @@ const Company = () => {
                                                             </span>
                                                         </td>
                                                         <td>
-                                                            <span className="text-sm">
-                                                                {
-                                                                    listing.deadline
-                                                                }
-                                                            </span>
+                                                            <div className="flex justify-between items-center">
+                                                                <span className="text-xs">
+                                                                    {
+                                                                        listing.deadline
+                                                                    }
+                                                                </span>
+                                                                <i class="cursor-pointer text-sm text-red-500 fa-solid fa-trash"></i>
+                                                            </div>
                                                         </td>
                                                         {/* <th>
                                                             <button className="btn btn-ghost btn-sm bg-green-300">
@@ -485,6 +505,109 @@ const Company = () => {
                                             </tr>
                                         </tfoot> */}
                                     </table>
+                                </div>
+                            </div>
+
+                            {/* Applications mobile section */}
+                            <div className="lg:hidden rounded-md bg-white shadow p-5">
+                                <h1 className="text-2xl font-bold mb-5">
+                                    Applications
+                                </h1>
+                                <div className="flex flex-wrap gap-2">
+                                    {applications.map((application, index) => (
+                                        <div className="card w-full md:max-w-xs md:mr-5 bg-slate-50 shadow-md mb-1">
+                                            <div className="card-body">
+                                                <div className="card-title flex items-start justify-between">
+                                                    <div>
+                                                        <p className="font-bold">
+                                                            {application.name}
+                                                        </p>
+                                                        <span className="text-xs">
+                                                            {
+                                                                application.submissionDate
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                    <Link
+                                                        href={`/intern/company/applicant`}
+                                                    >
+                                                        <i class="cursor-pointer text-lg fa-solid fa-pen-to-square"></i>
+                                                    </Link>
+                                                </div>
+                                                <span className="mt-1">
+                                                    {getStatusBadge(
+                                                        application.status
+                                                    )}
+                                                </span>
+                                                <div className="flex gap-2 justify-between mt-3">
+                                                    <div className="flex gap-3">
+                                                        <i class="fa-solid fa-user"></i>
+                                                        <span className="text-sm">
+                                                            {
+                                                                application.position
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                    <div className="flex gap-3">
+                                                        <i class="fa-solid fa-building-user"></i>
+                                                        <span className="text-sm">
+                                                            {
+                                                                application.department
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Joblistings mobile section */}
+                            <div className="lg:hidden rounded-md bg-white shadow p-5 mt-10">
+                                <div className="flex justify-between items-center p-4">
+                                    <h1 className="text-2xl font-bold">
+                                        Job Listings
+                                    </h1>
+                                    <Link
+                                        // className="btn btn-sm bg-green-500 text-white"
+                                        href="/intern/company"
+                                    >
+                                        <i class="text-lg fa-solid fa-plus cursor-pointer"></i>
+                                    </Link>
+                                </div>
+                                <div className="flex flex-wrap gap-2">
+                                    {jobListings.map((listing, index) => (
+                                        <div className="card w-full md:max-w-xs md:mr-5 bg-slate-50 shadow-md mb-1">
+                                            <div className="card-body">
+                                                <div className="card-title flex items-start justify-between">
+                                                    <div>
+                                                        <p className="font-bold">
+                                                            {listing.title}
+                                                        </p>
+                                                        <span className="text-xs">
+                                                            {listing.duration}
+                                                        </span>
+                                                    </div>
+                                                    <i class="cursor-pointer text-sm text-red-500 fa-solid fa-trash mt-2"></i>
+                                                </div>
+                                                <div className="flex gap-3 my-2">
+                                                    <i class="text-green-500 fa-solid fa-building-user"></i>
+                                                    <span className="text-green-500 text-sm">
+                                                        {listing.department}
+                                                    </span>
+                                                </div>
+                                                <p className="text-sm hidden md:block">
+                                                    {listing.description}
+                                                </p>
+                                                <div>
+                                                    <p className="text-base">
+                                                        {listing.requirements}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
