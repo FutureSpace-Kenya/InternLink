@@ -6,13 +6,13 @@ const DepartmentEditForm = ({ department }) => {
     const [isModified, setIsModified] = useState(false);
 
     useEffect(() => {
-        setName(department.name);
-        setDescription(department.description);
+        setName(department?.name);
+        setDescription(department?.description);
     }, [department]);
 
     useEffect(() => {
         setIsModified(
-            name !== department.name || description !== department.description
+            name !== department?.name || description !== department?.description
         );
     }, [name, description, department]);
 
