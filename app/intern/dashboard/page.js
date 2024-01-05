@@ -87,7 +87,7 @@ const Dashboard = () => {
                                 </div>
                                 <div className="info">
                                     <h1 className="text-2xl font-bold">FutureSpace</h1>
-                                    <p className="text-sm text-gray-500">3000+ employees</p>
+                                    <p className="text-sm text-gray-500">6+ partners</p>
                                 </div>
                             </div>
 

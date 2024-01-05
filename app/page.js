@@ -2,8 +2,10 @@ import React from 'react'
 import LoginButton from "./components/LoginButton";
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center p-24">
-            <div className="flex relative flex-col items-center">
+        <>
+        <main className="flex min-h-screen bg-gray-300 flex-col items-center justify-center p-24">
+                    <img className="absolute blur-[1px] top-0 opacity-60 filter backdrop-filter h-full md:w-full object-cover" src="/student.jpg" alt="Student"/>
+            <div className="flex bg-student w-full relative flex-col items-center">
                 <div className="w-fit relative flex flex-col items-center">
                     <h1 className="text-6xl font-bold">
                      <span className="text-green-400">
@@ -11,8 +13,8 @@ export default function Home() {
                             </span>
                         Link&trade;
                     </h1>
-                    <div className="absolute top-[55px] right-0 mb-4 text-xs font-medium text-orange-800">
-                        By <a className={'text-blue-500'} href="https://futurespace.vercel.app">FutureSpace</a>
+                    <div className="absolute top-[55px] right-0 mb-4 text-sm font-medium text-orange-800">
+                        By <a className={'text-blue-900'} href="https://futurespace.vercel.app">FutureSpace</a>
                     </div>
                 </div>
                 <p className="text-2xl text-center">
@@ -34,6 +36,36 @@ export default function Home() {
                     </a>
                 </div>
             </div>
+            <div className="absolute bottom-5 flex flex-col items-center justify-center scroll">
+                <div className="scroll-downs">
+                    <div className="mousey">
+                        <div className="scroller"></div>
+                    </div>
+                </div>
+                <div className="mt-24 text-rgba font-semibold">
+                    Scroll Down
+                </div>
+            </div>
         </main>
+            <div className="flex flex-col sm:flex-row h-96 items-center justify-center w-full">
+                <div className="right w-full p-4 sm:w-1/2">
+                    <h1 className={'my-2'}>Discover <span className={'text-green-500'}>Intern</span>Link<span className={''}>&trade;</span>
+                    </h1>
+                    <p>
+                    InternLink streamlines the journey for students to secure internships and attachments. Our
+                        platform simplifies the application process, enabling students to effortlessly explore and apply
+                        for opportunities. Simultaneously, it empowers employers to effortlessly discover and recruit
+                        top talent for their internship programs and attachment roles. With InternLink, connecting the
+                        potential of tomorrow with the innovations of today just got easier.
+                    </p>
+                </div>
+
+
+                <div className="left w-full sm:w-1/2">
+
+                </div>
+
+            </div>
+        </>
     )
 }
