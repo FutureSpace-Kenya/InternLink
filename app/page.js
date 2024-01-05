@@ -2,6 +2,7 @@ import React from 'react'
 import LoginButton from "./components/LoginButton";
 export default function Home() {
     return (
+        <>
         <main className="flex min-h-screen flex-col items-center justify-center p-24">
                     <img className="absolute top-0 opacity-60 h-full md:w-full object-cover" src="/student.jpg" alt="Student"/>
             <div className="flex bg-student w-full relative flex-col items-center">
@@ -36,5 +37,8 @@ export default function Home() {
                 </div>
             </div>
         </main>
+            <div className="flex bg-primary h-96 flex-col items-center justify-center w-full">
+            </div>
+        </>
     )
 }

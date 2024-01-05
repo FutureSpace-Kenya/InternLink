@@ -75,7 +75,6 @@ h5 {
 
 ::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
