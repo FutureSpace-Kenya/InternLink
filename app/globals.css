@@ -1,99 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Global styles */
 * {
-  font-family: 'Figtree', sans-serif;
+    font-family: "Figtree", sans-serif;
 }
 
 /* H tag styles */
 h1 {
-  @apply text-4xl font-bold text-gray-900;
+    @apply text-4xl font-bold text-gray-900;
 }
 
 h2 {
-  @apply text-3xl font-bold text-gray-900;
+    @apply text-3xl font-bold text-gray-900;
 }
 
 h3 {
-  @apply text-2xl font-bold text-gray-900;
+    @apply text-2xl font-bold text-gray-900;
 }
 
 h4 {
-  @apply text-xl font-bold text-gray-900;
+    @apply text-xl font-bold text-gray-900;
 }
 
 h5 {
-  @apply text-lg font-bold text-gray-900;
+    @apply text-lg font-bold text-gray-900;
 }
 
 .notification {
-  @apply z-50 right-3 px-4 py-2 flex rounded-md shadow-sm;
-  opacity: 0;
-  transform: translateX(100px);
-  animation: slideIn 0.5s forwards;
+    @apply z-50 right-3 px-4 py-2 flex rounded-md shadow-sm;
+    opacity: 0;
+    transform: translateX(100px);
+    animation: slideIn 0.5s forwards;
 }
 
 .notification.hide {
-  animation: slideOut 0.5s forwards;
-  transform: translateX(0px);
-  opacity: 1;
+    animation: slideOut 0.5s forwards;
+    transform: translateX(0px);
+    opacity: 1;
 }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes slideOut {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(100px);
-  }
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+    background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 6px;
+    background: #888;
+    border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+    background: #555;
 }
 
-.badge-custom{
-  @apply flex justify-center gap-2 items-center text-gray-500 text-sm px-2.5 py-0.5 rounded-full font-medium bg-red-100;
+.badge-custom {
+    @apply flex justify-center gap-2 items-center text-gray-500 text-sm px-2.5 py-0.5 rounded-full font-medium bg-red-100;
 }
 
-.custom-card{
-  @apply border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full transition duration-200 ease-in-out transform hover:scale-105;
+.custom-card {
+    @apply border flex flex-col justify-between rounded-md p-1 border-gray-300 w-full transition duration-200 ease-in-out transform hover:scale-105;
 }
 
-.custom-card:hover{
-  @apply border-gray-500 shadow-md scale-105 bg-gray-100;
+.custom-card:hover {
+    @apply border-gray-500 shadow-md scale-105 bg-gray-100;
 }
 
-.internship-card{
-  @apply border-b border-gray-800 py-4 flex justify-between items-center flex-wrap gap-4;
+.internship-card {
+    @apply border-b border-gray-800 py-4 flex justify-between items-center flex-wrap gap-4;
 }
