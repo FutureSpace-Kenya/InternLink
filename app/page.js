@@ -52,8 +52,9 @@ export default function Home() {
                     </div>
                 </div>
             </main>
-            <div className="flex flex-col sm:flex-row items-center justify-center w-full">
-                <div className="right w-full p-4 sm:w-1/2">
+
+            <div className="flex flex-col sm:flex-row items-center justify-center overflow-clip w-full">
+                <div className="right w-full p-4 sm:p-6 md:p-8 sm:w-1/2">
                     <h1 className={'my-2'}>Discover <span className={'text-green-500'}>Intern</span>Link<span
                         className={''}>&trade;</span>
                     </h1>
@@ -67,9 +68,9 @@ export default function Home() {
                 </div>
 
 
-                <div className="left text-green-800 flex items-center justify-center pt-4 gap-6 w-full p-4 sm:w-1/2">
+                <div className="left text-green-800 flex items-center justify-center pt-4 gap-2 sm:gap-6 w-full p-4 sm:w-1/2">
 
-                    <div className="right flex sm:mt-10 flex-col gap-6">
+                    <div className="right flex sm:mt-10 flex-col gap-2 sm:gap-6">
                         <div className="custom-c-mod relative">
                             <div
                                 className="cicle grid place-items-center  from-green-700 to-transparent rounded-full w-20 h-20">
@@ -121,7 +122,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="right sm:-mt-14 flex flex-col gap-6">
+                    <div className="right sm:-mt-14 flex flex-col gap-2 sm:gap-6">
                         <div className="custom-c relative">
                             <div
                                 className="cicle grid place-items-center  from-green-700 to-transparent rounded-full w-20 h-20">
