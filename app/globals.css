@@ -98,18 +98,13 @@ h5 {
 }
 
 .scroll-downs {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-
-  width :34px;
-  height: 55px;
+  position: relative;
+  @apply scale-50 sm:scale-75;
 }
+
+
 .mousey {
-  width: 3px;
+  width: 0;
   padding: 10px 15px;
   height: 35px;
   border: 3px solid rgba(66, 17, 33, 0.6);
@@ -127,6 +122,7 @@ h5 {
 .scroller {
   width: 4px;
   height: 10px;
+  transform: translate(-2px, 0px);
   border-radius: 25%;
   background-color: rgba(66, 17, 33, 0.83);
   animation-name: scroll;
@@ -143,9 +139,9 @@ h5 {
 }
 
 @keyframes scroll {
-  0% { opacity: 0; }
-  10% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(25px); opacity: 0.3;}
+  0% { opacity: 0;  transform: translate(-2px,0); }
+  10% { transform: translate(-2px,0); opacity: 1; }
+  100% { opacity: 0.3; transform: translate(-2px, 35px); }
 }
 
 .text-rgba{

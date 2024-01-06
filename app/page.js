@@ -41,13 +41,13 @@ export default function Home() {
                         </a>
                     </div>
                 </div>
-                <div className="absolute bottom-5 flex flex-col items-center justify-center scroll">
+                <div className="absolute bottom-0 flex flex-col items-center justify-center scroll">
                     <div className="scroll-downs">
                         <div className="mousey">
                             <div className="scroller"></div>
                         </div>
                     </div>
-                    <div className="mt-24 text-rgba font-semibold">
+                    <div className=" -mt-2 sm:mt-0 text-rgba text-xs font-semibold">
                         Scroll Down
                     </div>
                 </div>
