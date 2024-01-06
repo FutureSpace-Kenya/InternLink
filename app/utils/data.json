@@ -1,0 +1,94 @@
+[
+    {
+        "description": "Experienced in project management and team coordination.",
+        "skills": ["Project Management", "Team Coordination", "Leadership"],
+        "status": true,
+        "departmentId": "Dept001",
+        "randomId": "1A1a1A1AA1aA1A1aA1Aa1A1A1A1A1A1a"
+    },
+    {
+        "description": "Skilled in software development and agile methodologies.",
+        "skills": ["Software Development", "Agile Methodologies", "Problem Solving"],
+        "status": true,
+        "departmentId": "Dept002",
+        "randomId": "2B2b2B2BB2bB2B2bB2Bb2B2B2B2B2B2b"
+    },
+    {
+        "description": "Expert in digital marketing, SEO, and content creation.",
+        "skills": ["Digital Marketing", "SEO", "Content Creation"],
+        "status": true,
+        "departmentId": "Dept003",
+        "randomId": "3C3c3C3CC3cC3C3cC3Cc3C3C3C3C3C3c"
+    },
+    {
+        "description": "Proficient in financial analysis and budget planning.",
+        "skills": ["Financial Analysis", "Budget Planning", "Accounting"],
+        "status": true,
+        "departmentId": "Dept004",
+        "randomId": "4D4d4D4DD4dD4D4dD4Dd4D4D4D4D4D4d"
+    },
+    {
+        "description": "Specialist in human resources and employee relations.",
+        "skills": ["Human Resources", "Employee Relations", "Recruitment"],
+        "status": true,
+        "departmentId": "Dept005",
+        "randomId": "5E5e5E5EE5eE5E5eE5Ee5E5E5E5E5E5e"
+    },
+    {
+        "description": "Adept in IT infrastructure and network security.",
+        "skills": ["IT Infrastructure", "Network Security", "System Administration"],
+        "status": true,
+        "departmentId": "Dept006",
+        "randomId": "6F6f6F6FF6fF6F6fF6Ff6F6F6F6F6F6f"
+    },
+    {
+        "description": "Knowledgeable in legal compliance and contract management.",
+        "skills": ["Legal Compliance", "Contract Management", "Regulatory Affairs"],
+        "status": true,
+        "departmentId": "Dept007",
+        "randomId": "7G7g7G7GG7gG7G7gG7Gg7G7G7G7G7G7g"
+    },
+    {
+        "description": "Expertise in sales strategies and customer relationship management.",
+        "skills": ["Sales Strategies", "Customer Relationship Management", "Negotiation"],
+        "status": true,
+        "departmentId": "Dept008",
+        "randomId": "8H8h8H8HH8hH8H8hH8Hh8H8H8H8H8H8h"
+    },
+    {
+        "description": "Proficient in supply chain management and logistics coordination.",
+        "skills": ["Supply Chain Management", "Logistics Coordination", "Inventory Management"],
+        "status": true,
+        "departmentId": "Dept009",
+        "randomId": "9I9i9I9II9iI9I9iI9Ii9I9I9I9I9I9i"
+    },
+    {
+        "description": "Experienced in educational program development and curriculum design.",
+        "skills": ["Educational Program Development", "Curriculum Design", "Teaching"],
+        "status": true,
+        "departmentId": "Dept010",
+        "randomId": "0J0j0J0JJ0jJ0J0jJ0Jj0J0J0J0J0J0j"
+    },
+    {
+        "description": "Experienced in web development and UI/UX design.",
+        "skills": ["Web Development", "UI/UX Design", "JavaScript"],
+        "status": true,
+        "departmentId": "WebDept01",
+        "randomId": "1A1a1A1a1A1a1A1a1A1a1A1a1A1a1A1a"
+    },
+    {
+        "description": "Expert in data analysis and machine learning.",
+        "skills": ["Data Analysis", "Machine Learning", "Python"],
+        "status": false,
+        "departmentId": "DataDept02",
+        "randomId": "2B2b2B2b2B2b2B2b2B2b2B2b2B2b2B2b"
+    },
+    {
+        "description": "Skilled in marketing strategy and digital advertising.",
+        "skills": ["Marketing Strategy", "Digital Advertising", "SEO"],
+        "status": true,
+        "departmentId": "MktDept03",
+        "randomId": "3C3c3C3c3C3c3C3c3C3c3C3c3C3c3C3c"
+    }
+    
+]
