@@ -157,9 +157,9 @@ h5 {
 }
 
 .custom-c{
-  @apply bordered border-green-600 border-opacity-50 border-2 hover:border hover:border-opacity-100 bg-transparent shadow from-green-950 to-orange-900 p-4 w-48 h-[190px] rounded-[18px] grid place-items-center transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md;
+  @apply bordered border-green-600 border-opacity-50 border-2 hover:border hover:border-opacity-100 bg-transparent shadow from-green-950 to-orange-900 p-4 w-44 sm:w-48 h-[190px] rounded-[18px] grid place-items-center transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md;
 }
 
 .custom-c-mod{
-  @apply bordered border-green-600 border-opacity-50 border-2 hover:border hover:border-opacity-100 bg-transparent shadow p-4 w-48 h-[190px] rounded-[18px] grid place-items-center transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md;
+  @apply bordered border-green-600 border-opacity-50 border-2 hover:border hover:border-opacity-100 bg-transparent shadow p-4 w-44 sm:w-48 h-[190px] rounded-[18px] grid place-items-center transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md;
 }
