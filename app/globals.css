@@ -157,5 +157,5 @@ h5 {
 }
 
 .custom-c{
-  @apply bordered border-accent bg-gradient-to-t text-white from-green-950 to-orange-900 p-4 w-36 h-36 rounded-lg grid place-items-center;
+  @apply bordered border-accent bg-gradient-to-t text-white from-green-950 to-orange-900 p-4 w-48 h-48 rounded-lg grid place-items-center;
 }
