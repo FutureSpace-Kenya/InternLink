@@ -8,9 +8,14 @@ import DepartmentEditForm from "app/components/DepartmentEditForm";
 import DepartmentAddForm from "app/components/DepartmentAddForm";
 
 const Company = () => {
-    const [isOpen, setIsOpen] = useState(false);
     const [currentDepartment, setCurrentDepartment] = useState(null);
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
+
+    // Variable to determine is certain details should be shown
+    let valid_to_display = false;
+
+    // Logic to update valid variable
+    if (status === "unauthenticated") valid_to_display = true;
 
     if (!session)
         return (
@@ -138,15 +143,15 @@ const Company = () => {
     };
 
     return (
-        <div className="overflow-hidden bg-green-100">
+        <div className="overflow-hidden bg-green-100 min-h-screen">
             <NavBar />
-            <div className="p-x-4 w-screen container mx-auto">
+            <div className="p-x-4 w-screen container mx-auto my-auto">
                 <div className="flex flex-wrap w-full">
                     {/* Company details */}
                     <div className="w-full sm:w-1/3 md:w-full lg:w-1/3">
+                        {/* Company Profile Picture and Name */}
                         <div className="w-full p-5 ">
                             <div className="p-5 rounded-md bg-white shadow">
-                                {/* Company Profile Picture and Name */}
                                 <div className="flex flex-col items-center gap-4 mb-4">
                                     <div className="avatar">
                                         <div className="w-24 rounded-full ring ring-green-500 ring-offset-base-100 ring-offset-2">
@@ -187,9 +192,11 @@ const Company = () => {
                                     </div>
                                     <p>{company.description}</p>
                                     <CompanyStats />
-                                    <button className="btn w-full bg-green-500 text-white">
-                                        Update Profle
-                                    </button>
+                                    {valid_to_display && (
+                                        <button className="btn w-full bg-green-500 text-white">
+                                            Update Profle
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -198,16 +205,18 @@ const Company = () => {
                             <div className="collapse collapse-open border border-base-300 bg-base-200">
                                 <div className="flex items-center justify-between w-full p-4 rounded-md bg-white collapse-title text-2xl font-bold">
                                     Departments
-                                    <i
-                                        class="text-lg fa-solid fa-plus cursor-pointer"
-                                        onClick={() =>
-                                            document
-                                                .getElementById(
-                                                    "department-add-form"
-                                                )
-                                                .showModal()
-                                        }
-                                    ></i>
+                                    {valid_to_display && (
+                                        <i
+                                            class="text-lg fa-solid fa-plus cursor-pointer"
+                                            onClick={() =>
+                                                document
+                                                    .getElementById(
+                                                        "department-add-form"
+                                                    )
+                                                    .showModal()
+                                            }
+                                        ></i>
+                                    )}
                                 </div>
                                 <div className="collapse-content mt-4">
                                     {company.departments.map(
@@ -224,21 +233,23 @@ const Company = () => {
                                                         {department.description}
                                                     </p>
                                                 </div>
-                                                <button
-                                                    className="btn bg-green-500 text-white btn-sm"
-                                                    onClick={() => {
-                                                        setCurrentDepartment(
-                                                            department
-                                                        );
-                                                        document
-                                                            .getElementById(
-                                                                "department-form"
-                                                            )
-                                                            .showModal();
-                                                    }}
-                                                >
-                                                    Edit
-                                                </button>
+                                                {valid_to_display && (
+                                                    <button
+                                                        className="btn bg-green-500 text-white btn-sm"
+                                                        onClick={() => {
+                                                            setCurrentDepartment(
+                                                                department
+                                                            );
+                                                            document
+                                                                .getElementById(
+                                                                    "department-form"
+                                                                )
+                                                                .showModal();
+                                                        }}
+                                                    >
+                                                        Edit
+                                                    </button>
+                                                )}
                                             </div>
                                         )
                                     )}
@@ -281,10 +292,14 @@ const Company = () => {
                                                     </label> */}
                                                 </th>
                                                 <th>Name</th>
-                                                <th>Status</th>
+                                                {valid_to_display && (
+                                                    <th>Status</th>
+                                                )}
                                                 <th>Position</th>
                                                 <th>Department</th>
-                                                <th>Action</th>
+                                                {valid_to_display && (
+                                                    <th>Actions</th>
+                                                )}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -331,11 +346,13 @@ const Company = () => {
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td>
-                                                            {getStatusBadge(
-                                                                application.status
-                                                            )}
-                                                        </td>
+                                                        {valid_to_display && (
+                                                            <td>
+                                                                {getStatusBadge(
+                                                                    application.status
+                                                                )}
+                                                            </td>
+                                                        )}
                                                         <td>
                                                             {
                                                                 application.position
@@ -346,16 +363,15 @@ const Company = () => {
                                                                 application.department
                                                             }
                                                         </td>
-                                                        <th>
-                                                            {/* <button className="btn btn-ghost btn-sm bg-green-500 text-white">
-                                                                View
-                                                            </button> */}
-                                                            <Link
-                                                                href={`/intern/company/applicant`}
-                                                            >
-                                                                <i class="cursor-pointer text-lg fa-solid fa-pen-to-square"></i>
-                                                            </Link>
-                                                        </th>
+                                                        {valid_to_display && (
+                                                            <th>
+                                                                <Link
+                                                                    href={`/intern/company/applicant`}
+                                                                >
+                                                                    <i class="cursor-pointer text-lg fa-solid fa-pen-to-square"></i>
+                                                                </Link>
+                                                            </th>
+                                                        )}
                                                     </tr>
                                                 )
                                             )}
@@ -379,12 +395,14 @@ const Company = () => {
                                     <h1 className="text-2xl font-bold">
                                         Job Listings
                                     </h1>
-                                    <Link
-                                        // className="btn btn-sm bg-green-500 text-white"
-                                        href="/intern/company"
-                                    >
-                                        <i class="text-lg fa-solid fa-plus cursor-pointer"></i>
-                                    </Link>
+                                    {valid_to_display && (
+                                        <Link
+                                            // className="btn btn-sm bg-green-500 text-white"
+                                            href="/intern/company"
+                                        >
+                                            <i class="text-lg fa-solid fa-plus cursor-pointer"></i>
+                                        </Link>
+                                    )}
                                 </div>
 
                                 {/* Listings Table */}
@@ -481,7 +499,9 @@ const Company = () => {
                                                                         listing.deadline
                                                                     }
                                                                 </span>
-                                                                <i class="cursor-pointer text-sm text-red-500 fa-solid fa-trash"></i>
+                                                                {valid_to_display && (
+                                                                    <i class="cursor-pointer text-sm text-red-500 fa-solid fa-trash"></i>
+                                                                )}
                                                             </div>
                                                         </td>
                                                         {/* <th>
@@ -527,35 +547,62 @@ const Company = () => {
                                                             }
                                                         </span>
                                                     </div>
-                                                    <Link
-                                                        href={`/intern/company/applicant`}
-                                                    >
-                                                        <i class="cursor-pointer text-lg fa-solid fa-pen-to-square"></i>
-                                                    </Link>
-                                                </div>
-                                                <span className="mt-1">
-                                                    {getStatusBadge(
-                                                        application.status
+                                                    {valid_to_display && (
+                                                        <Link
+                                                            href={`/intern/company/applicant`}
+                                                        >
+                                                            <i class="cursor-pointer text-lg fa-solid fa-pen-to-square"></i>
+                                                        </Link>
                                                     )}
-                                                </span>
-                                                <div className="flex gap-2 justify-between mt-3">
-                                                    <div className="flex gap-3">
-                                                        <i class="fa-solid fa-user"></i>
-                                                        <span className="text-sm">
-                                                            {
-                                                                application.position
-                                                            }
-                                                        </span>
-                                                    </div>
-                                                    <div className="flex gap-3">
-                                                        <i class="fa-solid fa-building-user"></i>
-                                                        <span className="text-sm">
-                                                            {
-                                                                application.department
-                                                            }
-                                                        </span>
-                                                    </div>
                                                 </div>
+                                                {valid_to_display && (
+                                                    <span className="mt-1">
+                                                        {getStatusBadge(
+                                                            application.status
+                                                        )}
+                                                    </span>
+                                                )}
+                                                {valid_to_display ? (
+                                                    // Shown when the user is unauthenticated
+                                                    <div className="flex gap-2 justify-between mt-3">
+                                                        <div className="flex gap-3">
+                                                            <i class="fa-solid fa-user"></i>
+                                                            <span className="text-sm">
+                                                                {
+                                                                    application.position
+                                                                }
+                                                            </span>
+                                                        </div>
+                                                        <div className="flex gap-3">
+                                                            <i class="fa-solid fa-building-user"></i>
+                                                            <span className="text-sm">
+                                                                {
+                                                                    application.department
+                                                                }
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    // Shown when the user is authenticated
+                                                    <div className="gap-2 mt-3">
+                                                        <div className="flex gap-3">
+                                                            <i class="fa-solid fa-user"></i>
+                                                            <span className="text-sm">
+                                                                {
+                                                                    application.position
+                                                                }
+                                                            </span>
+                                                        </div>
+                                                        <div className="flex gap-3 mt-4">
+                                                            <i class="fa-solid fa-building-user"></i>
+                                                            <span className="text-sm">
+                                                                {
+                                                                    application.department
+                                                                }
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     ))}
@@ -568,12 +615,14 @@ const Company = () => {
                                     <h1 className="text-2xl font-bold">
                                         Job Listings
                                     </h1>
-                                    <Link
-                                        // className="btn btn-sm bg-green-500 text-white"
-                                        href="/intern/company"
-                                    >
-                                        <i class="text-lg fa-solid fa-plus cursor-pointer"></i>
-                                    </Link>
+                                    {valid_to_display && (
+                                        <Link
+                                            // className="btn btn-sm bg-green-500 text-white"
+                                            href="/intern/company"
+                                        >
+                                            <i class="text-lg fa-solid fa-plus cursor-pointer"></i>
+                                        </Link>
+                                    )}
                                 </div>
                                 <div className="flex flex-wrap gap-2">
                                     {jobListings.map((listing, index) => (
@@ -588,7 +637,9 @@ const Company = () => {
                                                             {listing.duration}
                                                         </span>
                                                     </div>
-                                                    <i class="cursor-pointer text-sm text-red-500 fa-solid fa-trash mt-2"></i>
+                                                    {valid_to_display && (
+                                                        <i class="cursor-pointer text-sm text-red-500 fa-solid fa-trash mt-2"></i>
+                                                    )}
                                                 </div>
                                                 <div className="flex gap-3 my-2">
                                                     <i class="text-green-500 fa-solid fa-building-user"></i>
