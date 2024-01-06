@@ -50,7 +50,7 @@ export default function Home() {
                 </div>
             </div>
         </main>
-            <div className="flex flex-col sm:flex-row h-96 items-center justify-center w-full">
+            <div className="flex flex-col sm:flex-row items-center justify-center w-full">
                 <div className="right w-full p-4 sm:w-1/2">
                     <h1 className={'my-2'}>Discover <span className={'text-green-500'}>Intern</span>Link<span className={''}>&trade;</span>
                     </h1>
@@ -65,7 +65,12 @@ export default function Home() {
 
 
                 <div className="left w-full sm:w-1/2">
-
+                    <div className="custom-c">
+                        <i className={'fas fa-user-graduate text-6xl text-green-500'}></i>
+                        <span className={'text-xs font-semibold'}>
+                            Wide reach
+                        </span>
+                    </div>
                 </div>
 
             </div>

@@ -155,3 +155,7 @@ h5 {
 .custom-gradient {
     background: linear-gradient(0deg, rgb(255, 255, 255) 0%,  rgb(255, 255, 255) 10% , rgb(255, 255, 255,0.4) 40%);
 }
+
+.custom-c{
+  @apply bordered border-accent bg-gradient-to-t  from-green-950 to-orange-900 p-4 w-24 h-24 rounded-lg grid place-items-center;
+}
