@@ -2,7 +2,7 @@
 import React from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import NavBar from "../../components/NavBar";
+import { useRouter } from "next/router";
 
 const Dashboard = () => {
     const { data: session } = useSession();
@@ -54,7 +54,23 @@ const Dashboard = () => {
 
     return (
         <div className="min-h-screen bg-gray-100">
-            <NavBar />
+            <nav className="bg-green-500 p-4 flex justify-between items-center text-white">
+                <p className="text-2xl font-semibold">InternLink™</p>
+                <div className="flex gap-2">
+                    <button className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
+                        <i className="fa-solid fa-bell-slash"></i>
+                    </button>
+                    <button className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
+                        <i
+                            className={
+                                session.user
+                                    ? "fa-solid fa-user"
+                                    : "fas fa-sign-in-alt"
+                            }
+                        ></i>
+                    </button>
+                </div>
+            </nav>
             <main className="">
                 <div className="w-full bg-green-100 grid grid-cols-1 place-items-center h-72 gap-6">
                     <div className="landing-page">
@@ -100,7 +116,7 @@ const Dashboard = () => {
                                         FutureSpace
                                     </h1>
                                     <p className="text-sm text-gray-500">
-                                        3000+ employees
+                                        6+ partners
                                     </p>
                                 </div>
                             </div>
@@ -133,7 +149,7 @@ const Dashboard = () => {
                                         className={
                                             "flex positions-link justify-between items-center"
                                         }
-                                        href={`/intern/company`}
+                                        href={`/intern/company/4`}
                                     >
                                         <span
                                             className={`text-md font-semibold hover:underline underline-offset-1`}
