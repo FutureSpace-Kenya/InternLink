@@ -9,13 +9,7 @@ import DepartmentAddForm from "app/components/DepartmentAddForm";
 
 const Company = () => {
     const [currentDepartment, setCurrentDepartment] = useState(null);
-    const { data: session, status } = useSession();
-
-    // Variable to determine is certain details should be shown
-    let valid_to_display = false;
-
-    // Logic to update valid variable
-    if (status === "unauthenticated") valid_to_display = true;
+    const { data: session } = useSession();
 
     if (!session)
         return (
@@ -24,7 +18,55 @@ const Company = () => {
             </div>
         );
 
+    const usersData = [
+        {
+            UserID: "user123",
+            Username: "John Doe",
+            Email: "johndoe@example.com",
+            Password: "password123",
+            UserType: "Intern",
+            ProfileCreatedDate: "2022-01-01",
+            InternProfile: {
+                ProfileID: "profile123",
+                UserID: "user123",
+                Name: "John Doe",
+                Age: 22,
+                Skills: ["JavaScript", "React"],
+            },
+        },
+        {
+            UserID: "user456",
+            Username: "Jane Smith",
+            Email: "janesmith@example.com",
+            Password: "password456",
+            UserType: "Company",
+            CompanyID: "comp456", // Added CompanyID
+            ProfileCreatedDate: "2022-01-02",
+        },
+        {
+            UserID: "user789",
+            Username: "Bob Johnson",
+            Email: "bobjohnson@example.com",
+            Password: "password789",
+            UserType: "Company",
+            CompanyID: "comp789", // Different CompanyID
+            ProfileCreatedDate: "2022-01-03",
+        },
+    ];
+
+    // Making it random for now
+    function getRandomUser(usersData) {
+        const randomIndex = Math.floor(Math.random() * usersData.length);
+        return usersData[randomIndex];
+    }
+
+    // Usage:
+    const randomUser = getRandomUser(usersData);
+
+    console.log(randomUser.UserType.toLowerCase());
+
     const company = {
+        id: "comp456",
         name: "Google",
         description:
             "Google LLC is an American multinational technology company that specializes in Internet-related services and products.",
@@ -142,6 +184,20 @@ const Company = () => {
         return <span className={badgeClass}>{status}</span>;
     };
 
+    // Picking the random user and checking if they are in the company
+    const isUserInCompany = () => {
+        return (
+            randomUser.UserType.toLowerCase() === "company" &&
+            randomUser.CompanyID === company.id
+        );
+    };
+
+    // Variable to determine is certain details should be shown
+    let valid_to_display = false;
+
+    // Logic to update valid variable
+    valid_to_display = isUserInCompany();
+
     return (
         <div className="overflow-hidden bg-green-100 min-h-screen">
             <NavBar />
@@ -194,7 +250,7 @@ const Company = () => {
                                     <CompanyStats />
                                     {valid_to_display && (
                                         <button className="btn w-full bg-green-500 text-white">
-                                            Update Profle
+                                            Update Profile
                                         </button>
                                     )}
                                 </div>
@@ -284,12 +340,12 @@ const Company = () => {
                                             <tr>
                                                 <th>
                                                     {/* <label>
-                                                        <input
-                                                            type="checkbox"
-                                                            className="checkbox"
-                                                        />
-                                                        Index
-                                                    </label> */}
+														<input
+															type="checkbox"
+															className="checkbox"
+														/>
+														Index
+													</label> */}
                                                 </th>
                                                 <th>Name</th>
                                                 {valid_to_display && (
@@ -310,9 +366,9 @@ const Company = () => {
                                                         <th>
                                                             <label>
                                                                 {/* <input
-                                                                    type="checkbox"
-                                                                    className="checkbox"
-                                                                /> */}
+																	type="checkbox"
+																	className="checkbox"
+																/> */}
                                                                 {index + 1}
                                                             </label>
                                                         </th>
@@ -378,14 +434,14 @@ const Company = () => {
                                         </tbody>
                                         {/* foot */}
                                         {/* <tfoot>
-                                            <tr>
-                                                <th></th>
-                                                <th>Name</th>
-                                                <th>Job</th>
-                                                <th>Favorite Color</th>
-                                                <th></th>
-                                            </tr>
-                                        </tfoot> */}
+											<tr>
+												<th></th>
+												<th>Name</th>
+												<th>Job</th>
+												<th>Favorite Color</th>
+												<th></th>
+											</tr>
+										</tfoot> */}
                                     </table>
                                 </div>
                             </div>
@@ -413,12 +469,12 @@ const Company = () => {
                                             <tr>
                                                 <th>
                                                     {/* <label>
-                                                        <input
-                                                            type="checkbox"
-                                                            className="checkbox"
-                                                        />
-                                                        Index
-                                                    </label> */}
+														<input
+															type="checkbox"
+															className="checkbox"
+														/>
+														Index
+													</label> */}
                                                 </th>
                                                 <th className="whitespace-nowrap">
                                                     Title
@@ -444,9 +500,9 @@ const Company = () => {
                                                         <th>
                                                             <label>
                                                                 {/* <input
-                                                                    type="checkbox"
-                                                                    className="checkbox"
-                                                                /> */}
+																	type="checkbox"
+																	className="checkbox"
+																/> */}
                                                                 {index + 1}
                                                             </label>
                                                         </th>
@@ -464,10 +520,10 @@ const Company = () => {
                                                                         }
                                                                     </div>
                                                                     {/* <span className="badge badge-ghost badge-sm bg-green-100">
-                                                                        {
-                                                                            listing.department
-                                                                        }
-                                                                    </span> */}
+																		{
+																			listing.department
+																		}
+																	</span> */}
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -505,24 +561,24 @@ const Company = () => {
                                                             </div>
                                                         </td>
                                                         {/* <th>
-                                                            <button className="btn btn-ghost btn-sm bg-green-300">
-                                                                View
-                                                            </button>
-                                                        </th> */}
+															<button className="btn btn-ghost btn-sm bg-green-300">
+																View
+															</button>
+														</th> */}
                                                     </tr>
                                                 )
                                             )}
                                         </tbody>
                                         {/* foot */}
                                         {/* <tfoot>
-                                            <tr>
-                                                <th></th>
-                                                <th>Name</th>
-                                                <th>Job</th>
-                                                <th>Favorite Color</th>
-                                                <th></th>
-                                            </tr>
-                                        </tfoot> */}
+											<tr>
+												<th></th>
+												<th>Name</th>
+												<th>Job</th>
+												<th>Favorite Color</th>
+												<th></th>
+											</tr>
+										</tfoot> */}
                                     </table>
                                 </div>
                             </div>
