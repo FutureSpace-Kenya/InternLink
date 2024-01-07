@@ -63,7 +63,7 @@ export default function Home() {
             Discover <span className={"text-green-500"}>Intern</span>Link
             <span className={""}>&trade;</span>
           </h1>
-          <div className="border border-blue-900 w-80 h-2 transition-all duration-700"></div>
+          <div className="bg-customGray hover:bg-gray-600 w-80 h-2 transition-all duration-700 rounded-2"></div>
 
           {/* </div> */}
           <p className="text-xl font-bold">
@@ -81,9 +81,9 @@ export default function Home() {
 
         <div className="text-green-800 flex flex-col items-center justify-center pt-4 gap-2 w-full p-4">
           <div className="flex flex-col gap-2 m-4 p-4">
-            <div>
+            <div className="flex items-center space-x-4">
               <div className="custom-c-mod relative">
-                <div className="cicle grid place-items-center  from-green-700 to-transparent rounded-full w-20 h-20">
+                <div className="cicle grid place-items-center from-green-700 to-transparent rounded-full w-20 h-20">
                   <i className="fa-solid text-3xl fa-shield"></i>
                 </div>
                 <svg className="w-24 top-6 absolute h-24">
@@ -127,21 +127,22 @@ export default function Home() {
                     fill="transparent"
                   />
                 </svg>
-
                 <span className="text-sm font-semibold">Safe & Reliable</span>
               </div>
+
               <div>
-                <p>
+                <p class="text-gray-700 text-lg leading-relaxed font-semibold my-4">
                   InternLink™ ensures a secure environment for both students and
-                  employers. Our robust platform offers reliable connections,
-                  safeguarding your data with the utmost care. Experience peace
-                  of mind with InternLink™, where safety and reliability are
-                  paramount
+                  employers. <br /> Our robust platform offers reliable
+                  connections, safeguarding your data with the utmost care.{" "}
+                  <br />
+                  Experience peace of mind with InternLink™, where safety and
+                  reliability are paramount.
                 </p>
               </div>
             </div>
 
-            <div>
+            <div className="flex items-center space-x-4">
               <div className="custom-c relative">
                 <div className="cicle grid place-items-center  from-green-700 to-transparent rounded-full w-20 h-20">
                   <i className="fa-solid text-3xl fa-rocket"></i>
@@ -193,124 +194,136 @@ export default function Home() {
                 </span>
               </div>
               <div>
-                <p>
-                  InternLink™ ensures a secure environment for both students and
-                  employers. Our robust platform offers reliable connections,
-                  safeguarding your data with the utmost care. Experience peace
-                  of mind with InternLink™, where safety and reliability are
-                  paramount
+                <p class="text-gray-700 text-lg leading-relaxed font-semibold my-4">
+                  Streamline your internship journey with InternLink™'s
+                  efficient application process. <br /> Save precious time with
+                  our intuitive platform, designed for quick and easy
+                  navigation.
+                  <br /> InternLink™ transforms hours of searching into moments
+                  of discovery, making every second count.
                 </p>
               </div>
             </div>
 
-            <div className="custom-c relative">
-              <div className="cicle grid place-items-center  from-green-700 to-transparent rounded-full w-20 h-20">
-                <i className="fa-solid text-3xl fa-clock-rotate-left"></i>
+            <div className="flex items-center space-x-4">
+              <div className="custom-c relative">
+                <div className="cicle grid place-items-center  from-green-700 to-transparent rounded-full w-20 h-20">
+                  <i className="fa-solid text-3xl fa-clock-rotate-left"></i>
+                </div>
+                <svg className="w-24 top-6 absolute h-24">
+                  <defs>
+                    <linearGradient
+                      id="gradientStroke3"
+                      x1="0%"
+                      y1="100%"
+                      x2="0%"
+                      y2="0%"
+                    >
+                      <stop
+                        offset="5%"
+                        style={{
+                          stopColor: "rgb(74, 222, 128,0)",
+                          stopOpacity: 0,
+                        }}
+                      />
+                      <stop
+                        offset="70%"
+                        style={{
+                          stopColor: "rgb(74, 222, 128,0.5)",
+                          stopOpacity: 0.5,
+                        }}
+                      />
+                      <stop
+                        offset="100%"
+                        style={{
+                          stopColor: "rgb(74, 222, 128,0.9)",
+                          stopOpacity: 1,
+                        }}
+                      />
+                    </linearGradient>
+                  </defs>
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="40%"
+                    stroke="url(#gradientStroke3)"
+                    strokeWidth="4"
+                    fill="transparent"
+                  />
+                </svg>
+
+                <span className={"text-sm font-semibold"}>Time saving</span>
               </div>
-              <svg className="w-24 top-6 absolute h-24">
-                <defs>
-                  <linearGradient
-                    id="gradientStroke3"
-                    x1="0%"
-                    y1="100%"
-                    x2="0%"
-                    y2="0%"
-                  >
-                    <stop
-                      offset="5%"
-                      style={{
-                        stopColor: "rgb(74, 222, 128,0)",
-                        stopOpacity: 0,
-                      }}
-                    />
-                    <stop
-                      offset="70%"
-                      style={{
-                        stopColor: "rgb(74, 222, 128,0.5)",
-                        stopOpacity: 0.5,
-                      }}
-                    />
-                    <stop
-                      offset="100%"
-                      style={{
-                        stopColor: "rgb(74, 222, 128,0.9)",
-                        stopOpacity: 1,
-                      }}
-                    />
-                  </linearGradient>
-                </defs>
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="40%"
-                  stroke="url(#gradientStroke3)"
-                  strokeWidth="4"
-                  fill="transparent"
-                />
-              </svg>
-
-              <span className={"text-sm font-semibold"}>Time saving</span>
-            </div>
-            <div>
-              <p>
-                InternLink™ ensures a secure environment for both students and
-                employers. Our robust platform offers reliable connections,
-                safeguarding your data with the utmost care. Experience peace of
-                mind with InternLink™, where safety and reliability are
-                paramount
-              </p>
-            </div>
-
-            <div className="custom-c-mod relative">
-              <div className="cicle grid place-items-center  from-green-700 to-transparent rounded-full w-20 h-20">
-                <i className="fa-regular text-3xl fa-face-grin-beam"></i>
+              <div>
+                <p class="text-gray-700 text-lg leading-relaxed font-semibold my-4">
+                  InternLink™ offers its comprehensive suite of services at no
+                  cost to its users. <br /> Interns free access to a world of
+                  opportunities, without the burden of fees. <br /> With
+                  InternLink™, experience an unparalleled, cost-free pathway to
+                  internships and attachments.
+                </p>
               </div>
-              <svg className="w-24 top-6 absolute h-24">
-                <defs>
-                  <linearGradient
-                    id="gradientStroke4"
-                    x1="0%"
-                    y1="100%"
-                    x2="0%"
-                    y2="0%"
-                  >
-                    <stop
-                      offset="5%"
-                      style={{ stopColor: "rgb(206,112,25,0)", stopOpacity: 0 }}
-                    />
-                    <stop
-                      offset="70%"
-                      style={{ stopColor: "rgb(206,112,25)", stopOpacity: 0.5 }}
-                    />
-                    <stop
-                      offset="100%"
-                      style={{
-                        stopColor: "rgba(206,112,25,0.9)",
-                        stopOpacity: 1,
-                      }}
-                    />
-                  </linearGradient>
-                </defs>
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="40%"
-                  stroke="url(#gradientStroke4)"
-                  strokeWidth="4"
-                  fill="transparent"
-                />
-              </svg>
-
-              <span className={"text-sm font-semibold"}>Free to use</span>
             </div>
-            <div>
-              <p>
-                InternLink™ ensures a secure environment for both students and
-                employers. Our robust platform offers reliable connections,
-                safeguarding your data with the utmost care. Experience peace of
-                mind with InternLink™, where safety and reliability are
-                paramount
-              </p>
+
+            <div className="flex items-center space-x-4">
+              <div className="custom-c-mod relative">
+                <div className="cicle grid place-items-center  from-green-700 to-transparent rounded-full w-20 h-20">
+                  <i className="fa-regular text-3xl fa-face-grin-beam"></i>
+                </div>
+                <svg className="w-24 top-6 absolute h-24">
+                  <defs>
+                    <linearGradient
+                      id="gradientStroke4"
+                      x1="0%"
+                      y1="100%"
+                      x2="0%"
+                      y2="0%"
+                    >
+                      <stop
+                        offset="5%"
+                        style={{
+                          stopColor: "rgb(206,112,25,0)",
+                          stopOpacity: 0,
+                        }}
+                      />
+                      <stop
+                        offset="70%"
+                        style={{
+                          stopColor: "rgb(206,112,25)",
+                          stopOpacity: 0.5,
+                        }}
+                      />
+                      <stop
+                        offset="100%"
+                        style={{
+                          stopColor: "rgba(206,112,25,0.9)",
+                          stopOpacity: 1,
+                        }}
+                      />
+                    </linearGradient>
+                  </defs>
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="40%"
+                    stroke="url(#gradientStroke4)"
+                    strokeWidth="4"
+                    fill="transparent"
+                  />
+                </svg>
+
+                <span className={"text-sm font-semibold"}>Free to use</span>
+              </div>
+              <div>
+                <p class="text-gray-700 text-lg leading-relaxed font-semibold my-4">
+                  InternLink™ ensures a secure environment for both students and
+                  employers. <br />
+                  Our robust platform offers reliable connections, safeguarding
+                  your data with the utmost care. <br />
+                  Experience peace of mind with InternLink™, where safety and
+                  reliability are paramount.
+                </p>
+              </div>
             </div>
           </div>
         </div>
