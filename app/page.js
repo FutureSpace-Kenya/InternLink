@@ -12,23 +12,23 @@ export default function Home() {
                 </div>
                 <div className="flex bg-student w-full m-2 relative flex-col items-center">
                     <div className="w-fit relative flex flex-col items-center">
-                        <h1 className="text-6xl font-bold">
+                        <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold">
                      <span className="text-green-400">
                                  Intern
                             </span>
                             Link&trade;
                         </h1>
-                        <div className="absolute top-[55px] right-0 mb-4 text-sm font-semibold text-orange-800">
+                        <div className="absolute top-[45px] sm:top-[55px] right-0 mb-4 text-xs md:text-sm font-semibold text-orange-800">
                             By <a className={'text-blue-900'} href="https://futurespace.vercel.app">FutureSpace</a>
                         </div>
                     </div>
-                    <p className="text-2xl text-center">
+                    <p className="text-sm md:text-xl font-normal text-center">
                         <br/>
                         Welcome to the future of internships
                     </p>
 
 
-                    <div className="flex w-full items-center justify-center space-x-4 mt-8">
+                    <div className="flex w-full items-center justify-center space-x-4 mt-4 sm:mt-8">
                         <a href="auth/login">
                             <button className="btn btn-outline btn-primary ring-1 ring-secondary ring-offset-1">
                                 <i className={'fas fa-sign-in-alt'}></i> Sign In
@@ -53,7 +53,7 @@ export default function Home() {
                 </div>
             </main>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center overflow-clip w-full">
+            <div className="flex flex-col mt-8 sm:flex-row items-center justify-center overflow-clip w-full">
                 <div className="right w-full p-4 sm:p-6 md:p-8 sm:w-1/2">
                     <h1 className={'my-2'}>Discover <span className={'text-green-500'}>Intern</span>Link<span
                         className={''}>&trade;</span>
@@ -90,7 +90,6 @@ export default function Home() {
                                         fill="transparent"/>
                             </svg>
 
-
                             <span className={'text-sm font-semibold'}>
                             Safe & Reliable
                         </span>
@@ -111,10 +110,10 @@ export default function Home() {
                                               style={{stopColor: "rgb(74, 222, 128,0.9)", stopOpacity: 1}}/>
                                     </linearGradient>
                                 </defs>
+
                                 <circle cx="50%" cy="50%" r="40%" stroke="url(#gradientStroke2)" strokeWidth="4"
                                         fill="transparent"/>
                             </svg>
-
 
                             <span className={'text-sm font-semibold'}>
                             A FutureSpace product
@@ -163,10 +162,10 @@ export default function Home() {
                                               style={{stopColor: "rgba(206,112,25,0.9)", stopOpacity: 1}}/>
                                     </linearGradient>
                                 </defs>
+
                                 <circle cx="50%" cy="50%" r="40%" stroke="url(#gradientStroke4)" strokeWidth="4"
                                         fill="transparent"/>
                             </svg>
-
 
                             <span className={'text-sm font-semibold'}>
                             Free to use
