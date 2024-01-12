@@ -31,8 +31,9 @@ const Company = () => {
                 <div
                     className="dashboard flex flex-col sm:flex-row sm:items-center border-b pb-10 justify-between gap-4">
                     <div className="company flex gap-4 items-end">
+
                         <div
-                            className="logo flex items-center justify-center ring-1 ring-green-500 shadow-md text-secondary w-20 h-20 rounded-md logo-hover">
+                            className="logo flex items-center justify-center ring-1 ring-green-500 shadow-md text-secondary company-logo rounded-md logo-hover">
                             <i
                                 className={`fa-brands fa-apple text-5xl`}
                             ></i>
@@ -74,8 +75,6 @@ const Company = () => {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     )

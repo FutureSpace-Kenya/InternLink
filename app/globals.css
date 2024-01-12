@@ -66,7 +66,7 @@ h5 {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -185,6 +185,11 @@ h5 {
     width: 56px !important;
 }
 
+.company-logo{
+    height: 80px !important;
+    width: 80px !important;
+    aspect-ratio: 1/1 !important;
+}
 
 .logo-hover{
     @apply transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md hover:bg-gray-100 hover:rounded-md hover:ring-offset-1 hover:ring-1 hover:ring-gray-100;

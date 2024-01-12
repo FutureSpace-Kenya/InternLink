@@ -7,9 +7,6 @@ import { useRouter } from "next/router";
 const Dashboard = () => {
     const { data: session } = useSession();
 
-    // Function to generate a random number between 1 and 3
-    const randomSpan = () => Math.floor(Math.random() * 3) + 1;
-
     // Dummy data
     const internProfile = {
         name: "John Doe",
@@ -33,6 +30,27 @@ const Dashboard = () => {
             location: "City B",
         },
     ];
+
+    const internships = [
+        {
+            logo: "https://futurespace.vercel.app/resources/FsOutline.png",
+            title: "Software Engineering",
+            company: "FutureSpace",
+            location: "Nairobi, Kenya",
+            salary: "Ksh. 100,000",
+            posted: "1 day ago",
+        },
+        {
+            logo: "https://futurespace.vercel.app/resources/FsOutline.png",
+            title: "Software Engineering",
+            company: "FutureSpace",
+            location: "Nairobi, Kenya",
+            salary: "Ksh. 100,000",
+            posted: "2 days ago",
+        },
+    ];
+
+
 
     const applications = [
         { jobId: "1", status: "Pending" },
@@ -370,85 +388,45 @@ const Dashboard = () => {
 
                     <div className="main flex mt-4">
                         <div className="left w-full md:w-3/4">
-                            <div className="internship-card">
-                                <div className="start flex flex-col sm:flex-row gap-4 justify-center">
-                                    <div className="logo logo-sq-14 grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
-                                        <img
-                                            className={"h-12 object-cover"}
-                                            src={
-                                                "https://futurespace.vercel.app/resources/FsOutline.png"
-                                            }
-                                            alt={"FutureSpace"}
-                                        />
-                                    </div>
-                                    <div className="info flex flex-col gap-1">
-                                        <h1 className="text-2xl font-bold">
-                                            Software Engineering
-                                        </h1>
-                                        <div className="text-[1rem] text-gray-500 flex flex-wrap gap-2 font-medium">
-                                            <p className="text-gray-800 font-bold">
-                                                FutureSpace
-                                            </p>
-                                            |<p className="">Nairobi, Kenya</p>|
-                                            <p className="">Ksh. 100,000</p>|
-                                            <p className="">1 day ago</p>
+                            {internships.map((internship, index) => (
+                                <div key={index} className="internship-card">
+                                    <div className="start flex flex-col sm:flex-row gap-4 justify-center">
+                                        <div
+                                            className="logo logo-sq-14 grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
+                                            <img className={"h-12 object-cover"} src={internship.logo}
+                                                 alt={internship.company}/>
+                                        </div>
+                                        <div className="info flex flex-col gap-1">
+                                            <h1 className="text-2xl font-bold">{internship.title}</h1>
+                                            <div className="text-[1rem] text-gray-500 flex flex-wrap gap-2 font-medium">
+                                                <p className="text-gray-800 font-bold">{internship.company}</p>
+                                                |<p className="">{internship.location}</p>|
+                                                <p className="">{internship.salary}</p>|
+                                                <p className="">{internship.posted}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className="button-container flex gap-3">
-                                    <button className="btn btn-outline">
-                                        Save
-                                    </button>
-                                    <button className="btn btn-primary">
-                                        Apply
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className={`internship-card`}>
-                                <div className="start flex flex-col sm:flex-row  gap-4 justify-center">
-                                    <div className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
-                                        <img
-                                            className={"h-12 object-cover"}
-                                            src={
-                                                "https://futurespace.vercel.app/resources/FsOutline.png"
-                                            }
-                                            alt={"FutureSpace"}
-                                        />
-                                    </div>
-                                    <div className="info flex flex-col gap-1">
-                                        <h1 className="text-2xl font-bold">
-                                            Software Engineering
-                                        </h1>
-                                        <div className="text-[1rem] text-gray-500 flex flex-wrap gap-2 font-medium">
-                                            <p className="text-gray-800 font-bold">
-                                                FutureSpace
-                                            </p>
-                                            |<p className="">Nairobi, Kenya</p>|
-                                            <p className="">Ksh. 100,000</p>|
-                                            <p className="">1 day ago</p>
-                                        </div>
+                                    <div className="button-container flex gap-3">
+                                        <Link className="btn btn-sm ring-1 ring-offset-1 btn-outline" href={''}>
+                                            Save
+                                        </Link>
+                                        <Link className="btn ring-1 ring-offset-1 ring-secondary btn-sm btn-primary"
+                                              href={'/'}>
+                                            Apply
+                                        </Link>
                                     </div>
                                 </div>
-
-                                <div className="button-container flex gap-3">
-                                    <button className="btn btn-outline">
-                                        Save
-                                    </button>
-                                    <button className="btn btn-primary">
-                                        Apply
-                                    </button>
-                                </div>
-                            </div>
+                            ))}
                         </div>
 
                         <div className="right hidden md:w-1/4"></div>
+
                     </div>
                 </div>
             </main>
         </div>
-    );
+);
 };
 
 export default Dashboard;
