@@ -6,7 +6,7 @@ const Departments = ({ company, setCurrentDepartment, valid_to_display }) => {
                     Departments
                     {valid_to_display && (
                         <i
-                            class="text-lg fa-solid fa-plus cursor-pointer"
+                            className="text-lg fa-solid fa-plus cursor-pointer"
                             onClick={() =>
                                 document
                                     .getElementById("department-add-form")

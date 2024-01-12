@@ -23,7 +23,7 @@ const ApplicationsMobile = ({
                                 </div>
                                 {valid_to_display && (
                                     <Link href={`/intern/company/applicant`}>
-                                        <i class="cursor-pointer text-lg fa-solid fa-pen-to-square"></i>
+                                        <i className="cursor-pointer text-lg fa-solid fa-pen-to-square"></i>
                                     </Link>
                                 )}
                             </div>
@@ -36,13 +36,13 @@ const ApplicationsMobile = ({
                                 // Shown when the user is unauthenticated
                                 <div className="flex gap-2 justify-between mt-3">
                                     <div className="flex gap-3">
-                                        <i class="fa-solid fa-user"></i>
+                                        <i className="fa-solid fa-user"></i>
                                         <span className="text-sm">
                                             {application.position}
                                         </span>
                                     </div>
                                     <div className="flex gap-3">
-                                        <i class="fa-solid fa-building-user"></i>
+                                        <i className="fa-solid fa-building-user"></i>
                                         <span className="text-sm">
                                             {application.department}
                                         </span>
@@ -52,13 +52,13 @@ const ApplicationsMobile = ({
                                 // Shown when the user is authenticated
                                 <div className="gap-2 mt-3">
                                     <div className="flex gap-3">
-                                        <i class="fa-solid fa-user"></i>
+                                        <i className="fa-solid fa-user"></i>
                                         <span className="text-sm">
                                             {application.position}
                                         </span>
                                     </div>
                                     <div className="flex gap-3 mt-4">
-                                        <i class="fa-solid fa-building-user"></i>
+                                        <i className="fa-solid fa-building-user"></i>
                                         <span className="text-sm">
                                             {application.department}
                                         </span>

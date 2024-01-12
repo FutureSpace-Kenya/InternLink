@@ -92,7 +92,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center p-4">
+                <div className="flex flex-col justify-center p-4 sm:p-6 md:p-8">
                     <h1
                         className={`text-3xl mb-6 sm:text-4xl font-bold sm:font-black`}
                     >
@@ -102,7 +102,7 @@ const Dashboard = () => {
                     <div className="cards gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         <div className="custom-card">
                             <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div className="logo grid place-items-center bg-gray-800 text-white w-14 h-14 rounded-md">
+                                <div className="logo logo-sq-14 grid place-items-center bg-gray-800 text-white w-14 h-14 rounded-md">
                                     <img
                                         className={"h-12 object-cover"}
                                         src={
@@ -354,7 +354,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col mt-4 justify-center p-4">
+                <div className="flex flex-col mt-4 justify-center p-4 sm:p-6 md:p-8">
                     <h1
                         className={`text-3xl mb-6 sm:text-4xl font-bold sm:font-black`}
                     >
@@ -371,8 +371,8 @@ const Dashboard = () => {
                     <div className="main flex mt-4">
                         <div className="left w-full md:w-3/4">
                             <div className="internship-card">
-                                <div className="start flex gap-4 justify-center">
-                                    <div className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
+                                <div className="start flex flex-col sm:flex-row gap-4 justify-center">
+                                    <div className="logo logo-sq-14 grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
                                         <img
                                             className={"h-12 object-cover"}
                                             src={
@@ -407,7 +407,7 @@ const Dashboard = () => {
                             </div>
 
                             <div className={`internship-card`}>
-                                <div className="start flex gap-4 justify-center">
+                                <div className="start flex flex-col sm:flex-row  gap-4 justify-center">
                                     <div className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
                                         <img
                                             className={"h-12 object-cover"}

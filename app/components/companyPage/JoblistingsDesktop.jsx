@@ -23,14 +23,14 @@ const JoblistingsDesktop = ({
                                     role="button"
                                     className="btn btn-sm m-1"
                                 >
-                                    <i class="text-md fa-solid fa-filter"></i>
+                                    <i className="text-md fa-solid fa-filter"></i>
                                 </div>
                                 <ul
                                     tabIndex={0}
                                     className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                                 >
                                     {durations.map((duration) => (
-                                        <li>
+                                        <li key={Math.random().toString(36).substring(2, 15)}>
                                             <button
                                                 className="btn btn-sm mt-2"
                                                 onClick={(e) => {
@@ -50,7 +50,7 @@ const JoblistingsDesktop = ({
                                 // className="btn btn-sm bg-green-500 text-white"
                                 href="/intern/company"
                             >
-                                <i class="text-lg fa-solid fa-plus cursor-pointer"></i>
+                                <i className="text-lg fa-solid fa-plus cursor-pointer"></i>
                             </Link>
                         </>
                     )}
@@ -109,7 +109,7 @@ const JoblistingsDesktop = ({
                                             {listing.deadline}
                                         </span>
                                         {valid_to_display && (
-                                            <i class="cursor-pointer text-sm text-red-500 fa-solid fa-trash"></i>
+                                            <i className="cursor-pointer text-sm text-red-500 fa-solid fa-trash"></i>
                                         )}
                                     </div>
                                 </td>

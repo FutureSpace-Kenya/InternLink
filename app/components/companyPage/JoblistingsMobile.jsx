@@ -10,7 +10,7 @@ const JoblistingsMobile = ({ valid_to_display, jobListings }) => {
                         // className="btn btn-sm bg-green-500 text-white"
                         href="/intern/company"
                     >
-                        <i class="text-lg fa-solid fa-plus cursor-pointer"></i>
+                        <i className="text-lg fa-solid fa-plus cursor-pointer"></i>
                     </Link>
                 )}
             </div>
@@ -26,11 +26,11 @@ const JoblistingsMobile = ({ valid_to_display, jobListings }) => {
                                     </span>
                                 </div>
                                 {valid_to_display && (
-                                    <i class="cursor-pointer text-sm text-red-500 fa-solid fa-trash mt-2"></i>
+                                    <i className="cursor-pointer text-sm text-red-500 fa-solid fa-trash mt-2"></i>
                                 )}
                             </div>
                             <div className="flex gap-3 my-2">
-                                <i class="text-green-500 fa-solid fa-building-user"></i>
+                                <i className="text-green-500 fa-solid fa-building-user"></i>
                                 <span className="text-green-500 text-sm">
                                     {listing.department}
                                 </span>

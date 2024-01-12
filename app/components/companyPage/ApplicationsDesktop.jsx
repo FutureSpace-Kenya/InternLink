@@ -29,14 +29,14 @@ const ApplicationsDesktop = ({
                             role="button"
                             className="btn btn-sm m-1"
                         >
-                            <i class="text-md fa-solid fa-filter"></i>
+                            <i className="text-md fa-solid fa-filter"></i>
                         </div>
                         <ul
                             tabIndex={0}
                             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             {statuses.map((status) => (
-                                <li>
+                                <li key={Math.random().toString(36).substring(2, 15)}>
                                     <button
                                         className="btn btn-sm mt-2"
                                         onClick={(e) => {
@@ -110,7 +110,7 @@ const ApplicationsDesktop = ({
                                         <Link
                                             href={`/intern/company/applicant`}
                                         >
-                                            <i class="cursor-pointer text-lg fa-solid fa-pen-to-square"></i>
+                                            <i className="cursor-pointer text-lg fa-solid fa-pen-to-square"></i>
                                         </Link>
                                     </th>
                                 )}
