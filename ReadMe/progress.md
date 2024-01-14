@@ -21,25 +21,34 @@
 - - `Incomplete`
 - Manage applications page
 - - `Incomplete`
-- Company profile page
+- Company profile page `Jimmy`
 - - `Incomplete`
-- Department pages
+- Department pages `Jimmy`
 - - `Incomplete`
 - Manage internships
 - - `Incomplete`
 
 ## Admin
-- Registration page
+- Registration page 
 - - `Incomplete`
 - Login Page
 - - `Incomplete`
 - Manage users
 - - `Incomplete`
-- Manage organizations
+- Manage organizations `Brian`
 - - `Incomplete`
 - Manage applications
 - - `Incomplete`
-- Manage departments
+- Manage departments `Brian`
 - - `Incomplete`
-- Manage internships
+- Manage internships `Brian`
+- - `Incomplete`
+
+## Feedback
+
+- Feedback page
+- - `Incomplete`
+- Feedback form
+- - `Incomplete`
+- Feedback results
 - - `Incomplete`
