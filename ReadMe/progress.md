@@ -2,53 +2,53 @@
 
 ## User
 - Registration page
-- - `Complete`
+  - `Complete`
 - Login Page
-- - `Complete`
+  - `Complete`
 - Applications page
-- - `Incomplete`
+  - `Incomplete`
 - Discover internships
-- - `Incomplete`
+  - `Incomplete`
 - View company profile
-- - `Incomplete`
+  - `Incomplete`
 - Profile page - update details page
-- - `Incomplete`
+  - `Incomplete`
 
 ## Organization
 - Registration page
-- - `Incomplete`
+  - `Incomplete`
 - Login Page
-- - `Incomplete`
+  - `Incomplete`
 - Manage applications page
-- - `Incomplete`
+  - `Incomplete`
 - Company profile page `Jimmy`
-- - `Incomplete`
+  - `Incomplete`
 - Department pages `Jimmy`
-- - `Incomplete`
+  - `Incomplete`
 - Manage internships
-- - `Incomplete`
+  - `Incomplete`
 
 ## Admin
 - Registration page 
-- - `Incomplete`
+  - `Incomplete`
 - Login Page
-- - `Incomplete`
+  - `Incomplete`
 - Manage users
-- - `Incomplete`
+  - `Incomplete`
 - Manage organizations `Brian`
-- - `Incomplete`
+  - `Incomplete`
 - Manage applications
-- - `Incomplete`
+  - `Incomplete`
 - Manage departments `Brian`
-- - `Incomplete`
+  - `Incomplete`
 - Manage internships `Brian`
-- - `Incomplete`
+  - `Incomplete`
 
 ## Feedback
 
 - Feedback page
-- - `Incomplete`
+  - `Incomplete`
 - Feedback form
-- - `Incomplete`
+  - `Incomplete`
 - Feedback results
-- - `Incomplete`
+  - `Incomplete`
