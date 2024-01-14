@@ -33,6 +33,7 @@ const Dashboard = () => {
 
     const internships = [
         {
+            id: "1",
             logo: "https://futurespace.vercel.app/resources/FsOutline.png",
             title: "Software Engineering",
             company: "FutureSpace",
@@ -41,6 +42,7 @@ const Dashboard = () => {
             posted: "1 day ago",
         },
         {
+            id: "2",
             logo: "https://futurespace.vercel.app/resources/FsOutline.png",
             title: "Software Engineering",
             company: "FutureSpace",
@@ -412,7 +414,7 @@ const Dashboard = () => {
                                             Save
                                         </Link>
                                         <Link className="btn ring-1 ring-offset-1 ring-secondary btn-sm btn-primary"
-                                              href={'/'}>
+                                              href={'/intern/apply/' + internship.id}>
                                             Apply
                                         </Link>
                                     </div>
