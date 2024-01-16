@@ -67,3 +67,11 @@
 **Review Applications:** They review applications received from interns and decide to accept or reject them.
 
 **Communicate with Interns:** Accepted interns can be contacted through the platform for further processes.
+
+
+//Creating a new migration
+npx sequelize-cli migration:generate --name add_new_fields_to_organization
+
+npx sequelize-cli db:migrate
+
+

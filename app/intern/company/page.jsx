@@ -1,191 +1,110 @@
-"use client";
-import { useSession } from "next-auth/react";
+'use client'
+import React, {useEffect, useState} from "react";
 import NavBar from "app/components/NavBar";
-import { useState } from "react";
-import DepartmentEditForm from "app/components/DepartmentEditForm";
-import DepartmentAddForm from "app/components/DepartmentAddForm";
-import CompanyProfile from "app/components/companyPage/CompanyProfile";
-import Departments from "app/components/companyPage/Departments";
-import ApplicationsDesktop from "app/components/companyPage/ApplicationsDesktop";
-import JoblistingsDesktop from "app/components/companyPage/JoblistingsDesktop";
-import ApplicationsMobile from "app/components/companyPage/ApplicationsMobile";
-import JoblistingsMobile from "app/components/companyPage/JoblistingsMobile";
-
-// Dummy data
-import {
-  usersData,
-  company,
-  applications,
-  jobListings,
-} from "app/intern/company/DummyData";
+import VerticalTabs from "app/components/tabs/VerticalTabs";
+import Loading from "/app/loading";
+import Notification from "/app/Notification";
 
 const Company = () => {
-  const [currentDepartment, setCurrentDepartment] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [currentPageJL, setCurrentPageJL] = useState(1);
-  const [applicationFilter, setApplicationFilter] = useState("");
-  const [jobListingsFilter, setJobListingsFilter] = useState("");
-  const { data: session } = useSession();
 
-  if (!session)
-    return (
-      <div className="min-h-screen grid place-items-center w-full">
-        <span className="loading loading-ring loading-lg"></span>
-      </div>
-    );
+    const [company, setCompany] = useState({});
 
-  // Making it random for now
-  function getRandomUser(usersData) {
-    const randomIndex = Math.floor(Math.random() * usersData.length);
-    return usersData[randomIndex];
-  }
+    useEffect(() => {
+        document.title = "Company x"
+        //get id from url ?id=1
+        //fetch company data
+        const id = new URLSearchParams(window.location.search).get("id");
+        //fetch company data /api/company/:id
+        fetch(`/api/organizations/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                setCompany(data.organization)
+            })
+            .catch(error => {
+                console.error(error)
+            })
 
-  // Usage:
-  // const randomUser = getRandomUser(usersData);
-  const randomUser = usersData[1];
+    }, []);
 
-  const getStatusBadge = (status) => {
-    let badgeClass = "badge badge-ghost badge-sm";
 
-    switch (status.toLowerCase()) {
-      case "pending":
-        badgeClass += " bg-yellow-300";
-        break;
-      case "accepted":
-        badgeClass += " bg-green-300";
-        break;
-      case "rejected":
-        badgeClass += " bg-red-300";
-        break;
-      default:
-        break;
-    }
-
-    return <span className={badgeClass}>{status}</span>;
-  };
-
-  // Picking the random user and checking if they are in the company
-  const isUserInCompany = () => {
-    return (
-      randomUser.UserType.toLowerCase() === "company" &&
-      randomUser.CompanyID === company.id
-    );
-  };
-
-  const statuses = ["All", "Pending", "Accepted", "Rejected"];
-  const durations = ["All", "Full Time", "Part Time", "Contract"];
-
-  // Variable to determine is certain details should be shown
-  let valid_to_display = false;
-
-  // Logic to update valid variable
-  valid_to_display = isUserInCompany();
-
-  // Calculate start and end indices for the current page
-  let start = (currentPage - 1) * 5;
-  let end = start + 5;
-
-  let start_jl = (currentPageJL - 1) * 5;
-  let end_jl = start_jl + 5;
-
-  // Slice the data array to get only the data for the current page
-  let pageData = applications.slice(start, end);
-  let pageData2 = jobListings.slice(start_jl, end_jl);
-
-  // Apply filter to the data
-  if (applicationFilter !== "") {
-    if (applicationFilter === "All") {
-      pageData = applications.slice(start, end);
-    } else {
-      let cleaned_pageData = applications.filter(
-        (application) =>
-          application.status.toLowerCase() === applicationFilter.toLowerCase(),
-      );
-      pageData = cleaned_pageData.slice(start, end);
-    }
-  }
-
-  // Apply filter to the joblistings data
-  if (jobListingsFilter !== "") {
-    if (jobListingsFilter === "All") {
-      pageData2 = jobListings.slice(start_jl, end_jl);
-    } else {
-      console.log(jobListingsFilter);
-      let cleaned_pageData2 = jobListings.filter(
-        (jobListing) =>
-          jobListing.duration.toLowerCase() === jobListingsFilter.toLowerCase(),
-      );
-      pageData2 = cleaned_pageData2.slice(start_jl, end_jl);
-    }
-  }
-
-  return (
-    <div className="overflow-hidden bg-green-100 min-h-screen">
-      <NavBar />
-      <div className="p-x-4 w-screen container mx-auto my-auto">
-        <div className="flex flex-wrap w-full">
-          {/* Company details */}
-          <div className="w-full sm:w-1/3 md:w-full lg:w-1/3">
-            {/* Company Profile Picture and Name */}
-            <CompanyProfile
-              company={company}
-              valid_to_display={valid_to_display}
-            />
-            {/* Departments */}
-            <Departments
-              company={company}
-              setCurrentDepartment={setCurrentDepartment}
-              valid_to_display={valid_to_display}
-            />
-          </div>
-
-          {/* Company Engagement */}
-          <div className="w-full sm:w-2/3 md:w-full lg:w-2/3">
-            <div className="w-full p-5">
-              {/* Applications desktop section */}
-              <ApplicationsDesktop
-                valid_to_display={valid_to_display}
-                setApplicationFilter={setApplicationFilter}
-                statuses={statuses}
-                pageData={pageData}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-                applications={applications}
-                getStatusBadge={getStatusBadge}
-              />
-              {/* Joblistings desktop section */}
-              <JoblistingsDesktop
-                valid_to_display={valid_to_display}
-                durations={durations}
-                setJobListingsFilter={setJobListingsFilter}
-                pageData2={pageData2}
-                jobListings={jobListings}
-                currentPageJL={currentPageJL}
-                setCurrentPageJL={setCurrentPageJL}
-              />
-
-              {/* Applications mobile section */}
-              <ApplicationsMobile
-                applications={applications}
-                valid_to_display={valid_to_display}
-                getStatusBadge={getStatusBadge}
-              />
-
-              {/* Joblistings mobile section */}
-              <JoblistingsMobile
-                valid_to_display={valid_to_display}
-                jobListings={jobListings}
-              />
+    //if company is empty loading
+    if (Object.keys(company).length === 0) {
+        return (
+            <div className="overflow-hidden bg-green-100 min-h-screen">
+                <NavBar/>
+                <div className={`bg-white p-4 sm:p-6 md:p-6`}>
+                    <Loading/>
+                </div>
+                <span className="absolute w-96 top-20 right-0">
+                    <Notification notifications={[{type: 'loading', content: 'Fetching Company data'}]}/>
+                </span>
             </div>
-          </div>
+        )
+    }
 
-          {/* Modals */}
-          <DepartmentEditForm department={currentDepartment} />
-          <DepartmentAddForm />
+    return (
+        <div className="overflow-hidden bg-green-100 min-h-screen">
+            <NavBar/>
+            <div className={`bg-white p-4 sm:p-6 md:p-6`}>
+
+                <div
+                    className="dashboard flex flex-col sm:flex-row sm:items-center border-b pb-10 justify-between gap-4">
+                    <div className="company flex gap-4 items-end">
+
+                        <div
+                            className="logo flex items-center justify-center ring-1 ring-green-500 shadow-md text-secondary company-logo bg-gray-700 rounded-md logo-hover">
+                            <img className="h-16 object-cover" src={company.logo} alt={company.name} />
+                        </div>
+
+                        <div className="info">
+                            <div className="name text-2xl font-semibold">
+                                {company.name}
+                            </div>
+                            <div className="description text-sm">
+                                {company.description}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="actions flex gap-2">
+                        <button data-tip="Share Apple"
+                                className="btn btn-outline rounded-md btn-sm tooltip btn-secondary">
+                            <i className="fa-solid fa-share-nodes"></i>
+                        </button>
+
+                        <button data-tip="Follow Apple"
+                                className="btn btn-outline rounded-md btn-sm tooltip btn-secondary">
+                            <i className="fa-solid fa-plus"></i>
+                            &nbsp;Follow
+                        </button>
+
+                    </div>
+                </div>
+
+                <div className="flex gap-4 flex-col md:flex-row">
+
+                    <VerticalTabs company={company}/>
+
+                    <div className="image mt-4 rounded-md w-full md:w-7/12">
+                        <img className="rounded-md" src={company.image}
+                             alt=""/>
+                    </div>
+
+                    <div className={'mt-4 rounded-md w-full md:w-4/12 border p-4'}>
+                        <div className="title text-gray-400 font-semibold uppercase text-[10px]">
+                            About {company.name}
+                        </div>
+                        <div className="content text-sm">
+                            Website: <a href="https://www.apple.com">
+                            {company.website}
+                        </a>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 
 export default Company;

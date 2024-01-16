@@ -66,7 +66,7 @@ h5 {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -178,4 +178,23 @@ h5 {
 
 .custom-c-mod{
   @apply bordered border-green-600 border-opacity-50 border-2 hover:border hover:border-opacity-100 bg-transparent shadow p-4 w-[160px] sm:w-48 h-44 sm:h-[190px] rounded-[18px] grid place-items-center transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md;
+}
+
+.logo-sq-14{
+    height: 56px !important;
+    width: 56px !important;
+}
+
+.company-logo{
+    height: 80px !important;
+    width: 80px !important;
+    aspect-ratio: 1/1 !important;
+}
+
+.logo-hover{
+    @apply transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md hover:bg-gray-100 hover:rounded-md hover:ring-offset-1 hover:ring-1 hover:ring-gray-100;
+}
+
+.tab.active{
+    @apply bg-green-200 text-gray-900;
 }

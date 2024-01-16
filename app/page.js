@@ -166,7 +166,6 @@ export default function Home() {
                                 <circle cx="50%" cy="50%" r="40%" stroke="url(#gradientStroke4)" strokeWidth="4"
                                         fill="transparent"/>
                             </svg>
-
                             <span className={'text-sm font-semibold'}>
                             Free to use
                         </span>

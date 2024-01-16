@@ -129,8 +129,7 @@ export default function Login() {
                                     </div>
                                 </div>
                             </div>
-                        </center>
-                        <div className="flex mt-4 flex-col sm:flex-row w-9/12 gap-3 items-center justify-between">
+                        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 w-full gap-3 items-center justify-between">
                             <div className="w-full">
                                 <button className={'btn btn-outline text-red-600 ring-2  ring-offset-1 w-full'}  onClick={() => signOut()}>
                                     Sign Out <i className="fas fa-sign-out-alt"> </i>
@@ -142,6 +141,8 @@ export default function Login() {
                                 </button>
                             </Link>
                         </div>
+                        </center>
+
                     </div>
                 </div>
             </main>

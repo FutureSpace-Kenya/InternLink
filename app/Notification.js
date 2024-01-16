@@ -19,7 +19,8 @@ const Notification = ({notifications}) => {
         success: "text-green-400 bg-green-100 ring-green-600",
         warning: "text-orange-400 bg-orange-100 ring-orange-600",
         info: "text-blue-400 bg-blue-100 ring-blue-600",
-        question: "text-purple-400 bg-purple-100 ring-purple-600"
+        question: "text-purple-400 bg-purple-100 ring-purple-600",
+        loading: "text-gray-400 bg-gray-100 ring-gray-600"
     };
 
     const notificationIcons = {
@@ -27,7 +28,8 @@ const Notification = ({notifications}) => {
         success: "fas fa-check-circle",
         warning: "fas fa-exclamation-triangle",
         info: "fas fa-info-circle",
-        question: "fas fa-question-circle"
+        question: "fas fa-question-circle",
+        loading: "fas fa-circle-notch fa-spin"
     };
 
     return (
