@@ -8,6 +8,60 @@ import Notification from "/app/Notification";
 const Dashboard = () => {
     const {data: session} = useSession();
 
+    const companies = [
+        {
+            id: 1,
+            logo: "https://futurespace.vercel.app/resources/FsOutline.png",
+            name: "FutureSpace",
+            description: "FutureSpace Kenya is a software development company that builds enterprise software solutions.",
+            positions: 0,
+            employees: 0,
+            services: [
+                {icon: "fas fa-cog fa-spin", name: "Solutions"},
+                {icon: "fas fa-rocket", name: "Premium"},
+            ]
+        },
+        {
+            id: 2,
+            logo: "https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA",
+            name: "Google",
+            description: "Create space for everyone to find belonging at Google.",
+            positions: 3,
+            employees: 7005,
+            services: [
+                {icon: "fas fa-cube", name: "Software"},
+                {icon: "fas fa-gamepad", name: "Google Play"},
+                {icon: "fas fa-circle-check", name: "Actively Hiring"},
+            ]
+        },
+        {
+            id: 3,
+            logo: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png",
+            name: "Facebook",
+            description: "Learn about our culture, our people, and career opportunities at the Facebook",
+            positions: 3,
+            employees: 3000,
+            services: [
+                {icon: "fas fa-cube", name: "Software"},
+                {icon: "fab fa-meta", name: "Meta Connect"},
+                {icon: "fas fa-circle-check", name: "Actively Hiring"},
+            ]
+        },
+        {
+            id: 4,
+            logo: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png",
+            name: "Apple",
+            description: "Apple is a place where extraordinary people gather to do their best work.",
+            positions: 3,
+            employees: 3000,
+            services: [
+                {icon: "fas fa-cube", name: "Software"},
+                {icon: "fas fa-headphones", name: "Apple Music"},
+                {icon: "fas fa-circle-check", name: "Actively Hiring"},
+            ]
+        }
+    ];
+
     const internships = [
         {
             id: "1",
@@ -29,7 +83,7 @@ const Dashboard = () => {
         },
     ];
 
-    if (!session)
+    if (!session) {
         return (
             <div className="min-h-screen grid place-items-center w-full">
                 <span className="loading loading-ring loading-lg"></span>
@@ -38,7 +92,7 @@ const Dashboard = () => {
                 </span>
             </div>
         );
-
+    }
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="bg-green-500 p-4 flex justify-between items-center text-white">
@@ -89,208 +143,48 @@ const Dashboard = () => {
                     </h1>
 
                     <div className="cards gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                        <div className="custom-card">
-                            <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div
-                                    className="logo logo-sq-14 grid place-items-center bg-gray-800 text-white w-14 h-14 rounded-md">
-                                    <img
-                                        className={"h-12 object-cover"}
-                                        src={
-                                            "https://futurespace.vercel.app/resources/FsOutline.png"
-                                        }
-                                        alt={"FutureSpace"}
-                                    />
-                                </div>
-                                <div className="info">
-                                    <h1 className="text-2xl font-bold">
-                                        FutureSpace
-                                    </h1>
-                                    <p className="text-sm text-gray-500">
-                                        6+ partners
-                                    </p>
-                                </div>
-                            </div>
 
-                            <div className="middle">
-                                <div className="mt-4 px-3 font-medium">
-                                    FutureSpace Kenya is a software development
-                                    company that builds enterprise software
-                                    solutions.
+                        {companies.map((company, index) => (
+                            <div key={index} className="custom-card">
+                                <div className="flex px-3 pt-3 gap-4 items-center">
+                                    <div
+                                        className="logo logo-sq-14 grid place-items-center bg-gray-800 text-white w-14 h-14 rounded-md">
+                                        <img className={"h-12 object-cover"} src={company.logo} alt={company.name}/>
+                                    </div>
+                                    <div className="info">
+                                        <h1 className="text-2xl font-bold">{company.name}</h1>
+                                        <p className="text-sm text-gray-500">{company.employees}+ partners</p>
+                                    </div>
                                 </div>
-
-                                <div className="flex px-3 flex-wrap gap-2 mt-4">
-                                    <div className="ring-1 ring-green-500 badge-custom">
-                                        <i
-                                            className="fa-solid fa-gear fa-spin"
-                                        ></i>
-                                        Solutions
+                                <div className="middle">
+                                    <div className="mt-4 px-3 font-medium">
+                                        {company.description}
                                     </div>
 
-                                    <div className="ring-1 ring-yellow-500 badge p-3 badge-warning gap-2">
-                                        <i className="fa-solid fa-rocket"></i>
-                                        Premium
+                                    <div className="flex px-3 flex-wrap gap-2 mt-4">
+                                        {company.services.map((service, serviceIndex) => (
+                                            <div key={serviceIndex} className="ring-1 ring-green-500 badge-custom">
+                                                <i className={service.icon}></i>
+                                                {service.name}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="bottom">
+                                    <div className="border-b-2 border-gray-300 w-full mt-4"></div>
+                                    <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
+                                        <Link className="flex positions-link justify-between items-center"
+                                              href={`/intern/company?id=${company.id}`}>
+                                            <span className="text-md font-semibold hover:underline underline-offset-1">
+                                                {company.positions} Open Positions
+                                            </span>
+                                            <i className="fa-solid fa-chevron-right text-sm"></i>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
-                            <div className="bottom">
-                                <div className="border-b-2 border-gray-300 w-full mt-4"></div>
-                                <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
-                                    <Link className="flex positions-link justify-between items-center" href="/intern/company?id=1">
-                                        <span className="text-md font-semibold hover:underline underline-offset-1">
-                                            0 Open Positions
-                                        </span>
-                                        <i className="fa-solid fa-chevron-right text-sm"></i>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
 
-                        <div className="custom-card">
-                            <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div
-                                    className="logo grid place-items-center bg-orange-400 text-white w-14 h-14 rounded-md">
-                                    <i className="fa-brands fa-google text-2xl"></i>
-                                </div>
-                                <div className="info">
-                                    <h1 className="text-2xl font-bold">
-                                        Google
-                                    </h1>
-                                    <p className="text-sm text-gray-500">
-                                        3000+ employees
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="middle">
-                                <div className="mt-4 px-3 font-medium">
-                                    Create space for everyone to find belonging
-                                    at Google.
-                                </div>
-
-                                <div className="flex px-3 flex-wrap gap-2 mt-4">
-                                    <div className="ring-1 ring-green-500 badge-custom">
-                                        <i className="fa-solid fa-cube"></i>
-                                        Software
-                                    </div>
-                                    <div className="ring-1 ring-green-500 badge-custom">
-                                        <i className="fa-brands fa-hashnode"></i>
-                                        Hardware
-                                    </div>
-
-                                    <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
-                                        <i className="fa-solid fa-circle-check"></i>
-                                        Actively hiring
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="bottom">
-                                <div className="border-b-2 border-gray-300 w-full mt-4"></div>
-                                <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
-                                    <Link className="flex positions-link justify-between items-center"href="/intern/company?id=2">
-                                        <span className="text-md font-semibold hover:underline underline-offset-1">
-                                            3 Open Positions
-                                        </span>
-                                        <i className="fa-solid fa-chevron-right text-sm"></i>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="custom-card">
-                            <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div
-                                    className="logo grid place-items-center bg-primary text-white w-14 h-14 rounded-md">
-                                    <i className="fa-brands fa-facebook text-2xl"></i>
-                                </div>
-                                <div className="info">
-                                    <h1 className="text-2xl font-bold">
-                                        Facebook
-                                    </h1>
-                                    <p className="text-sm text-gray-500">
-                                        3000+ employees
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="middle">
-                                <div className="mt-4 px-3 font-medium">
-                                    Learn about our culture, our people, and
-                                    career opportunities at the Facebook
-                                </div>
-
-                                <div className="flex px-3 flex-wrap gap-2 mt-4">
-                                    <div className="ring-1 ring-green-500 badge-custom">
-                                        <i className="fa-brands fa-hashnode"></i>
-                                        Hardware
-                                    </div>
-
-                                    <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
-                                        <i className="fa-solid fa-circle-check"></i>
-                                        Actively hiring
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="bottom">
-                                <div className="border-b-2 border-gray-300 w-full mt-4"></div>
-                                <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
-                                    <Link className="flex positions-link justify-between items-center" href="/intern/company?id=3">
-                                        <span className="text-md font-semibold hover:underline underline-offset-1">
-                                            3 Open Positions
-                                        </span>
-                                        <i className="fa-solid fa-chevron-right text-sm"></i>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="custom-card">
-                            <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div
-                                    className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
-                                    <i className="fa-brands fa-apple text-2xl"></i>
-                                </div>
-                                <div className="info">
-                                    <h1 className="text-2xl font-bold">
-                                        Apple
-                                    </h1>
-                                    <p className="text-sm text-gray-500">
-                                        3000+ employees
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="middle">
-                                <div className="mt-4 px-3 font-medium">
-                                    Apple is a place where extraordinary people
-                                    gather to do their best work.
-                                </div>
-
-                                <div className="flex px-3 flex-wrap gap-2 mt-4">
-                                    <div className="ring-1 ring-green-500 badge-custom">
-                                        <i className="fa-solid fa-headphones"></i>
-                                        Music
-                                    </div>
-
-                                    <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
-                                        <i className="fa-solid fa-circle-check"></i>
-                                        Actively hiring
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="bottom">
-                                <div className="border-b-2 border-gray-300 w-full mt-4"></div>
-                                <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
-                                    <Link className="flex positions-link justify-between items-center"
-                                          href="/intern/company?id=4">
-                                        <span className="text-md font-semibold hover:underline underline-offset-1">
-                                            3 Open Positions
-                                        </span>
-                                        <i className="fa-solid fa-chevron-right text-sm"></i>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
