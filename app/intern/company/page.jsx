@@ -5,27 +5,9 @@ import VerticalTabs from "app/components/tabs/VerticalTabs";
 
 const Company = () => {
 
-    const tabs = [
-        {
-            id: "1",
-            title: "Apple Careers",
-            icon: "<i class=\"fa-solid fa-mountain\"></i>",
-            label: "Overview",
-            content: "Apple designs Macs, the best personal computers in the world, along with OS X, iLife, iWork and professional software. Apple leads the digital music revolution with its iPods and iTunes online store. Apple has reinvented the mobile phone with its revolutionary iPhone and App store, and is defining the future of mobile media and computing devices with iPad."
-        },
-        {
-            id: "2",
-            title: "Jobs at Apple",
-            icon: "<i class=\"fa-brands fa-servicestack\"></i>",
-            label: "Internships",
-            content: "Apple hasn't added any jobs yet <br> Get notified when Apple posts new jobs."
-        },
-    ];
-
     return (
         <div className="overflow-hidden bg-green-100 min-h-screen">
             <NavBar/>
-
             <div className={`bg-white p-4 sm:p-6 md:p-6`}>
 
                 <div
@@ -64,8 +46,15 @@ const Company = () => {
                 </div>
 
                 <div className="flex gap-4 flex-col md:flex-row">
-                    <VerticalTabs tabs={tabs}/>
-                    <div className={'mt-4 rounded-md w-full md:w-3/12 border p-4'}>
+
+                    <VerticalTabs />
+
+                    <div className="image mt-4 rounded-md w-full md:w-7/12">
+                        <img className="rounded-md" src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                             alt=""/>
+                    </div>
+
+                    <div className={'mt-4 rounded-md w-full md:w-4/12 border p-4'}>
                         <div className="title text-gray-400 font-semibold uppercase text-[10px]">
                             About Apple
                         </div>
