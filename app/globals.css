@@ -194,3 +194,7 @@ h5 {
 .logo-hover{
     @apply transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md hover:bg-gray-100 hover:rounded-md hover:ring-offset-1 hover:ring-1 hover:ring-gray-100;
 }
+
+.tab.active{
+    @apply bg-green-200 text-gray-900;
+}

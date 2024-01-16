@@ -1,35 +1,12 @@
 "use client";
 import React from "react";
-import { useSession } from "next-auth/react";
+import {useSession} from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
+import Notification from "/app/Notification";
 
 const Dashboard = () => {
-    const { data: session } = useSession();
-
-    // Dummy data
-    const internProfile = {
-        name: "John Doe",
-        age: 22,
-        skills: ["JavaScript", "React", "Node.js"],
-        education: "Computer Science, XYZ University",
-        experience: "1 year at ABC Company",
-    };
-
-    const companies = [
-        {
-            name: "Company 1",
-            industry: "Software",
-            size: "100-500",
-            location: "City A",
-        },
-        {
-            name: "Company 2",
-            industry: "Hardware",
-            size: "500-1000",
-            location: "City B",
-        },
-    ];
+    const {data: session} = useSession();
 
     const internships = [
         {
@@ -52,23 +29,13 @@ const Dashboard = () => {
         },
     ];
 
-
-
-    const applications = [
-        { jobId: "1", status: "Pending" },
-        { jobId: "2", status: "Accepted" },
-    ];
-
-    const premiumMembership = {
-        startDate: "2022-01-01",
-        endDate: "2022-12-31",
-        type: "Gold",
-    };
-
     if (!session)
         return (
             <div className="min-h-screen grid place-items-center w-full">
                 <span className="loading loading-ring loading-lg"></span>
+                <span className="absolute w-96 top-5 right-0">
+                    <Notification notifications={[{type: 'loading', content: 'Loading sign in session'}]}/>
+                </span>
             </div>
         );
 
@@ -77,10 +44,12 @@ const Dashboard = () => {
             <nav className="bg-green-500 p-4 flex justify-between items-center text-white">
                 <p className="text-2xl font-semibold">InternLink™</p>
                 <div className="flex gap-2">
-                    <button className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
+                    <button
+                        className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
                         <i className="fa-solid fa-bell-slash"></i>
                     </button>
-                    <button className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
+                    <button
+                        className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
                         <i
                             className={
                                 session.user
@@ -96,12 +65,12 @@ const Dashboard = () => {
                     <div className="landing-page">
                         <div className="text-center">
                             <p
-                                className={`text-gray-500 text-sm font-semibold sm:text-base`}
+                                className="text-gray-500 text-sm font-semibold sm:text-base"
                             >
                                 Shape your career with InternLink™
                             </p>
                             <h1
-                                className={`text-3xl sm:text-4xl md:text-5xl font-bold mt-3 sm:font-black`}
+                                className="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 sm:font-black"
                             >
                                 Find your dream :{" "}
                                 <span className="text-green-500">
@@ -114,7 +83,7 @@ const Dashboard = () => {
 
                 <div className="flex flex-col justify-center p-4 sm:p-6 md:p-8">
                     <h1
-                        className={`text-3xl mb-6 sm:text-4xl font-bold sm:font-black`}
+                        className="text-3xl mb-6 sm:text-4xl font-bold sm:font-black"
                     >
                         Featured companies hiring now
                     </h1>
@@ -122,7 +91,8 @@ const Dashboard = () => {
                     <div className="cards gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         <div className="custom-card">
                             <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div className="logo logo-sq-14 grid place-items-center bg-gray-800 text-white w-14 h-14 rounded-md">
+                                <div
+                                    className="logo logo-sq-14 grid place-items-center bg-gray-800 text-white w-14 h-14 rounded-md">
                                     <img
                                         className={"h-12 object-cover"}
                                         src={
@@ -151,13 +121,13 @@ const Dashboard = () => {
                                 <div className="flex px-3 flex-wrap gap-2 mt-4">
                                     <div className="ring-1 ring-green-500 badge-custom">
                                         <i
-                                            className={`fa-solid fa-gear fa-spin`}
+                                            className="fa-solid fa-gear fa-spin"
                                         ></i>
                                         Solutions
                                     </div>
 
                                     <div className="ring-1 ring-yellow-500 badge p-3 badge-warning gap-2">
-                                        <i className={`fa-solid fa-rocket`}></i>
+                                        <i className="fa-solid fa-rocket"></i>
                                         Premium
                                     </div>
                                 </div>
@@ -165,20 +135,11 @@ const Dashboard = () => {
                             <div className="bottom">
                                 <div className="border-b-2 border-gray-300 w-full mt-4"></div>
                                 <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
-                                    <Link
-                                        className={
-                                            "flex positions-link justify-between items-center"
-                                        }
-                                        href={`/intern/company/4`}
-                                    >
-                                        <span
-                                            className={`text-md font-semibold hover:underline underline-offset-1`}
-                                        >
+                                    <Link className="flex positions-link justify-between items-center" href="/intern/company?id=1">
+                                        <span className="text-md font-semibold hover:underline underline-offset-1">
                                             0 Open Positions
                                         </span>
-                                        <i
-                                            className={`fa-solid fa-chevron-right text-sm`}
-                                        ></i>
+                                        <i className="fa-solid fa-chevron-right text-sm"></i>
                                     </Link>
                                 </div>
                             </div>
@@ -186,10 +147,9 @@ const Dashboard = () => {
 
                         <div className="custom-card">
                             <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div className="logo grid place-items-center bg-orange-400 text-white w-14 h-14 rounded-md">
-                                    <i
-                                        className={`fa-brands fa-google text-2xl`}
-                                    ></i>
+                                <div
+                                    className="logo grid place-items-center bg-orange-400 text-white w-14 h-14 rounded-md">
+                                    <i className="fa-brands fa-google text-2xl"></i>
                                 </div>
                                 <div className="info">
                                     <h1 className="text-2xl font-bold">
@@ -209,20 +169,16 @@ const Dashboard = () => {
 
                                 <div className="flex px-3 flex-wrap gap-2 mt-4">
                                     <div className="ring-1 ring-green-500 badge-custom">
-                                        <i className={`fa-solid fa-cube`}></i>
+                                        <i className="fa-solid fa-cube"></i>
                                         Software
                                     </div>
                                     <div className="ring-1 ring-green-500 badge-custom">
-                                        <i
-                                            className={`fa-brands fa-hashnode`}
-                                        ></i>
+                                        <i className="fa-brands fa-hashnode"></i>
                                         Hardware
                                     </div>
 
                                     <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
-                                        <i
-                                            className={`fa-solid fa-circle-check`}
-                                        ></i>
+                                        <i className="fa-solid fa-circle-check"></i>
                                         Actively hiring
                                     </div>
                                 </div>
@@ -231,20 +187,11 @@ const Dashboard = () => {
                             <div className="bottom">
                                 <div className="border-b-2 border-gray-300 w-full mt-4"></div>
                                 <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
-                                    <Link
-                                        className={
-                                            "flex positions-link justify-between items-center"
-                                        }
-                                        href={`/intern/company/1`}
-                                    >
-                                        <span
-                                            className={`text-md font-semibold hover:underline underline-offset-1`}
-                                        >
+                                    <Link className="flex positions-link justify-between items-center"href="/intern/company?id=2">
+                                        <span className="text-md font-semibold hover:underline underline-offset-1">
                                             3 Open Positions
                                         </span>
-                                        <i
-                                            className={`fa-solid fa-chevron-right text-sm`}
-                                        ></i>
+                                        <i className="fa-solid fa-chevron-right text-sm"></i>
                                     </Link>
                                 </div>
                             </div>
@@ -252,10 +199,9 @@ const Dashboard = () => {
 
                         <div className="custom-card">
                             <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div className="logo grid place-items-center bg-primary text-white w-14 h-14 rounded-md">
-                                    <i
-                                        className={`fa-brands fa-facebook text-2xl`}
-                                    ></i>
+                                <div
+                                    className="logo grid place-items-center bg-primary text-white w-14 h-14 rounded-md">
+                                    <i className="fa-brands fa-facebook text-2xl"></i>
                                 </div>
                                 <div className="info">
                                     <h1 className="text-2xl font-bold">
@@ -275,16 +221,12 @@ const Dashboard = () => {
 
                                 <div className="flex px-3 flex-wrap gap-2 mt-4">
                                     <div className="ring-1 ring-green-500 badge-custom">
-                                        <i
-                                            className={`fa-brands fa-hashnode`}
-                                        ></i>
+                                        <i className="fa-brands fa-hashnode"></i>
                                         Hardware
                                     </div>
 
                                     <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
-                                        <i
-                                            className={`fa-solid fa-circle-check`}
-                                        ></i>
+                                        <i className="fa-solid fa-circle-check"></i>
                                         Actively hiring
                                     </div>
                                 </div>
@@ -292,20 +234,11 @@ const Dashboard = () => {
                             <div className="bottom">
                                 <div className="border-b-2 border-gray-300 w-full mt-4"></div>
                                 <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
-                                    <Link
-                                        className={
-                                            "flex positions-link justify-between items-center"
-                                        }
-                                        href={`/intern/company/2`}
-                                    >
-                                        <span
-                                            className={`text-md font-semibold hover:underline underline-offset-1`}
-                                        >
+                                    <Link className="flex positions-link justify-between items-center" href="/intern/company?id=3">
+                                        <span className="text-md font-semibold hover:underline underline-offset-1">
                                             3 Open Positions
                                         </span>
-                                        <i
-                                            className={`fa-solid fa-chevron-right text-sm`}
-                                        ></i>
+                                        <i className="fa-solid fa-chevron-right text-sm"></i>
                                     </Link>
                                 </div>
                             </div>
@@ -313,10 +246,9 @@ const Dashboard = () => {
 
                         <div className="custom-card">
                             <div className="flex px-3 pt-3 gap-4 items-center">
-                                <div className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
-                                    <i
-                                        className={`fa-brands fa-apple text-2xl`}
-                                    ></i>
+                                <div
+                                    className="logo grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
+                                    <i className="fa-brands fa-apple text-2xl"></i>
                                 </div>
                                 <div className="info">
                                     <h1 className="text-2xl font-bold">
@@ -336,16 +268,12 @@ const Dashboard = () => {
 
                                 <div className="flex px-3 flex-wrap gap-2 mt-4">
                                     <div className="ring-1 ring-green-500 badge-custom">
-                                        <i
-                                            className={`fa-solid fa-headphones`}
-                                        ></i>
+                                        <i className="fa-solid fa-headphones"></i>
                                         Music
                                     </div>
 
                                     <div className="ring-1 ring-green-500 badge p-3 badge-warning gap-2">
-                                        <i
-                                            className={`fa-solid fa-circle-check`}
-                                        ></i>
+                                        <i className="fa-solid fa-circle-check"></i>
                                         Actively hiring
                                     </div>
                                 </div>
@@ -353,20 +281,12 @@ const Dashboard = () => {
                             <div className="bottom">
                                 <div className="border-b-2 border-gray-300 w-full mt-4"></div>
                                 <div className="px-3 hover:bg-gray-200 pt-4 rounded mt-1 pb-3">
-                                    <Link
-                                        className={
-                                            "flex positions-link justify-between items-center"
-                                        }
-                                        href={`/intern/company/3`}
-                                    >
-                                        <span
-                                            className={`text-md font-semibold hover:underline underline-offset-1`}
-                                        >
+                                    <Link className="flex positions-link justify-between items-center"
+                                          href="/intern/company?id=4">
+                                        <span className="text-md font-semibold hover:underline underline-offset-1">
                                             3 Open Positions
                                         </span>
-                                        <i
-                                            className={`fa-solid fa-chevron-right text-sm`}
-                                        ></i>
+                                        <i className="fa-solid fa-chevron-right text-sm"></i>
                                     </Link>
                                 </div>
                             </div>
@@ -375,16 +295,11 @@ const Dashboard = () => {
                 </div>
 
                 <div className="flex flex-col mt-4 justify-center p-4 sm:p-6 md:p-8">
-                    <h1
-                        className={`text-3xl mb-6 sm:text-4xl font-bold sm:font-black`}
-                    >
+                    <h1 className="text-3xl mb-6 sm:text-4xl font-bold sm:font-black">
                         Trending internship opportunities
                     </h1>
 
-                    <a
-                        href={`/intern/jobs`}
-                        className="underline underline-offset-1"
-                    >
+                    <a href="/intern/jobs" className="underline underline-offset-1">
                         View all jobs
                     </a>
 
@@ -428,7 +343,7 @@ const Dashboard = () => {
                 </div>
             </main>
         </div>
-);
+    );
 };
 
 export default Dashboard;
