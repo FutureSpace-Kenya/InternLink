@@ -10,15 +10,14 @@ const Company = () => {
     const [company, setCompany] = useState({});
 
     useEffect(() => {
-        document.title = "Company x"
-        //get id from url ?id=1
-        //fetch company data
+
+        document.title = "Loading Company"
         const id = new URLSearchParams(window.location.search).get("id");
-        //fetch company data /api/company/:id
         fetch(`/api/organizations/${id}`)
             .then(response => response.json())
             .then(data => {
                 setCompany(data.organization)
+                document.title = data.organization.name
             })
             .catch(error => {
                 console.error(error)
@@ -28,7 +27,7 @@ const Company = () => {
 
 
     //if company is empty loading
-    if (Object.keys(company).length === 0) {
+    if (!company || Object.keys(company).length === 0 || company.departments === undefined) {
         return (
             <div className="overflow-hidden bg-green-100 min-h-screen">
                 <NavBar/>
