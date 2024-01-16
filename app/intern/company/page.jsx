@@ -1,9 +1,46 @@
 'use client'
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import NavBar from "app/components/NavBar";
 import VerticalTabs from "app/components/tabs/VerticalTabs";
+import Loading from "/app/loading";
+import Notification from "/app/Notification";
 
 const Company = () => {
+
+    const [company, setCompany] = useState({});
+
+    useEffect(() => {
+        document.title = "Company x"
+        //get id from url ?id=1
+        //fetch company data
+        const id = new URLSearchParams(window.location.search).get("id");
+        //fetch company data /api/company/:id
+        fetch(`/api/organizations/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                setCompany(data.organization)
+            })
+            .catch(error => {
+                console.error(error)
+            })
+
+    }, []);
+
+
+    //if company is empty loading
+    if (Object.keys(company).length === 0) {
+        return (
+            <div className="overflow-hidden bg-green-100 min-h-screen">
+                <NavBar/>
+                <div className={`bg-white p-4 sm:p-6 md:p-6`}>
+                    <Loading/>
+                </div>
+                <span className="absolute w-96 top-20 right-0">
+                    <Notification notifications={[{type: 'loading', content: 'Fetching Company data'}]}/>
+                </span>
+            </div>
+        )
+    }
 
     return (
         <div className="overflow-hidden bg-green-100 min-h-screen">
@@ -15,18 +52,16 @@ const Company = () => {
                     <div className="company flex gap-4 items-end">
 
                         <div
-                            className="logo flex items-center justify-center ring-1 ring-green-500 shadow-md text-secondary company-logo rounded-md logo-hover">
-                            <i
-                                className={`fa-brands fa-apple text-5xl`}
-                            ></i>
+                            className="logo flex items-center justify-center ring-1 ring-green-500 shadow-md text-secondary company-logo bg-gray-700 rounded-md logo-hover">
+                            <img className="h-16 object-cover" src={company.logo} alt={company.name} />
                         </div>
 
                         <div className="info">
                             <div className="name text-2xl font-semibold">
-                                Apple
+                                {company.name}
                             </div>
                             <div className="description text-sm">
-                                To make a contribution to the world by making tools for the mind that advance humankind.
+                                {company.description}
                             </div>
                         </div>
                     </div>
@@ -42,24 +77,27 @@ const Company = () => {
                             <i className="fa-solid fa-plus"></i>
                             &nbsp;Follow
                         </button>
+
                     </div>
                 </div>
 
                 <div className="flex gap-4 flex-col md:flex-row">
 
-                    <VerticalTabs />
+                    <VerticalTabs company={company}/>
 
                     <div className="image mt-4 rounded-md w-full md:w-7/12">
-                        <img className="rounded-md" src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        <img className="rounded-md" src={company.image}
                              alt=""/>
                     </div>
 
                     <div className={'mt-4 rounded-md w-full md:w-4/12 border p-4'}>
                         <div className="title text-gray-400 font-semibold uppercase text-[10px]">
-                            About Apple
+                            About {company.name}
                         </div>
                         <div className="content text-sm">
-                            Website: <a href="https://www.apple.com">https://www.apple.com</a>
+                            Website: <a href="https://www.apple.com">
+                            {company.website}
+                        </a>
                             <br/>
                         </div>
                     </div>
