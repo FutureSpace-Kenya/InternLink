@@ -13,10 +13,9 @@ const VerticalTabs = (companyProp) => {
     }, [companyProp]);
 
     //if company is empty loading
-    if (Object.keys(company).length === 0) {
+    if (Object.keys(company).length === 0 || company.departments === undefined) {
         return (
-            <div className="overflow-hidden relative bg-green-100">
-                <NavBar/>
+            <div>
                 <div className={`bg-white p-4 sm:p-6 md:p-6`}>
                     <Loading/>
                 </div>
@@ -53,7 +52,7 @@ const VerticalTabs = (companyProp) => {
                             const updatedAt = new Date(department.updatedAt).toLocaleDateString();
 
                             return (
-                                <div key={department.id} className="department bg-white shadow-sm ring-1 ring-offset-1 border ring-gray-50 rounded-lg p-4 my-4 transition hover:scale-[1.01] hover:bg-green-200">
+                                <div key={department.id} className="department bg-white shadow-sm ring-1 ring-offset-1 border ring-gray-50 rounded-lg p-4 my-4 transition hover:scale-[1.01] hover:bg-green-100">
                                     <h2 className="department-name text-2xl font-bold text-gray-800 mb-2">
                                         <i className="fas fa-building mr-2"></i>
                                         {department.name}

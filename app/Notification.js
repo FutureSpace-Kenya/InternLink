@@ -33,19 +33,21 @@ const Notification = ({notifications}) => {
     };
 
     return (
-        <div className="absolute right-4 flex flex-col gap-2">
-            {notifications.map((notification, index) => (
-                <div
-                    key={index}
-                    className={`notification flex ${notificationStyles[notification.type]}`}
-                    style={{ animationDelay: `${index * 0.5}s` }}
-                >
-                    <i className={`${notificationIcons[notification.type]} icon mr-2`}></i>
-                    <div className="text-xs">
-                        <p>{notification.content}</p>
+        <div className={`notification-container absolute top-0 left-0 w-[380px] overflow-hidden h-screen flex flex-col gap-2 ${isExpanded ? "expanded" : "collapsed"}`}>
+            <div className="absolute right-4 flex flex-col gap-2">
+                {notifications.map((notification, index) => (
+                    <div
+                        key={index}
+                        className={`notification flex ${notificationStyles[notification.type]}`}
+                        style={{animationDelay: `${index * 0.5}s`}}
+                    >
+                        <i className={`${notificationIcons[notification.type]} icon mr-2`}></i>
+                        <div className="text-xs">
+                            <p>{notification.content}</p>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 }

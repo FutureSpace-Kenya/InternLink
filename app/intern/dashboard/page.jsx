@@ -1,66 +1,30 @@
 "use client";
-import React from "react";
+import React, {useEffect} from "react";
 import {useSession} from "next-auth/react";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import Notification from "/app/Notification";
+import NavBar from "/app/components/NavBar";
+import Loading from "/app/loading";
 
 const Dashboard = () => {
     const {data: session} = useSession();
+    const [allCompanies, setAllCompanies] = React.useState([]);
 
-    const companies = [
-        {
-            id: 1,
-            logo: "https://futurespace.vercel.app/resources/FsOutline.png",
-            name: "FutureSpace",
-            description: "FutureSpace Kenya is a software development company that builds enterprise software solutions.",
-            positions: 0,
-            employees: 0,
-            services: [
-                {icon: "fas fa-cog fa-spin", name: "Solutions"},
-                {icon: "fas fa-rocket", name: "Premium"},
-            ]
-        },
-        {
-            id: 2,
-            logo: "https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA",
-            name: "Google",
-            description: "Create space for everyone to find belonging at Google.",
-            positions: 3,
-            employees: 7005,
-            services: [
-                {icon: "fas fa-cube", name: "Software"},
-                {icon: "fas fa-gamepad", name: "Google Play"},
-                {icon: "fas fa-circle-check", name: "Actively Hiring"},
-            ]
-        },
-        {
-            id: 3,
-            logo: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png",
-            name: "Facebook",
-            description: "Learn about our culture, our people, and career opportunities at the Facebook",
-            positions: 3,
-            employees: 3000,
-            services: [
-                {icon: "fas fa-cube", name: "Software"},
-                {icon: "fab fa-meta", name: "Meta Connect"},
-                {icon: "fas fa-circle-check", name: "Actively Hiring"},
-            ]
-        },
-        {
-            id: 4,
-            logo: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png",
-            name: "Apple",
-            description: "Apple is a place where extraordinary people gather to do their best work.",
-            positions: 3,
-            employees: 3000,
-            services: [
-                {icon: "fas fa-cube", name: "Software"},
-                {icon: "fas fa-headphones", name: "Apple Music"},
-                {icon: "fas fa-circle-check", name: "Actively Hiring"},
-            ]
-        }
-    ];
+    useEffect(() => {
+        document.title = "InternLink™"
+
+        fetch(`/api/organizations`)
+            .then(response => response.json())
+            .then(data => {
+                setAllCompanies(data.organizations)
+            })
+            .catch(error => {
+                console.error(error)
+            })
+
+    }, []);
+
 
     const internships = [
         {
@@ -93,27 +57,24 @@ const Dashboard = () => {
             </div>
         );
     }
+
+    if (!allCompanies || allCompanies.length === 0) {
+        return (
+            <div className="overflow-hidden bg-green-100 min-h-screen">
+                <NavBar/>
+                <div className={`bg-white p-4 sm:p-6 md:p-6`}>
+                    <Loading/>
+                </div>
+                <span className="absolute w-96 top-20 right-0">
+                    <Notification notifications={[{type: 'loading', content: 'Fetching Company data'}]}/>
+                </span>
+            </div>
+        )
+    }
+
     return (
         <div className="min-h-screen bg-gray-100">
-            <nav className="bg-green-500 p-4 flex justify-between items-center text-white">
-                <p className="text-2xl font-semibold">InternLink™</p>
-                <div className="flex gap-2">
-                    <button
-                        className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
-                        <i className="fa-solid fa-bell-slash"></i>
-                    </button>
-                    <button
-                        className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
-                        <i
-                            className={
-                                session.user
-                                    ? "fa-solid fa-user"
-                                    : "fas fa-sign-in-alt"
-                            }
-                        ></i>
-                    </button>
-                </div>
-            </nav>
+            <NavBar/>
             <main className="">
                 <div className="w-full bg-green-100 grid grid-cols-1 place-items-center h-72 gap-6">
                     <div className="landing-page">
@@ -144,12 +105,12 @@ const Dashboard = () => {
 
                     <div className="cards gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
-                        {companies.map((company, index) => (
+                        {allCompanies.map((company, index) => (
                             <div key={index} className="custom-card">
                                 <div className="flex px-3 pt-3 gap-4 items-center">
                                     <div
                                         className="logo logo-sq-14 grid place-items-center bg-gray-800 text-white w-14 h-14 rounded-md">
-                                        <img className={"h-12 object-cover"} src={company.logo} alt={company.name}/>
+                                        <img className={"h-full rounded-md -m-2 object-cover"} src={company.logo} alt={company.name}/>
                                     </div>
                                     <div className="info">
                                         <h1 className="text-2xl font-bold">{company.name}</h1>
@@ -162,7 +123,7 @@ const Dashboard = () => {
                                     </div>
 
                                     <div className="flex px-3 flex-wrap gap-2 mt-4">
-                                        {company.services.map((service, serviceIndex) => (
+                                        {JSON.parse(company.services).map((service, serviceIndex) => (
                                             <div key={serviceIndex} className="ring-1 ring-green-500 badge-custom">
                                                 <i className={service.icon}></i>
                                                 {service.name}
