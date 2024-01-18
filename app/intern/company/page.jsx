@@ -18,6 +18,7 @@ const Company = () => {
             .then(data => {
                 setCompany(data.organization)
                 document.title = data.organization.name
+                document.querySelector('meta[name="description"]').setAttribute("content", data.organization.description)
             })
             .catch(error => {
                 console.error(error)
