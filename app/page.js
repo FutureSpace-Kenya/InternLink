@@ -13,8 +13,9 @@ export default function Home() {
         canvas.height = window.innerHeight;
 
         let stars = [], // Array that contains the stars
-            FPS = 60, // Frames per second
+            FPS = 120, // Frames per second
             x = 100, // Number of stars
+            resolution = window.devicePixelRatio || 1,
             mouse = {
                 x: 0,
                 y: 0
@@ -36,17 +37,17 @@ export default function Home() {
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             ctx.globalCompositeOperation = "lighter";
+
 
             for (let i = 0, x = stars.length; i < x; i++) {
                 let s = stars[i];
 
-                ctx.fillStyle = 'green';
+                ctx.fillStyle = 'blue';
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
                 ctx.fill();
-                ctx.fillStyle = 'green';
+                ctx.fillStyle = 'blue';
                 ctx.stroke();
             }
 
@@ -64,7 +65,7 @@ export default function Home() {
                 }
             }
             ctx.lineWidth = 0.05;
-            ctx.strokeStyle = 'green';
+            ctx.strokeStyle = 'blue';
             ctx.stroke();
         }
 
@@ -96,8 +97,9 @@ export default function Home() {
         }
 
         function mouseMoveHandler(e) {
-            mouse.x = e.screenX;
-            mouse.y = e.screenY;
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
             console.log(mouse);
         }
 
@@ -123,7 +125,7 @@ export default function Home() {
     return (
         <>
             <main className="flex min-h-screen flex-col items-center justify-center">
-                <section className="absolute bg-white bottom-2 filter h-full md:w-full object-cover">
+                <section className="absolute bg-white bottom-2 filter h-full overflow-hidden md:w-full object-cover">
                     <canvas id="canvas"></canvas>
                 </section>
                 <div className="absolute pointer-events-none custom-gradient top-0 left-0 w-full h-full">
