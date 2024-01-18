@@ -17,7 +17,6 @@ const NavBar = () => {
     <nav className="bg-green-500 p-4 flex justify-between items-center text-white">
       <p className="text-2xl font-semibold">InternLink™</p>
       <div className="flex gap-2 items-center">
-        <Link href="/intern/dashboard">Home</Link>
         <button className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
           <i className="fa-solid fa-bell-slash"></i>
         </button>
