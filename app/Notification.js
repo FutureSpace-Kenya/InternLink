@@ -33,7 +33,7 @@ const Notification = ({notifications}) => {
     };
 
     return (
-        <div className={`notification-container absolute top-0 left-0 w-[380px] overflow-hidden h-screen flex flex-col gap-2 ${isExpanded ? "expanded" : "collapsed"}`}>
+        <div className={`notification-container pointer-events-none absolute top-0 left-0 w-[380px] overflow-hidden h-screen flex flex-col gap-2 ${isExpanded ? "expanded" : "collapsed"}`}>
             <div className="absolute right-4 flex flex-col gap-2">
                 {notifications.map((notification, index) => (
                     <div
