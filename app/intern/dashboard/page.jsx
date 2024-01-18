@@ -184,7 +184,7 @@ const Dashboard = () => {
                                             Save
                                         </Link>
                                         <Link className="btn ring-1 ring-offset-1 ring-secondary btn-sm btn-primary"
-                                              href={'/intern/apply/' + internship.id}>
+                                              href={'/intern/apply?internship=' + internship.id}>
                                             Apply
                                         </Link>
                                     </div>

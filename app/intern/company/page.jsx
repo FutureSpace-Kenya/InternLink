@@ -51,8 +51,8 @@ const Company = () => {
                     <div className="company flex gap-4 items-end">
 
                         <div
-                            className="logo flex items-center justify-center ring-1 ring-green-500 shadow-md text-secondary company-logo bg-gray-700 rounded-md logo-hover">
-                            <img className="h-16 object-cover" src={company.logo} alt={company.name} />
+                            className="logo flex overflow-hidden items-center justify-center ring-1 ring-green-500 shadow-md text-secondary company-logo bg-gray-700 rounded-md logo-hover">
+                            <img className="h-20 object-cover" src={company.logo} alt={company.name} />
                         </div>
 
                         <div className="info">

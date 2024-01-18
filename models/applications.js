@@ -47,18 +47,14 @@ const Applications = sequelize.define('Application', {
     },
     ResumeLink: {
         type: DataTypes.STRING,
-        allowNull: true // Set to false if mandatory
+        allowNull: true
     },
     CoverLetter: {
         type: DataTypes.TEXT,
-        allowNull: true // Set to false if mandatory
+        allowNull: true
     },
 }, {
     timestamps: false
 });
-
-// Applications.belongsTo(User, { foreignKey: 'UserID' });
-// Applications.belongsTo(Organization, { foreignKey: 'OrganizationID' });
-// Applications.belongsTo(Job, { foreignKey: 'JobID' });
 
 module.exports = Applications;
