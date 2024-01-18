@@ -128,7 +128,7 @@ export default function Home() {
                 <section className="absolute opacity-40 sm:opacity-70 bg-white bottom-2 filter h-full overflow-hidden md:w-full object-cover">
                     <canvas id="canvas"></canvas>
                 </section>
-                <div className="absolute pointer-events-none custom-gradient top-0 left-0 w-full h-full">
+                <div className="absolute custom-gradient top-0 left-0 w-full h-full">
 
                 </div>
                 <div className="flex bg-student w-fit m-2 mb-8 relative flex-col items-center">
