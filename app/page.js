@@ -1,16 +1,135 @@
-import React from 'react'
+'use client'
+
+import React, {useEffect} from 'react'
 import LoginButton from "./components/LoginButton";
 
 export default function Home() {
+
+    useEffect(() => {
+        const canvas = document.getElementById("canvas"),
+            ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let stars = [], // Array that contains the stars
+            FPS = 60, // Frames per second
+            x = 100, // Number of stars
+            mouse = {
+                x: 0,
+                y: 0
+            };  // mouse location
+
+        // Push stars to array
+
+        for (let i = 0; i < x; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() + 1,
+                vx: Math.floor(Math.random() * 50) - 25,
+                vy: Math.floor(Math.random() * 50) - 25
+            });
+        }
+
+        // Draw the scene
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.globalCompositeOperation = "lighter";
+
+            for (let i = 0, x = stars.length; i < x; i++) {
+                let s = stars[i];
+
+                ctx.fillStyle = 'green';
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.fillStyle = 'green';
+                ctx.stroke();
+            }
+
+            ctx.beginPath();
+            for (let i = 0, x = stars.length; i < x; i++) {
+                let starI = stars[i];
+                ctx.moveTo(starI.x, starI.y);
+                if (distance(mouse, starI) < 150) ctx.lineTo(mouse.x, mouse.y);
+                for (let j = 0, x = stars.length; j < x; j++) {
+                    let starII = stars[j];
+                    if (distance(starI, starII) < 150) {
+                        //ctx.globalAlpha = (1 / 150 * distance(starI, starII).toFixed(1));
+                        ctx.lineTo(starII.x, starII.y);
+                    }
+                }
+            }
+            ctx.lineWidth = 0.05;
+            ctx.strokeStyle = 'green';
+            ctx.stroke();
+        }
+
+        function distance(point1, point2) {
+            let xs = 0;
+            let ys = 0;
+
+            xs = point2.x - point1.x;
+            xs = xs * xs;
+
+            ys = point2.y - point1.y;
+            ys = ys * ys;
+
+            return Math.sqrt(xs + ys);
+        }
+
+        // Update star locations
+
+        function update() {
+            for (let i = 0, x = stars.length; i < x; i++) {
+                let s = stars[i];
+
+                s.x += s.vx / FPS;
+                s.y += s.vy / FPS;
+
+                if (s.x < 0 || s.x > canvas.width) s.vx = -s.vx;
+                if (s.y < 0 || s.y > canvas.height) s.vy = -s.vy;
+            }
+        }
+
+        function mouseMoveHandler(e) {
+            mouse.x = e.screenX;
+            mouse.y = e.screenY;
+            console.log(mouse);
+        }
+
+        canvas.addEventListener('mousemove', mouseMoveHandler);
+
+        // Update and draw
+
+        function tick() {
+            draw();
+            update();
+            requestAnimationFrame(tick);
+        }
+
+        tick();
+
+        // Return a cleanup function to remove the event listener
+        return () => {
+            canvas.removeEventListener('mousemove', mouseMoveHandler);
+        };
+    }, []);
+
+
     return (
         <>
             <main className="flex min-h-screen flex-col items-center justify-center">
-                <img className="absolute blur-[1px] bottom-2 filter backdrop-filter h-full md:w-full object-cover"
-                     src="/student.jpg" alt="Student"/>
-                <div className="absolute custom-gradient top-0 left-0 w-full h-full">
+                <section className="absolute bg-white bottom-2 filter h-full md:w-full object-cover">
+                    <canvas id="canvas"></canvas>
+                </section>
+                <div className="absolute pointer-events-none custom-gradient top-0 left-0 w-full h-full">
 
                 </div>
-                <div className="flex bg-student w-full m-2 relative flex-col items-center">
+                <div className="flex bg-student w-fit m-2 relative flex-col items-center">
                     <div className="w-fit relative flex flex-col items-center">
                         <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold">
                      <span className="text-green-400">
@@ -18,7 +137,8 @@ export default function Home() {
                             </span>
                             Link&trade;
                         </h1>
-                        <div className="absolute top-[45px] sm:top-[55px] right-0 mb-4 text-xs md:text-sm font-semibold text-orange-800">
+                        <div
+                            className="absolute top-[45px] sm:top-[55px] right-0 mb-4 text-xs md:text-sm font-semibold text-orange-800">
                             By <a className={'text-blue-900'} href="https://futurespace.vercel.app">FutureSpace</a>
                         </div>
                     </div>
@@ -68,7 +188,8 @@ export default function Home() {
                 </div>
 
 
-                <div className="left text-green-800 flex items-center justify-center pt-4 gap-2 sm:gap-6 w-full p-4 sm:w-1/2">
+                <div
+                    className="left text-green-800 flex items-center justify-center pt-4 gap-2 sm:gap-6 w-full p-4 sm:w-1/2">
 
                     <div className="right flex sm:mt-10 flex-col gap-2 sm:gap-6">
                         <div className="custom-c-mod relative">
@@ -96,10 +217,10 @@ export default function Home() {
                         </div>
 
                         <div className="custom-c relative">
-                        <div
+                            <div
                                 className="cicle grid place-items-center  from-green-700 to-transparent rounded-full w-20 h-20">
-                            <i className="fa-solid text-3xl fa-rocket"></i>
-                        </div>
+                                <i className="fa-solid text-3xl fa-rocket"></i>
+                            </div>
                             <svg className="w-24 top-6 absolute h-24">
                                 <defs>
                                     <linearGradient id="gradientStroke2" x1="0%" y1="100%" x2="0%" y2="0%">
