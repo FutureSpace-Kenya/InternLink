@@ -109,8 +109,8 @@ const Dashboard = () => {
                             <div key={index} className="custom-card">
                                 <div className="flex px-3 pt-3 gap-4 items-center">
                                     <div
-                                        className="logo logo-sq-14 grid place-items-center bg-gray-800 text-white w-14 h-14 rounded-md">
-                                        <img className={"h-full rounded-md -m-2 object-cover"} src={company.logo} alt={company.name}/>
+                                        className="logo ring-1 overflow-hidden ring-offset-2 ring-green-400 logo-sq-14 grid place-items-center bg-green-500 text-white w-14 h-14 rounded-md">
+                                        <img className={"h-14 object-cover object-top"} src={company.logo} alt={company.name}/>
                                     </div>
                                     <div className="info">
                                         <h1 className="text-2xl font-bold">{company.name}</h1>
@@ -184,7 +184,7 @@ const Dashboard = () => {
                                             Save
                                         </Link>
                                         <Link className="btn ring-1 ring-offset-1 ring-secondary btn-sm btn-primary"
-                                              href={'/intern/apply/' + internship.id}>
+                                              href={'/intern/apply?internship=' + internship.id}>
                                             Apply
                                         </Link>
                                     </div>
