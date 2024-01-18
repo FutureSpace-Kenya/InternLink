@@ -125,22 +125,22 @@ export default function Home() {
     return (
         <>
             <main className="flex min-h-screen flex-col items-center justify-center">
-                <section className="absolute bg-white bottom-2 filter h-full overflow-hidden md:w-full object-cover">
+                <section className="absolute opacity-40 sm:opacity-70 bg-white bottom-2 filter h-full overflow-hidden md:w-full object-cover">
                     <canvas id="canvas"></canvas>
                 </section>
                 <div className="absolute pointer-events-none custom-gradient top-0 left-0 w-full h-full">
 
                 </div>
-                <div className="flex bg-student w-fit m-2 relative flex-col items-center">
+                <div className="flex bg-student w-fit m-2 mb-8 relative flex-col items-center">
                     <div className="w-fit relative flex flex-col items-center">
                         <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold">
-                     <span className="text-green-400">
+                            <span className="text-green-400">
                                  Intern
                             </span>
                             Link&trade;
                         </h1>
                         <div
-                            className="absolute top-[45px] sm:top-[55px] right-0 mb-4 text-xs md:text-sm font-semibold text-orange-800">
+                            className="absolute top-[40px] sm:top-[55px] right-0 mb-4 text-xs md:text-sm font-semibold text-orange-800">
                             By <a className={'text-blue-900'} href="https://futurespace.vercel.app">FutureSpace</a>
                         </div>
                     </div>
