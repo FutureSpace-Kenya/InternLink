@@ -1,6 +1,6 @@
 export default function SamplePage() {
   return (
-    <div className="py-3 bg-blue-900">
+    <div className="py-3 bg-blue-900 p-5">
       {/* Header */}
       <div className="container px-4 mx-auto">
         <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
@@ -28,7 +28,7 @@ export default function SamplePage() {
         <div className="flex flex-wrap w-full sm:w-2/3 px-4">
           <div className="w-full sm px-3 mb-3 sm:mb-0">
             <input
-              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
+              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
               placeholder="Capital Square"
             />
           </div>
@@ -43,7 +43,7 @@ export default function SamplePage() {
         <div className="flex flex-wrap w-full sm:w-2/3 px-4">
           <div className="w-full sm px-3 mb-3 sm:mb-0">
             <input
-              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
+              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
               placeholder="Ex : capitalsquare@gmail.com"
             />
           </div>
@@ -64,12 +64,58 @@ export default function SamplePage() {
                 <img src="" alt="Upload Icon" />
               </div>
               <p>
-                <span className="text-blue-500">Click to upload file</span> or
-                drag and drop file here
-                <span className="block text-xs text-gray-400">
+                <span className="text-blue-500">Click to upload file</span>{" "}
+                <span className="text-s text-gray-200">
+                  or drag and drop file here{" "}
+                </span>
+                <span className="block text-xs text-gray-200">
                   PNG, JPG, GIF up to 10MB{" "}
                 </span>
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Departments */}
+
+      <div className="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
+        <div className="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
+          <p className="text-sm font-medium text-gray-100">Departments</p>
+        </div>
+        <div className="flex flex-wrap w-full sm:w-2/3 px-4">
+          <div className="w-full sm px-3 mb-3 sm:mb-0">
+            {/* <input
+              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
+            /> */}
+
+            <div>
+              <div className="dropdown dropdown-bottom">
+                <div tabIndex={0} role="button" className="btn m-1">
+                  Select Departments
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <a>Finance</a>
+                  </li>
+                  <li>
+                    <a>Sales</a>
+                  </li>
+                  <li>
+                    <a>Marketing</a>
+                  </li>
+                  <li>
+                    <a>Software Eng.</a>
+                  </li>
+                </ul>
+              </div>
+              <input
+                className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
+                placeholder="Ex : capitalsquare@gmail.com"
+              />
             </div>
           </div>
         </div>
@@ -83,7 +129,7 @@ export default function SamplePage() {
         <div className="flex flex-wrap w-full sm:w-2/3 px-4">
           <div className="w-full sm px-3 mb-3 sm:mb-0">
             <input
-              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
+              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
               placeholder="Ex : Capital Square is a company that focuses on the development of the latest technology in the world"
             />
           </div>
@@ -98,7 +144,7 @@ export default function SamplePage() {
         <div className="flex flex-wrap w-full sm:w-2/3 px-4">
           <div className="w-full sm px-3 mb-3 sm:mb-0">
             <input
-              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
+              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
               placeholder="Ex : capital-square.com"
             />
           </div>
@@ -113,7 +159,7 @@ export default function SamplePage() {
         <div className="flex flex-wrap w-full sm:w-2/3 px-4">
           <div className="w-full sm px-3 mb-3 sm:mb-0">
             <input
-              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
+              className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
               placeholder="Ex : capitalsquare@gmail.com"
             />
           </div>
