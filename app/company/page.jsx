@@ -1,3 +1,7 @@
+"use client";
+
+import React, { useState } from "react";
+
 export default function SamplePage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -6,7 +10,7 @@ export default function SamplePage() {
   const [overview, setOverview] = useState("");
   const [website, setWebsite] = useState("");
   const [bio, setBio] = useState("");
-  const [errors, setErrors] = useState({});
+  const [error, setError] = useState("");
 
   return (
     <div className="py-3 bg-gunmetal p-5">
@@ -41,9 +45,18 @@ export default function SamplePage() {
               <input
                 className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
                 placeholder="Capital Square"
+                onChange={(e) => {
+                  setName(e.target.value);
+                  if (e.target.value.length < 3) {
+                    setError("Name must be at least 3 characters long");
+                  } else {
+                    setError("");
+                  }
+                }}
               />
             </div>
           </div>
+          {error && <p className="text-sm font-medium text-red-500">{error}</p>}
         </div>
 
         {/* Email */}
@@ -56,9 +69,18 @@ export default function SamplePage() {
               <input
                 className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
                 placeholder="Ex : capitalsquare@gmail.com"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (e.target.value.length < 3) {
+                    setError("Email must be at least 3 characters long");
+                  } else {
+                    setError("");
+                  }
+                }}
               />
             </div>
           </div>
+          {error && <p className="text-sm font-medium text-red-500">{error}</p>}
         </div>
 
         {/* Photo */}
@@ -142,9 +164,18 @@ export default function SamplePage() {
               <input
                 className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
                 placeholder="Ex : Capital Square is a company that focuses on the development of the latest technology in the world"
+                onChange={(e) => {
+                  setOverview(e.target.value);
+                  if (e.target.value.length < 3) {
+                    setError("Overview must be at least 3 characters long");
+                  } else {
+                    setError("");
+                  }
+                }}
               />
             </div>
           </div>
+          {error && <p className="text-sm font-medium text-red-500">{error}</p>}
         </div>
         {/* Website */}
 
@@ -160,6 +191,7 @@ export default function SamplePage() {
               />
             </div>
           </div>
+          {error && <p className="text-sm font-medium text-red-500">{error}</p>}
         </div>
 
         {/* Bio */}
@@ -172,9 +204,18 @@ export default function SamplePage() {
               <input
                 className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
                 placeholder="Ex : capitalsquare@gmail.com"
+                onChange={(e) => {
+                  setBio(e.target.value);
+                  if (e.target.value.length < 3) {
+                    setError("Bio must be at least 3 characters long");
+                  } else {
+                    setError("");
+                  }
+                }}
               />
             </div>
           </div>
+          {error && <p className="text-sm font-medium text-red-500">{error}</p>}
         </div>
       </form>
     </div>
