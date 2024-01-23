@@ -17,12 +17,14 @@ export default function SamplePage() {
   const [updated, setUpdated] = useState(false);
   const updateProfile = () => {
     console.log("Updated");
-    setTimeout(() => {
-      setUpdated(true);
-    }, 1000);
-    setTimeout(() => {
-      setUpdated(false);
-    }, 3000);
+    // setTimeout(() => {
+    //   setUpdated(true);
+    // }, 1000);
+    // setTimeout(() => {
+    //   setUpdated(false);
+    // }, 3000);
+
+    // Will implement intervals instead
   };
 
   const validatedPassword = "12345";
@@ -346,12 +348,12 @@ export default function SamplePage() {
                   type="password"
                   className="block py-4 px-3 w-full text-sm text-gray-50 placeholder-gray-50 placeholder-opacity-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
                   placeholder="Confirm Password"
-                  onChange={(e) => {
-                    setPassword((e) => e.target.value);
-                    if (password !== validatedPassword) {
-                      setError("Invalid Password");
-                    }
-                  }}
+                  // onChange={(e) => {
+                  //   setPassword((e) => e.target.value);
+                  //   if (password !== validatedPassword) {
+                  //     setError("Invalid Password");
+                  //   }
+                  // }}
                 />
               </div>
             </div>
@@ -361,7 +363,7 @@ export default function SamplePage() {
           </div>
         ) : null}
       </form>
-      {deleteAccount ? <DeleteAccount /> : null}
+      {/* {deleteAccount ? <DeleteAccount /> : null} */}
     </div>
   );
 }
