@@ -27,7 +27,6 @@ const Company = () => {
     }, []);
 
 
-    //if company is empty loading
     if (!company || Object.keys(company).length === 0 || company.departments === undefined) {
         return (
             <div className="overflow-hidden bg-green-100 min-h-screen">
@@ -64,6 +63,7 @@ const Company = () => {
                                 {company.description}
                             </div>
                         </div>
+                        
                     </div>
 
                     <div className="actions flex gap-2">

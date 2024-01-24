@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db/sequelize');
-const Job = require('./job'); // Import the Job model
+const Job = require('./job');
 
 class Department extends Model {
   static associate(models) {
