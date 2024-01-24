@@ -23,7 +23,7 @@ export async function GET(request, { params }) {
 
 export async function PATCH (request, { params }) {
     try {
-      const { id } = params;
+      const { jobId: id } = params;
   
       // Find the job with the specified ID
       const job = await Job.findByPk(id);
@@ -54,7 +54,7 @@ export async function PATCH (request, { params }) {
 
 export async function DELETE (request, { params }) {
     try {
-      const { id } = params;
+      const { jobId: id } = params;
   
       // Find the job with the specified ID
       const job = await Job.findByPk(id);
