@@ -12,7 +12,6 @@ const VerticalTabs = (companyProp) => {
         setCompany(companyProp.company);
     }, [companyProp]);
 
-    //if company is empty loading
     if (Object.keys(company).length === 0 || company.departments === undefined) {
         return (
             <div>
@@ -41,6 +40,7 @@ const VerticalTabs = (companyProp) => {
             </div>
 
             <div className="w-full rounded-md sm:p-4 p-1">
+
                 {selectedTab === "1" &&
 
                     <div>

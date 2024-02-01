@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         customGray: "#ACADBC",
+        gunmetal: "#293241",
       },
     },
   },
