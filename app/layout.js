@@ -34,10 +34,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme={"winter"}>
       <body className={inter.className}>
-        <NextAuthProvider>
-          {children}
-          <script src="/icons/fontawesome.js" crossOrigin="anonymous"></script>
-        </NextAuthProvider>
+      <NextAuthProvider>
+        {children}
+        <script src="/icons/fontawesome.js" crossOrigin="anonymous"></script>
+      </NextAuthProvider>
       </body>
     </html>
   );

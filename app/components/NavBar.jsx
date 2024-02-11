@@ -23,10 +23,15 @@ const NavBar = () => {
                     <i className="fa-solid fa-bell-slash"></i>
                 </button>
                 <button
-                    className="text-white bg-green-700 btn ring-1 ring-gray-100 ring-offset-1 btn-circle btn-ghost btn-sm">
+                    className="text-white bg-green-700 btn ring-1 ring-green-100 ring-offset-1 w-8 h-8 sm:w-auto rounded-full btn-ghost btn-sm">
                     <i
                         className={session.user ? "fa-solid fa-user" : "fas fa-sign-in-alt"}
-                    ></i>
+                    >
+
+                    </i>
+                  <span className={'hidden sm:inline'}>
+                    Profile
+                  </span>
                 </button>
             </div>
         </nav>
