@@ -11,6 +11,7 @@
     "raccoon": "git add . && git commit -m 'Push to raccoon' && git push --set-upstream origin Racoon"
   },
   "dependencies": {
+    "axios": "^1.6.5",
     "bcrypt": "^5.1.1",
     "gsap": "^3.12.4",
     "mysql2": "^3.6.5",
