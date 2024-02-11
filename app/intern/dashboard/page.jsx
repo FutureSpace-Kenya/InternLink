@@ -28,7 +28,7 @@ const Dashboard = () => {
     fetch(`/api/jobs`)
       .then(response => response.json())
       .then(data => {
-        setInternships(data.jobs);
+        setInternships(data.jobsWithDetails);
       })
       .catch(error => {
         console.error(error);
@@ -155,25 +155,25 @@ const Dashboard = () => {
                   <div className="start flex flex-col sm:flex-row gap-4 justify-center">
                     <div
                       className="logo logo-sq-14 grid place-items-center bg-secondary text-white w-14 h-14 rounded-md">
-                      <img className={"h-12 object-cover"} src={internship.logo}
-                           alt={internship.company} />
+                      <img className={"h-12 object-cover"} src={internship.companyLogo}
+                           alt={internship.companyName} />
                     </div>
                     <div className="info flex flex-col gap-1">
                       <h1 className="text-2xl font-bold">{internship.description}</h1>
                       <div className="text-[1rem] text-gray-500 flex flex-wrap gap-2 font-medium">
                         <p className="text-gray-800 font-bold">{internship.skills}</p>
                         |<p className="">{internship.status}</p>|
-                        <p className="">{internship.id}</p>|
+                        <p className="">{internship.companyName}</p>|
                         <p className="">{formatDistanceToNow(new Date(internship.createdAt))} ago</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="button-container flex gap-3">
-                    <Link className="btn btn-sm ring-1 ring-offset-1 btn-outline" href={""}>
+                    <Link className="btn rounded-md btn-sm ring-1 ring-offset-1 btn-outline" href={""}>
                       Save
                     </Link>
-                    <Link className="btn ring-1 ring-offset-1 ring-secondary btn-sm btn-primary"
+                    <Link className="btn rounded-md ring-1 ring-offset-1 ring-secondary btn-sm btn-primary"
                           href={"/intern/apply?internship=" + internship.id}>
                       Apply
                     </Link>

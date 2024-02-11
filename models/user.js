@@ -40,7 +40,9 @@ const User = sequelize.define('User', {
         allowNull: false
     },
 }, {
-  timestamps: false
+  timestamps: false,
+    tableName: 'Users',
+    freezeTableName: true,
 });
 
 const InternProfile = sequelize.define('InternProfile', {
@@ -63,7 +65,8 @@ const InternProfile = sequelize.define('InternProfile', {
     PhoneNumber: DataTypes.STRING,
     IdNumber: DataTypes.STRING,
 }, {
-  timestamps: false
+    timestamps: false,
+    freezeTableName: true,
 });
 
 InternProfile.belongsTo(User, {foreignKey: 'UserID'});

@@ -1,19 +1,26 @@
 import {NextResponse} from "next/server";
-import User from '/models/user';
+const { User } = require('/models/user');
 
 export async function GET(request, {params}) {
     try {
-        const {userId: id} = params;
+        const { userId: id } = params;
 
-        // Find the user with the specified ID
-        const user = await User.findByPk(id);
-
-        // Check if the user was found
-        if (!user) {
-            return NextResponse.json({message: "User not found"})
+        let user;
+        if (id.includes('@')) {
+            user = await User.findOne({ where: { Email: id } });
+        } else {
+            user = await User.findByPk(id);
         }
 
-        return NextResponse.json({message: "Fetched user successfully", user});
+        if (!user) {
+            return NextResponse.json({ message: "User not found" });
+        }
+
+        //remove the password from the user object
+        user = user.get({ plain: true });
+        delete user.Password;
+
+        return NextResponse.json({ message: "Fetched user successfully", user });
     } catch (error) {
         console.error(error);
         return NextResponse.json({message: "Error fetching user", error})
