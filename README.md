@@ -1,4 +1,6 @@
 # Internlink
+![image](https://github.com/FutureSpace-Kenya/InternLink/assets/108453222/7112d798-0340-43d5-bd01-c21835565dc1)
+
 
 InternLink streamlines the journey for students to secure internships and attachments. Our platform simplifies the application process, enabling students to effortlessly explore and apply for opportunities. Simultaneously, it empowers employers to effortlessly discover and recruit top talent for their internship programs and attachment roles. With InternLink, connecting the potential of tomorrow with the innovations of today just got easier.
 
