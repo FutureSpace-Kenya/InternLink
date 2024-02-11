@@ -23,7 +23,7 @@ export async function GET(request, { params }) {
 
 export async function PATCH (request, {params}) {
     try {
-        const { id } = params;
+        const { organizationId: id } = params;
 
         // Find the organization with the specified ID
         const organization = await Organization.findByPk(id);
@@ -53,7 +53,7 @@ export async function PATCH (request, {params}) {
 
 export async function DELETE(request, { params }) {
     try {
-        const { id } = params;
+        const { organizationId: id } = params;
 
         // Find the organization with the specified ID
         const organization = await Organization.findByPk(id);

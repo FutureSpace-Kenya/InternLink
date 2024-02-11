@@ -23,7 +23,7 @@ export async function GET(request, { params }) {
 
 export async function PATCH (request, {params}) {
     try {
-        const { id } = params;
+        const { departmentId: id } = params;
 
         // Find the department with the specified ID
         const department = await Department.findByPk(id);
@@ -52,7 +52,7 @@ export async function PATCH (request, {params}) {
 
 export async function DELETE(request, { params }) {
     try {
-        const { id } = params;
+        const { departmentId: id } = params;
 
         // Find the department with the specified ID
         const department = await Department.findByPk(id);
