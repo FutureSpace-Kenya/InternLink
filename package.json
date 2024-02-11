@@ -11,11 +11,10 @@
     "raccoon": "git add . && git commit -m 'Push to raccoon' && git push --set-upstream origin Racoon"
   },
   "dependencies": {
-    "axios": "^1.6.5",
     "bcrypt": "^5.1.1",
     "gsap": "^3.12.4",
     "mysql2": "^3.6.5",
-    "next": "13.3.4",
+    "next": "14.0.3",
     "next-auth": "^4.24.5",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
@@ -31,8 +30,7 @@
   "devDependencies": {
     "@types/react": "18.2.45",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
-    "@typescript-eslint/parser": "^6.20.0",
-    "@typescript-eslint/scope-manager": "^6.20.0",
+    "@typescript-eslint/parser": "^6.18.1",
     "autoprefixer": "^10.0.1",
     "daisyui": "^4.4.19",
     "eslint": "8.56.0",
