@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import Applications from "../../../../../models/applications"
+import Applications from "/models/applications"
 
 export async function GET(request, { params }) {
     try {
