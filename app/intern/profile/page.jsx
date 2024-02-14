@@ -8,15 +8,6 @@ const InternProfile = () => {
 
   const { data: session } = useSession();
   const [intern, setIntern] = useState({});
-  //{
-  //     "UserID": 6,
-  //     "Username": "tomsteve187@gmail.com",
-  //     "Email": "tomsteve187@gmail.com",
-  //     "UserType": "Intern",
-  //     "ProfileCreatedDate": "2023-12-23T16:43:55.197Z",
-  //     "FirstName": "Steve",
-  //     "SecondName": "Tom"
-  // }
 
   useEffect(() => {
     document.title = "Edit Profile | InternLink™";
