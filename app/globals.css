@@ -190,6 +190,7 @@ h5 {
     height: 80px !important;
     width: 80px !important;
     aspect-ratio: 1/1 !important;
+    @apply grid place-items-center;
 }
 
 .logo-hover{
