@@ -6,23 +6,7 @@ import TypewriterEffect from "/app/components/TypewriterEffect";
 
 export default function Home() {
 
-    const [type, setType] = useState('Attachment');
-    const [index, setIndex] = useState(0);
     const types = ['Attachments', 'Internships', 'Opportunities'];
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setIndex((prevIndex) => (prevIndex + 1) % types.length);
-        }, 1500);
-
-        return () => {
-            clearInterval(timer);
-        };
-    }, []);
-
-    useEffect(() => {
-        setType(types[index]);
-    }, [index]);
 
     useEffect(() => {
         const canvas = document.getElementById("canvas"),

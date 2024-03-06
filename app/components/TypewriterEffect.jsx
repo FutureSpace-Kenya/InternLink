@@ -40,7 +40,7 @@ const TypewriterEffect = ({ types }) => {
 
     return (
         <span>
-      {`${types[index].substring(0, subIndex)}${blink ? '.' : '...'}`}
+      {`${types[index].substring(0, subIndex)}${blink ? '|' : ' '}`}
     </span>
     );
 };
