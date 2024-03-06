@@ -14,7 +14,7 @@ const Dashboard = () => {
     const { data: session } = useSession();
     const [allCompanies, setAllCompanies] = React.useState([]);
     const [internships, setInternships] = React.useState([]);
-    const types = ["Attachments", "Internships", "Opportunities"];
+    const types = ["attachments", "internships", "opportunities"];
 
     useEffect(() => {
         document.title = "InternLink™";

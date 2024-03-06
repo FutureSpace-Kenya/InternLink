@@ -6,7 +6,7 @@ import TypewriterEffect from "/app/components/TypewriterEffect";
 
 export default function Home() {
 
-    const types = ['Attachments', 'Internships', 'Opportunities'];
+    const types = ['attachments', 'internships', 'opportunities'];
 
     useEffect(() => {
         const canvas = document.getElementById("canvas"),
