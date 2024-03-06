@@ -1,9 +1,12 @@
 'use client'
 
-import React, {useEffect} from 'react'
+import React, { useEffect, useState } from "react";
 import LoginButton from "./components/LoginButton";
+import TypewriterEffect from "/app/components/TypewriterEffect";
 
 export default function Home() {
+
+    const types = ['Attachments', 'Internships', 'Opportunities'];
 
     useEffect(() => {
         const canvas = document.getElementById("canvas"),
@@ -121,11 +124,10 @@ export default function Home() {
         };
     }, []);
 
-
     return (
         <>
             <main className="flex min-h-screen flex-col items-center justify-center">
-                <section className="absolute opacity-40 sm:opacity-70 bg-white bottom-2 filter h-full overflow-hidden md:w-full object-cover">
+                <section className="absolute opacity-40 sm:opacity-50 bg-white bottom-2 filter h-full overflow-hidden md:w-full object-cover">
                     <canvas id="canvas"></canvas>
                 </section>
                 <div className="absolute custom-gradient top-0 left-0 w-full h-full">
@@ -146,7 +148,7 @@ export default function Home() {
                     </div>
                     <p className="text-sm md:text-xl font-normal text-center">
                         <br/>
-                        Welcome to the future of internships
+                        Welcome to the future of  <TypewriterEffect types={types} />
                     </p>
 
 
