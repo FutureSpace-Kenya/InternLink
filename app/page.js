@@ -193,7 +193,7 @@ export default function Home() {
                 <div
                     className="left text-green-800 flex items-center justify-center pt-4 gap-2 sm:gap-6 w-full p-4 sm:w-1/2">
 
-                    <div className="right flex sm:mt-10 flex-col gap-2 sm:gap-6">
+                    <div className="right flex mt-10 flex-col gap-2 sm:gap-4 md:gap-6">
                         <div className="custom-c-mod relative">
                             <div
                                 className="cicle grid place-items-center  from-green-700 to-transparent rounded-full w-20 h-20">
@@ -214,8 +214,8 @@ export default function Home() {
                             </svg>
 
                             <span className={'text-sm font-semibold'}>
-                            Safe & Reliable
-                        </span>
+                                Safe & Reliable
+                            </span>
                         </div>
 
                         <div className="custom-c relative">
