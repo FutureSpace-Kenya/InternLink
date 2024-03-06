@@ -164,7 +164,7 @@ export default function Home() {
                     </div>
                     <p className="text-sm md:text-xl font-normal text-center">
                         <br/>
-                        Welcome to the future of  <TypewriterEffect />
+                        Welcome to the future of  <TypewriterEffect types={types} />
                     </p>
 
 

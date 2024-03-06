@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const TypewriterEffect = () => {
+const TypewriterEffect = ({ types }) => {
     const [index, setIndex] = useState(0);
     const [subIndex, setSubIndex] = useState(0);
     const [reverse, setReverse] = useState(false);
     const [blink, setBlink] = useState(true);
-    const types = ['Attachments', 'Internships', 'Opportunities'];
 
     // Blinking cursor effect
     useEffect(() => {
