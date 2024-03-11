@@ -9,8 +9,8 @@ import Loading from "/app/loading";
 import { formatDistanceToNow } from "date-fns";
 import TypewriterEffect from "/app/components/TypewriterEffect";
 
-
 const Dashboard = () => {
+
     const { data: session } = useSession();
     const [allCompanies, setAllCompanies] = React.useState([]);
     const [internships, setInternships] = React.useState([]);
@@ -38,7 +38,6 @@ const Dashboard = () => {
             });
 
     }, []);
-
 
     if (!session) {
         return (
