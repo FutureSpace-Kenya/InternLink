@@ -11,9 +11,9 @@ class Application(models.Model):
         ('ACCEPTED', 'Accepted')
     )
     name = models.CharField(max_length=100)
-    user_id = models.ForeignKey(User, on_delete=models.SET_NULL)
-    organization_id = models.ForeignKey(Organization, on_delete=models.SET_NULL)
-    job_id = models.ForeignKey(Job, on_delete=models.SET_NULL)
+    user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    organization_id = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True)
+    job_id = models.ForeignKey(Job, on_delete=models.SET_NULL, null=True)
     status = models.CharField(max_length=10, choices=STATUSES, default='PENDING')
     application_date = models.DateTimeField(auto_now_add=True)
     resume_link = models.CharField(max_length=255)
@@ -21,4 +21,4 @@ class Application(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.pk
+        return str(self.pk)
