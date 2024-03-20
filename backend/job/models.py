@@ -1,10 +1,18 @@
 from django.db import models
 
+from department.models import Department
+
 # Create your models here.
 class Job(models.Model):
-    title = models.CharField(max_length=100)
+    STATUSES = (
+        ('OPEN', 'Open'),
+        ('CLOSED', 'Closed')
+    )
+
     description = models.TextField()
-    organization_id = models.ForeignKey('organization.Organization', on_delete=models.SET_NULL)
+    department_id = models.ForeignKey(Department, on_delete=models.SET_NULL)
+    skills = models.CharField(max_length=255)
+    status = models.CharField(max_length=10, choices=STATUSES, default='OPEN')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
