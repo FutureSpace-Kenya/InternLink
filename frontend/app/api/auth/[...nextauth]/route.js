@@ -4,7 +4,6 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 // import { compare } from 'bcrypt'
 // import {User} from "../../../../models/user";
 
-import axios from 'axios';
 
 const authOptions = {
     providers: [
@@ -44,9 +43,15 @@ const authOptions = {
                 const { id_token } = token;
         
                 try {
-                    const response = await axios.post('http://localhost:8000/api/v2/login/', {
-                        google_id: id_token
-                    });
+                    const response = await fetch('http://localhost:8000/api/v2/auth/google-login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    google_id: id_token
+                })
+            });
         
                     if (response.status === 200) {
                         return {
@@ -69,18 +74,26 @@ const authOptions = {
                 password: { }
             },
             async authorize(credentials) {
-                const { username, password } = credentials;
+                const email = credentials.email;
+                const password = credentials.password;
         
                 try {
-                    const response = await axios.post('http://localhost:8000/api/v2/login/', {
-                        username,
-                        password
+                    const response = await fetch('http://localhost:8000/api/v2/auth/login/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email,
+                            password
+                        })
                     });
         
-                    if (response.status === 200) {
+                    if (response.ok) {
+                        const data = await response.json();
                         return {
-                            id: response.data.user_id,
-                            email: username,
+                            id: data.user_id,
+                            email: email,
                         };
                     } else {
                         return null;

@@ -64,3 +64,35 @@ export async function POST(req) {
         return NextResponse.json({ error: 'An error occurred while registering the user' });
     }
 }
+
+// const registerUser = async (event) => {
+//     event.preventDefault()
+
+//     const res = await fetch('/api/register', {
+//         body: JSON.stringify({
+//             firstName: event.target.firstName.value,
+//             secondName: event.target.secondName.value,
+//             email: event.target.email.value,
+//             university: event.target.university.value,
+//             courseOfStudy: event.target.courseOfStudy.value,
+//             phoneNumber: event.target.phoneNumber.value,
+//             idNumber: event.target.idNumber.value,
+//             password: event.target.password.value
+//         }),
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         method: 'POST'
+//     })
+
+//     const result = await res.json()
+
+//     if (res.ok) {
+//         // The user was successfully registered
+//         // Now we'll sign them in
+//         signIn('credentials', { email: event.target.email.value, password: event.target.password.value })
+//     } else {
+//         // Handle registration error
+//         console.log(result.error)
+//     }
+// }

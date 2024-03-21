@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from django.contrib.auth.hashers import check_password
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 
 from .models import User
 
@@ -14,12 +16,14 @@ class GoogleLoginView(APIView):
         if 'google_id' not in request.data:
             return Response({'message': 'Invalid request, Please provide Google ID'}, status=status.HTTP_400_BAD_REQUEST)
         
-        try:
-            user = User.objects.get(google_id=request.data['google_id'])
-        except User.DoesNotExist:
-            return Response({'message': 'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+        user, created = User.objects.get_or_create(google_id=request.data['google_id'])
 
-        return Response({'user_id': user.pk, 'user_type': user.user_type, 'username': user.user_name}, status=status.HTTP_200_OK)
+        if created:
+            # The user did not exist and was created. Here you can set any additional fields you need.
+            user.email = request.data.get('email', '')
+            user.save()
+
+        return Response({'user_id': user.pk, 'user_type': user.user_type, 'email': user.email}, status=status.HTTP_200_OK)
 
 class LoginView(APIView):
     '''
@@ -31,9 +35,9 @@ class LoginView(APIView):
                 user = User.objects.get(google_id=request.data['google_id'])
             except User.DoesNotExist:
                 return Response({'message': 'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
-        elif 'username' in request.data and 'password' in request.data:
+        elif 'email' in request.data and 'password' in request.data:
             try:
-                user = User.objects.get(user_name=request.data['username'])
+                user = User.objects.get(email=request.data['email'])
             except User.DoesNotExist:
                 return Response({'message': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -49,17 +53,23 @@ class RegisterView(APIView):
     Description: This class is used to register the user
     '''
     def post(self, request):
-        if 'username' not in request.data or 'password' not in request.data:
+        if 'email' not in request.data or 'password' not in request.data:
             return Response({'message': 'Invalid request, Please provide credentials'}, status=status.HTTP_400_BAD_REQUEST)
         
-        if User.objects.filter(user_name=request.data['username']).exists():
-            return Response({'message': 'Username already exists'}, status=status.HTTP_400_BAD_REQUEST)
+        if User.objects.filter(email=request.data['email']).exists():
+            return Response({'message': 'Email already exists'}, status=status.HTTP_400_BAD_REQUEST)
+
+        password = request.data['password']
+        try:
+            validate_password(password)
+        except ValidationError as e:
+            return Response({'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
         user = User(
-            user_name=request.data['username'],
-            password=request.data['password'],
+            email=request.data['email'],
+            password=password
             # Add other fields here
         )
         user.save()
 
-        return Response({'user_id': user.pk, 'user_type': user.user_type}, status=status.HTTP_201_CREATED)
+        return Response({'user_id': user.pk, 'user_type': user.user_type, 'email': user.email}, status=status.HTTP_201_CREATED)
