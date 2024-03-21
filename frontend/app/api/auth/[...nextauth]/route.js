@@ -91,9 +91,11 @@ const authOptions = {
         
                     if (response.ok) {
                         const data = await response.json();
+                        const sessionCookie = response.headers.get('Set-Cookie');
                         return {
                             id: data.user_id,
                             email: email,
+                            sessionCookie: sessionCookie,
                         };
                     } else {
                         return null;
@@ -114,6 +116,24 @@ const authOptions = {
         jwt: true,
         maxAge: 30 * 24 * 60 * 60
     },
+    callbacks: {
+    async jwt(token, user) {
+        if (user) {
+            token.id = user.id;
+            token.email = user.email;
+            token.sessionCookie = user.sessionCookie;
+        }
+        return token;
+    },
+    async session(session, token) {
+        if (session.user && token) {
+            session.user.id = token.id;
+            session.user.email = token.email;
+            session.user.sessionCookie = token.sessionCookie;
+        }
+        return session;
+    },
+},
 };
 
 const handler = NextAuth(authOptions);

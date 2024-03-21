@@ -1,10 +1,14 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+from django.contrib.sessions.models import Session
+from django.contrib.sessions.backends.db import SessionStore
+from django.contrib.auth import authenticate, login
 
 from .models import User
 from intern.models import Intern
@@ -47,9 +51,32 @@ class LoginView(APIView):
         else:
             return Response({'message': 'Invalid request, Please provide Google ID or credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
-        return Response({'user_id': user.pk, 'user_type': user.user_type, 'username': user.user_name}, status=status.HTTP_200_OK)
+        # Check if a session already exists for the user
+        old_sessions = Session.objects.filter(session_data__contains=str(user.pk))
+        if old_sessions.exists():
+            # Delete the old sessions
+            old_sessions.delete()
+
+        # Create a new session for the user
+        session = SessionStore()
+        session['user_id'] = user.pk
+        session.save()
+
+        # Authenticate and log the user in
+        user = authenticate(request, username=user.email, password=request.data['password'])
+        if user is not None:
+            login(request, user)
+
+        # Save the session key in the response
+        response = Response({'user_id': user.pk, 'user_type': user.user_type, 'username': user.username}, status=status.HTTP_200_OK)
+        response.set_cookie('sessionid', session.session_key, httponly=True, secure=True)
+
+        return response
 
 class RegisterView(APIView):
+    '''
+    Description: This class is used to create a new user
+    '''
     def post(self, request):
         required_fields = ['firstName', 'secondName', 'email', 'university', 'courseOfStudy', 'phoneNumber', 'idNumber', 'password']
         if not all(field in request.data for field in required_fields):
@@ -84,3 +111,19 @@ class RegisterView(APIView):
         )
 
         return Response({'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)
+    
+class LogoutView(APIView):
+    '''
+    Description: This class is used to log out the user
+    '''
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        try:
+            # Get the session key from the cookie
+            session_key = request.COOKIES.get('sessionid', None)
+            # Delete the session
+            Session.objects.get(session_key=session_key).delete()
+            return Response({'message': 'Logged out'}, status=status.HTTP_200_OK)
+        except Session.DoesNotExist:
+            return Response({'message': 'Invalid session'}, status=status.HTTP_400_BAD_REQUEST)

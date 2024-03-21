@@ -1,16 +1,17 @@
 from django.db import models
 from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.models import AbstractUser
 
-class User(models.Model):
+class User(AbstractUser):
     USERS = (
         ('ADMIN', 'Admin'),
         ('INTERN', 'Intern'),
         ('COMPANY', 'Company')
     )
-    user_name = models.CharField(max_length=20, blank=True, null=True)
+    username = models.CharField(max_length=20, blank=True, null=True)
     first_name = models.CharField(max_length=20, blank=True, null=True)
     last_name = models.CharField(max_length=20, blank=True, null=True)
-    email = models.EmailField(blank=False, null=False)
+    email = models.EmailField(blank=False, null=False, unique=True)
     password = models.CharField(max_length=100, blank=True, null=True)
     user_type = models.CharField(max_length=10, choices=USERS, default='INTERN')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -18,6 +19,10 @@ class User(models.Model):
     
     # New fields for authentication provider
     google_id = models.CharField(max_length=255, blank=True, null=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'password']
+
 
     def save(self, *args, **kwargs):
         if self.password:
