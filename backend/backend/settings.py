@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'job.apps.JobConfig',
     'organization.apps.OrganizationConfig',
     'user.apps.UserConfig',
+    'intern.apps.InternConfig'
 
 ]
 

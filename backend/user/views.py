@@ -7,6 +7,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
 from .models import User
+from intern.models import Intern
 
 class GoogleLoginView(APIView):
     '''
@@ -49,27 +50,37 @@ class LoginView(APIView):
         return Response({'user_id': user.pk, 'user_type': user.user_type, 'username': user.user_name}, status=status.HTTP_200_OK)
 
 class RegisterView(APIView):
-    '''
-    Description: This class is used to register the user
-    '''
     def post(self, request):
-        if 'email' not in request.data or 'password' not in request.data:
-            return Response({'message': 'Invalid request, Please provide credentials'}, status=status.HTTP_400_BAD_REQUEST)
-        
-        if User.objects.filter(email=request.data['email']).exists():
-            return Response({'message': 'Email already exists'}, status=status.HTTP_400_BAD_REQUEST)
+        required_fields = ['firstName', 'secondName', 'email', 'university', 'courseOfStudy', 'phoneNumber', 'idNumber', 'password']
+        if not all(field in request.data for field in required_fields):
+            return Response({'error': 'Missing required fields in request body'}, status=status.HTTP_400_BAD_REQUEST)
+
+        email = request.data['email']
+        idNumber = request.data['idNumber']
+        phoneNumber = request.data['phoneNumber']
+
+        if User.objects.filter(email=email).exists() or Intern.objects.filter(id_number=idNumber).exists() or Intern.objects.filter(phone_number=phoneNumber).exists():
+            return Response({'error': 'A user with this email, ID, or phone number already exists'}, status=status.HTTP_400_BAD_REQUEST)
 
         password = request.data['password']
         try:
             validate_password(password)
         except ValidationError as e:
-            return Response({'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-        user = User(
-            email=request.data['email'],
-            password=password
-            # Add other fields here
+        user = User.objects.create(
+            email=email,
+            password=password,
+            first_name=request.data['firstName'],
+            last_name=request.data['secondName']
         )
-        user.save()
 
-        return Response({'user_id': user.pk, 'user_type': user.user_type, 'email': user.email}, status=status.HTTP_201_CREATED)
+        Intern.objects.create(
+            user_id=user,
+            university=request.data['university'],
+            course_of_study=request.data['courseOfStudy'],
+            phone_number=phoneNumber,
+            id_number=idNumber
+        )
+
+        return Response({'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)

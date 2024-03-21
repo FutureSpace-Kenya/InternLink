@@ -18,45 +18,69 @@ export async function POST(req) {
 
     try {
         // Check if a user with the same email, idNumber, or phoneNumber already exists
-        const existingUser = await User.findOne({
-            include: [{
-                model: InternProfile,
-                where: {
-                    [Sequelize.Op.or]: [
-                        { IdNumber: idNumber },
-                        { PhoneNumber: phoneNumber }
-                    ]
-                }
-            }],
-            where: {
-                Email: email
-            }
+        // const existingUser = await User.findOne({
+        //     include: [{
+        //         model: InternProfile,
+        //         where: {
+        //             [Sequelize.Op.or]: [
+        //                 { IdNumber: idNumber },
+        //                 { PhoneNumber: phoneNumber }
+        //             ]
+        //         }
+        //     }],
+        //     where: {
+        //         Email: email
+        //     }
+        // });
+
+        // if (existingUser) {
+        //     return NextResponse.json({ error: 'A user with this email, ID, or phone number already exists' });
+        // }
+
+        // const hashedPassword = await hash(password, 10);
+
+        // // Create a new user
+        // const newUser = await User.create({
+        //     Username: email,
+        //     Email: email,
+        //     Password: hashedPassword,
+        //     UserType: 'Intern',
+        //     FirstName: firstName,
+        //     SecondName: secondName
+        // });
+
+        // // Create a new intern profile
+        // await InternProfile.create({
+        //     UserID: newUser.UserID,
+        //     University: university,
+        //     CourseOfStudy: courseOfStudy,
+        //     PhoneNumber: phoneNumber,
+        //     IdNumber: idNumber
+        // });
+
+        // return NextResponse.json({ message: 'User registered successfully' });
+
+        const response = await fetch('http://localhost:8000/api/v2/auth/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName,
+                secondName,
+                email,
+                university,
+                courseOfStudy,
+                phoneNumber,
+                idNumber,
+                password
+            })
         });
 
-        if (existingUser) {
+        if (!response.ok) {
+            const data = await response.json();
             return NextResponse.json({ error: 'A user with this email, ID, or phone number already exists' });
         }
-
-        const hashedPassword = await hash(password, 10);
-
-        // Create a new user
-        const newUser = await User.create({
-            Username: email,
-            Email: email,
-            Password: hashedPassword,
-            UserType: 'Intern',
-            FirstName: firstName,
-            SecondName: secondName
-        });
-
-        // Create a new intern profile
-        await InternProfile.create({
-            UserID: newUser.UserID,
-            University: university,
-            CourseOfStudy: courseOfStudy,
-            PhoneNumber: phoneNumber,
-            IdNumber: idNumber
-        });
 
         return NextResponse.json({ message: 'User registered successfully' });
     } catch (error) {
