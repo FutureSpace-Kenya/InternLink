@@ -16,6 +16,8 @@ class Application(models.Model):
     job_id = models.ForeignKey(Job, on_delete=models.SET_NULL, null=True)
     status = models.CharField(max_length=10, choices=STATUSES, default='PENDING')
     application_date = models.DateTimeField(auto_now_add=True)
+    interview_date = models.DateTimeField(null=True, blank=True)
+    feedback = models.TextField(null=True, blank=True)
     resume_link = models.CharField(max_length=255)
     cover_letter = models.TextField()
     updated_at = models.DateTimeField(auto_now=True)
