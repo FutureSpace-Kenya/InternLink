@@ -1,79 +1,73 @@
+import { useState, useEffect } from "react";
+import { useSession, setSession } from "next-auth/client";
 import jwt_decode from "jwt-decode";
 import dayjs from "dayjs";
-import { useContext } from "react";
-import AuthContext from "../../context/AuthContext";
-import { api_url } from "../../App";
-import Cookies from "js-cookie";
 
-const useFetch = () => {
-  const {
-    authTokens,
-    refreshToken,
-    setAuthTokens,
-    setUser,
-  } = useContext(AuthContext); // Fix: Change linebreak to LF
+const api_url = "http://localhost:8000/api/v2/auth/";
 
-  const config = {};
+const useFetchWithTokenRefresh = (url, options) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const originalRequest = async (url, config) => {
-    // console.log("Original Request");how
-    url = `${api_url}${url}`;
-    const response = await fetch(url, config);
-    const data = await response.json();
-    // console.log("REQUESTING:", data);
+  let { data: session } = useSession();
 
-    return { response, data };
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const access = session?.token?.token?.token?.user?.access;
+        const user = jwt_decode(access);
+        const isExpired = dayjs.unix(user.exp).diff(dayjs()) <= 1;
 
-  const refreshAccessToken = async () => {
-    // console.log("Refresh Tokens");
-    const response = await fetch(`${api_url}/auth/token/refresh/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ refresh: refreshToken }),
-    });
+        if (isExpired) {
+          const response = await fetch(`${api_url}/api/token/refresh/`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ refresh: access }),
+          });
 
-    const data = await response.json();
+          const newTokens = await response.json();
 
-    if (response.status === 200) {
-      console.log("New tokens set");
-      setAuthTokens(data);
-      setUser(jwt_decode(data.access));
-      Cookies.set("authTokens", JSON.stringify(data));
-      // localStorage.setItem("authTokens", JSON.stringify(data));
-    } else {
-      alert("Error getting tokens.");
-    }
+          if (response.ok) {
+            session = {
+              ...session,
+              access: newTokens.access,
+              refresh: newTokens.refresh,
+            };
+            setSession(session);
+          } else {
+            throw new Error("Error refreshing access token");
+          }
+        }
 
-    return data;
-  };
+        const response = await fetch(url, {
+          ...options,
+          headers: {
+            ...options.headers,
+            Authorization: `Bearer ${access}`,
+          },
+        });
 
-  const callFetch = async (url, method) => {
-    // console.log("Call Fetch");
-    const user = jwt_decode(authTokens.access);
-    const isExpired = dayjs.unix(user.exp).diff(dayjs()) <= 1;
+        const data = await response.json();
 
-    if (isExpired) await refreshAccessToken();
+        if (!response.ok) {
+          throw new Error(data.message || "Error fetching data");
+        }
 
-    // console.log(Cookies.get("authTokens"));
-
-    // Using authtokens from storage because state authTokens take time to update
-    config["method"] = method;
-    config["headers"] = {
-      Authorization: `Bearer ${
-        JSON.parse(Cookies.get("authTokens"))?.access
-        // JSON.parse(localStorage.getItem("authTokens"))?.access
-      }`,
+        setData(data);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
     };
 
-    const { response, data } = await originalRequest(url, config);
+    fetchData();
+  }, [url]);
 
-    return { response, data };
-  };
-
-  return callFetch;
+  return { data, loading, error };
 };
 
-export default useFetch;
+export default useFetchWithTokenRefresh;
