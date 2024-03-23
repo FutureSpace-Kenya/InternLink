@@ -2,21 +2,23 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from django.contrib.auth.hashers import check_password
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
-from django.contrib.sessions.models import Session
-from django.contrib.sessions.backends.db import SessionStore
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, logout
 
 from .models import User
 from intern.models import Intern
+
 
 class GoogleLoginView(APIView):
     '''
     Description: This class is used to authenticate the user with Google ID
     '''
+    # permission_classes = [AllowAny]
+
     def post(self, request):
         if 'google_id' not in request.data:
             return Response({'message': 'Invalid request, Please provide Google ID'}, status=status.HTTP_400_BAD_REQUEST)
@@ -34,6 +36,8 @@ class LoginView(APIView):
     '''
     Description: This class is used to authenticate the user
     '''
+    permission_classes = []
+
     def post(self, request):
         if 'google_id' in request.data:
             try:
@@ -41,42 +45,29 @@ class LoginView(APIView):
             except User.DoesNotExist:
                 return Response({'message': 'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
         elif 'email' in request.data and 'password' in request.data:
-            try:
-                user = User.objects.get(email=request.data['email'])
-            except User.DoesNotExist:
-                return Response({'message': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
-
-            if not check_password(request.data['password'], user.password):
+            user = authenticate(request, username=request.data['email'], password=request.data['password'])
+            if user is None:
                 return Response({'message': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response({'message': 'Invalid request, Please provide Google ID or credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Check if a session already exists for the user
-        old_sessions = Session.objects.filter(session_data__contains=str(user.pk))
-        if old_sessions.exists():
-            # Delete the old sessions
-            old_sessions.delete()
+        # Create a refresh token for the authenticated user
+        refresh = RefreshToken.for_user(user)
 
-        # Create a new session for the user
-        session = SessionStore()
-        session['user_id'] = user.pk
-        session.save()
-
-        # Authenticate and log the user in
-        user = authenticate(request, username=user.email, password=request.data['password'])
-        if user is not None:
-            login(request, user)
-
-        # Save the session key in the response
-        response = Response({'user_id': user.pk, 'user_type': user.user_type, 'username': user.username}, status=status.HTTP_200_OK)
-        response.set_cookie('sessionid', session.session_key, httponly=True, secure=True)
-
-        return response
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            'user_id': user.pk,
+            'user_type': user.user_type,
+            'username': user.username
+        }, status=status.HTTP_200_OK)
 
 class RegisterView(APIView):
     '''
     Description: This class is used to create a new user
     '''
+    permission_classes = []
+    
     def post(self, request):
         required_fields = ['firstName', 'secondName', 'email', 'university', 'courseOfStudy', 'phoneNumber', 'idNumber', 'password']
         if not all(field in request.data for field in required_fields):
@@ -116,14 +107,12 @@ class LogoutView(APIView):
     '''
     Description: This class is used to log out the user
     '''
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
         try:
-            # Get the session key from the cookie
-            session_key = request.COOKIES.get('sessionid', None)
-            # Delete the session
-            Session.objects.get(session_key=session_key).delete()
+            logout(request)
             return Response({'message': 'Logged out'}, status=status.HTTP_200_OK)
-        except Session.DoesNotExist:
-            return Response({'message': 'Invalid session'}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
