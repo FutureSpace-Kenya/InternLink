@@ -1,8 +1,8 @@
-# setup urls.py file for user app
 from django.urls import path
 
 from .views import *
 
 urlpatterns = [
-    path('', OrganizationView.as_view(), name="organizations"),
+    path('', OrganizationListView.as_view(), name="organizations"),
+    path('<int:pk>/', OrganizationView.as_view(), name='organization-update'),
 ]

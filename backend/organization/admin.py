@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import Organization
 
 class OrganizationAdmin(admin.ModelAdmin):
-    list_display = ('name', 'location', 'contact', 'created_at')
+    list_display = ('name', 'location', 'contact_email', 'created_at')
     list_filter = ('created_at', 'location')
     search_fields = ('name', 'location')
     ordering = ('created_at',)
