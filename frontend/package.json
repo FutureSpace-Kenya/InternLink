@@ -13,6 +13,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "gsap": "^3.12.4",
+    "js-cookie": "^3.0.5",
     "mysql2": "^3.6.5",
     "next": "14.0.3",
     "next-auth": "^4.24.5",
