@@ -8,4 +8,4 @@ InternLink streamlines the journey for students to secure internships and attach
 
 To contribute to Internlink, follow these steps:
 
-SUBMIT AN ISSUE OR CONTACT US
+SUBMIT AN ISSUE OR CONTACT REQUEST
