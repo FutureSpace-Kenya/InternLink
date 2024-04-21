@@ -3,8 +3,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-# from rest_framework.permissions import IsAuthenticated
-# from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .serializers import OrganizationSerializer
 from .models import Organization
@@ -13,7 +13,8 @@ class OrganizationListView(APIView):
     '''
     Description: This class is used to get all organizations and create a new organization
     '''
-    permission_classes = []
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         organizations = Organization.objects.all()
@@ -32,7 +33,8 @@ class OrganizationView(APIView):
     '''
     Description: This class is used to get one organization, and update an existing organization and delete an organization
     '''
-    permission_classes = []
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
     
     def get(self, request, pk=None):
         organization = get_object_or_404(Organization, pk=pk)
