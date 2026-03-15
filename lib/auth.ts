@@ -72,7 +72,7 @@ export async function createSession(userId: string): Promise<string> {
 }
 
 export async function validateSession(plainToken: string) {
-  // Sessions are hashed — we must scan recent sessions for this user
+  // Sessions are hashed - we must scan recent sessions for this user
   // For production, store a lookup-key separately; for now use a session ID cookie pattern
   const sessions = await prisma.session.findMany({
     where: { expiresAt: { gt: new Date() } },

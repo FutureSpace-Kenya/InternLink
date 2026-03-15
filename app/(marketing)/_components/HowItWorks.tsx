@@ -6,7 +6,7 @@ const steps = [
     icon: UserPlus,
     title: "Create Your Profile",
     description:
-      "Sign up in seconds using just your email. Complete your intern profile with your university, course, skills, and CV — no password needed.",
+      "Sign up in seconds using just your email. Complete your intern profile with your university, course, skills, and CV - no password needed.",
   },
   {
     number: "02",
@@ -20,7 +20,7 @@ const steps = [
     icon: Send,
     title: "Apply & Get Hired",
     description:
-      "Submit your application in one click. Track your status, respond to interview requests, and accept your offer — all on InternLink.",
+      "Submit your application in one click. Track your status, respond to interview requests, and accept your offer - all on InternLink.",
   },
 ];
 

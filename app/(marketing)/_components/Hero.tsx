@@ -40,7 +40,7 @@ export default function Hero() {
             <p className="max-w-lg text-lg text-slate-500">
               InternLink bridges the gap between talented East African students and forward-thinking
               companies. Find the perfect attachment, build real-world skills, and launch your
-              career — all in one place.
+              career - all in one place.
             </p>
 
             <div className="flex flex-wrap gap-3">

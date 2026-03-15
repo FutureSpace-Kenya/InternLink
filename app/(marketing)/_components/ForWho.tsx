@@ -25,7 +25,7 @@ export default function ForWho() {
             Built for Students & Companies
           </h2>
           <p className="mt-3 text-slate-500">
-            Whether you are looking for an internship or the next great hire — InternLink works for
+            Whether you are looking for an internship or the next great hire - InternLink works for
             you.
           </p>
         </div>

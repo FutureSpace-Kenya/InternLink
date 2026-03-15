@@ -11,7 +11,7 @@ const testimonials = [
   },
   {
     quote:
-      "We've sourced 12 interns through InternLink in the past year. The quality of candidates is exceptional — they come prepared, motivated, and their profiles give us everything we need to shortlist quickly.",
+      "We've sourced 12 interns through InternLink in the past year. The quality of candidates is exceptional - they come prepared, motivated, and their profiles give us everything we need to shortlist quickly.",
     name: "David Kariuki",
     role: "HR Manager, Twiga Foods",
     type: "Company",

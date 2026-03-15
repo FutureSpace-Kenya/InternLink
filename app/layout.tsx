@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import { Figtree } from "next/font/google";
+import React from "react";
 import "./globals.css";
-
-const figtree = Figtree({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
-    default: "InternLink — Find Your Next Internship in Kenya",
+    default: "InternLink - Find Your Next Internship in Kenya",
     template: "%s | InternLink",
   },
   description:
@@ -26,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${figtree.variable} antialiased bg-[#FAFAFA] text-[#0F172A]`}>
+      <body className="antialiased bg-[#FAFAFA] text-[#0F172A]">
         {children}
       </body>
     </html>
