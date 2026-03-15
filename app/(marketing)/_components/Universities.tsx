@@ -3,13 +3,13 @@ import Image from "next/image";
 const partners = [
   { src: "/svgs/partners/kenyatta-university-logo-png_seeklogo-361756.png", alt: "Kenyatta University" },
   { src: "/svgs/partners/KCA_University_idBv75XH5f_0.png",                 alt: "KCA University" },
-  { src: "/svgs/partners/SAF-MAIN-LOGO.png",                               alt: "Safaricom" },
+  { src: "/svgs/partners/SAF-MAIN-LOGO.png",                               alt: "Safaricom PLC" },
   { src: "/svgs/partners/kcb bank.jpg",                                    alt: "KCB Bank" },
-  { src: "/svgs/partners/id7_aQmRb__logos.png",                            alt: "Partner" },
-  { src: "/svgs/partners/idN8y8tYLC_logos.png",                            alt: "Partner" },
-  { src: "/svgs/partners/idOBlG9fqI_1773578756431.png",                    alt: "Partner" },
-  { src: "/svgs/partners/idxODftGOY_1773578757545.png",                    alt: "Partner" },
-  { src: "/svgs/partners/pngwing.com.png",                                 alt: "Partner" },
+  { src: "/svgs/partners/id7_aQmRb__logos.png",                            alt: "Moi University" },
+  { src: "/svgs/partners/idN8y8tYLC_logos.png",                            alt: "University Of Nairobi" },
+  { src: "/svgs/partners/nirudishie.png",                                  alt: "Nirudishie.com" },
+  { src: "/svgs/partners/idxODftGOY_1773578757545.png",                    alt: "Strathmore University" },
+  { src: "/svgs/partners/pngwing.com.png",                                 alt: "Jomo Kenyatta University" },
 ];
 
 export default function Universities() {
