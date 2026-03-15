@@ -1,125 +1,90 @@
 import Link from "next/link";
-import { ArrowRight, MapPin, Building2, Clock } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/lib/button-variants";
-import { Badge } from "@/components/ui/badge";
-
-const featuredCard = {
-  company: "Safaricom PLC",
-  role: "Software Engineering Intern",
-  location: "Nairobi, Kenya",
-  type: "Hybrid",
-  duration: "3 months",
-  stipend: "KES 25,000/mo",
-  tags: ["React", "Node.js", "PostgreSQL"],
-};
+import { ArrowRight, Building2 } from "lucide-react";
+import { Illustration } from "@/components/ui/Illustration";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#FAFAFA] py-20 md:py-28">
-      {/* Subtle background decoration */}
+    <section className="relative overflow-hidden bg-[#fafbfc]">
+      {/* Ambient glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 right-0 h-[600px] w-[600px] rounded-full bg-amber-50 opacity-60 blur-3xl"
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-gradient-to-b from-amber-100/70 to-orange-50/20 rounded-full blur-[140px] -z-10"
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          {/* Left: Copy */}
-          <div className="flex flex-col gap-6">
-            <Badge className="w-fit border-amber-200 bg-amber-50 text-amber-700">
-              #1 Internship Platform in East Africa
-            </Badge>
+      <div className="max-w-7xl mx-auto px-6 pt-28 pb-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left: copy */}
+          <div className="flex flex-col items-start">
+            {/* Social proof pill */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-none border-y border-slate-200 mb-10">
+              <span className="flex -space-x-2">
+                {["KO", "AM", "TM"].map((initials, i) => (
+                  <span
+                    key={i}
+                    className="w-6 h-6 rounded-full border-2 border-white bg-amber-100 text-amber-700 text-[9px] font-bold flex items-center justify-center"
+                  >
+                    {initials}
+                  </span>
+                ))}
+              </span>
+              <span className="text-sm font-medium text-slate-500">Join 10,000+ students</span>
+            </div>
 
-            <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-[#0F172A] md:text-5xl lg:text-6xl">
-              Connect with Your{" "}
-              <span className="text-amber-600">Next Internship</span>{" "}
-              Opportunity
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.04] mb-8 text-slate-900">
+              Find Your<br />
+              Next{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500">
+                Internship
+              </span>
             </h1>
 
-            <p className="max-w-lg text-lg text-slate-500">
-              InternLink bridges the gap between talented East African students and forward-thinking
-              companies. Find the perfect attachment, build real-world skills, and launch your
-              career - all in one place.
+            <p className="text-slate-600 text-xl leading-relaxed mb-12 max-w-lg">
+              InternLink connects students with top companies for
+              internship and attachment opportunities - all in one place.
             </p>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-4 mb-12">
               <Link
                 href="/register"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "bg-amber-500 text-white hover:bg-amber-600 active:bg-amber-700"
-                )}
+                className="bg-slate-900 hover:bg-slate-700 text-white px-10 py-4 rounded-full font-semibold text-base transition-colors shadow-xl shadow-slate-900/10 flex items-center gap-2"
               >
-                Find Internships
-                <ArrowRight className="ml-2 h-4 w-4" />
+                Get Started <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/register?role=company"
-                className={cn(buttonVariants({ variant: "outline", size: "lg" }), "border-slate-200")}
+                href="/internships"
+                className="bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 px-10 py-4 rounded-full font-semibold text-base transition-colors shadow-sm"
               >
-                Post an Internship
+                Browse Listings
               </Link>
             </div>
 
             {/* Trust strip */}
-            <p className="text-sm text-slate-400">
-              Trusted by{" "}
-              <span className="font-semibold text-slate-600">10,000+ students</span> across{" "}
-              <span className="font-semibold text-slate-600">50+ universities</span>
-            </p>
+            <div className="flex items-center gap-3">
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-sm font-semibold text-slate-500">500+ live listings right now</span>
+            </div>
           </div>
 
-          {/* Right: Mock internship card */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="w-full max-w-sm rounded-2xl border border-gray-100 bg-white p-6 shadow-lg">
-              {/* Card header */}
-              <div className="mb-4 flex items-start justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
-                  <Building2 className="h-6 w-6 text-amber-600" />
+          {/* Right: illustration */}
+          <div className="relative flex justify-center lg:justify-end">
+            <Illustration
+              name="20770326_Sandy_Edu-05_Single-08"
+              alt="Student finding internship"
+              className="w-full max-w-lg"
+              width={600}
+              height={500}
+            />
+
+            {/* Floating badge - company match */}
+            <div className="absolute bottom-10 -left-2 lg:-left-8 bg-white border border-slate-100 shadow-xl rounded-full pr-4 p-2">
+              <div className="relative">
+                <p className="text-xs absolute -top-0 right-1 text-slate-400 mb-1 font-medium">Latest match</p>
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
+                    <Building2 className="w-7 h-7 text-amber-600" />
+                  </div>
+                  <span className="text-sm -mb-2 font-bold text-slate-800 whitespace-nowrap">Safaricom PLC</span>
                 </div>
-                <Badge className="border-green-100 bg-green-50 text-green-700 text-xs">
-                  Active
-                </Badge>
-              </div>
-
-              <h3 className="mb-1 font-bold text-[#0F172A]">{featuredCard.role}</h3>
-              <p className="mb-3 text-sm font-medium text-amber-600">{featuredCard.company}</p>
-
-              <div className="mb-4 flex flex-col gap-1.5 text-sm text-slate-500">
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5" />
-                  {featuredCard.location} · {featuredCard.type}
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="h-3.5 w-3.5" />
-                  {featuredCard.duration}
-                </span>
-              </div>
-
-              <div className="mb-5 flex flex-wrap gap-1.5">
-                {featuredCard.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-slate-100 bg-slate-50 px-2.5 py-0.5 text-xs text-slate-600"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex items-center justify-between border-t border-gray-50 pt-4">
-                <span className="text-sm font-semibold text-slate-700">
-                  {featuredCard.stipend}
-                </span>
-                <span
-                  className={cn(
-                    buttonVariants({ size: "sm" }),
-                    "bg-amber-500 text-white hover:bg-amber-600"
-                  )}
-                >
-                  Apply Now
-                </span>
               </div>
             </div>
           </div>

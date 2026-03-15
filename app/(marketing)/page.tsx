@@ -1,8 +1,10 @@
 import Hero from "./_components/Hero";
 import Stats from "./_components/Stats";
-import ForWho from "./_components/ForWho";
-import HowItWorks from "./_components/HowItWorks";
-import Categories from "./_components/Categories";
+import Universities from "./_components/Universities";
+import Features from "./_components/Features";
+import ForStudents from "./_components/ForStudents";
+import ForCompanies from "./_components/ForCompanies";
+import Discover from "./_components/Discover";
 import Testimonials from "./_components/Testimonials";
 import CtaBanner from "./_components/CtaBanner";
 
@@ -11,9 +13,11 @@ export default function LandingPage() {
     <>
       <Hero />
       <Stats />
-      <ForWho />
-      <HowItWorks />
-      <Categories />
+      <Universities />
+      <Features />
+      <ForStudents />
+      <ForCompanies />
+      <Discover />
       <Testimonials />
       <CtaBanner />
     </>

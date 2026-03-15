@@ -1,19 +1,19 @@
 const stats = [
-  { value: "500+", label: "Companies" },
-  { value: "10,000+", label: "Students" },
-  { value: "2,500+", label: "Placements" },
-  { value: "50+", label: "Universities" },
+  { value: "10,000+", label: "Students Registered" },
+  { value: "500+",    label: "Partner Companies" },
+  { value: "2,500+",  label: "Successful Placements" },
+  { value: "50+",     label: "Universities" },
 ];
 
 export default function Stats() {
   return (
-    <section className="border-y border-gray-100 bg-white py-10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          {stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center text-center">
-              <span className="text-3xl font-extrabold text-amber-600">{stat.value}</span>
-              <span className="mt-1 text-sm text-slate-500">{stat.label}</span>
+    <section className="border-y border-slate-100 bg-white">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+          {stats.map((s) => (
+            <div key={s.label} className="flex flex-col gap-1.5">
+              <div className="text-4xl font-bold tracking-tight text-slate-900">{s.value}</div>
+              <div className="text-sm font-medium text-slate-600">{s.label}</div>
             </div>
           ))}
         </div>

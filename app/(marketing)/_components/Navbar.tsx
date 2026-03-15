@@ -1,97 +1,68 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Briefcase } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/lib/button-variants";
-
-const navLinks = [
-  { href: "/internships", label: "Browse Internships" },
-  { href: "/companies", label: "Companies" },
-  { href: "/about", label: "About" },
-];
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-[#0F172A]">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500">
-              <Briefcase className="h-4 w-4 text-white" />
-            </div>
-            <span className="text-lg">InternLink</span>
+    <header className="sticky top-0 z-50 bg-slate-50 backdrop-blur-md border-b border-slate-100">
+      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <img src="/logo.png" className="rounded-full" alt="InternLink logo" width={32} height={32} />
+          <span className="text-lg font-bold tracking-tight text-slate-900">InternLink</span>
+        </Link>
+
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
+          <Link href="/" className="text-slate-900">Home</Link>
+          <Link href="/internships" className="flex items-center gap-1 hover:text-slate-900 transition-colors">
+            Browse <ChevronDown className="w-3.5 h-3.5" />
           </Link>
-
-          {/* Desktop nav */}
-          <nav className="hidden items-center gap-6 md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-slate-600 transition-colors hover:text-amber-600"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop CTAs */}
-          <div className="hidden items-center gap-3 md:flex">
-            <Link
-              href="/login"
-              className={cn(buttonVariants({ variant: "ghost" }), "text-slate-600 hover:text-amber-600")}
-            >
-              Log in
-            </Link>
-            <Link
-              href="/register"
-              className={cn(buttonVariants(), "bg-amber-500 text-white hover:bg-amber-600 active:bg-amber-700")}
-            >
-              Get Started
-            </Link>
-          </div>
-
-          {/* Mobile toggle */}
-          <button
-            className="rounded-md p-2 text-slate-600 md:hidden"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <Link href="/companies" className="hover:text-slate-900 transition-colors">Companies</Link>
+          <Link href="/about" className="hover:text-slate-900 transition-colors">About</Link>
         </div>
-      </div>
+
+        {/* Desktop CTAs */}
+        <div className="hidden md:flex items-center gap-4">
+          <Link href="/login" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
+            Log in
+          </Link>
+          <Link
+            href="/register"
+            className="bg-slate-900 hover:bg-slate-700 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors"
+          >
+            Get Started
+          </Link>
+        </div>
+
+        {/* Mobile toggle */}
+        <button className="md:hidden text-slate-600 p-1" onClick={() => setOpen(!open)} aria-label="Toggle menu">
+          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </nav>
 
       {/* Mobile menu */}
       {open && (
-        <div className="border-t border-gray-100 bg-white px-4 py-4 md:hidden">
-          <nav className="flex flex-col gap-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-slate-600 hover:text-amber-600"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <hr className="my-1 border-gray-100" />
-            <Link href="/login" className="text-sm font-medium text-slate-600">
-              Log in
+        <div className="md:hidden bg-white border-t border-slate-100 px-6 py-5 flex flex-col gap-4">
+          {[
+            { href: "/internships", label: "Browse Internships" },
+            { href: "/companies", label: "Companies" },
+            { href: "/about", label: "About" },
+          ].map((l) => (
+            <Link key={l.href} href={l.href} className="text-sm font-medium text-slate-600 hover:text-slate-900" onClick={() => setOpen(false)}>
+              {l.label}
             </Link>
-            <Link
-              href="/register"
-              className={cn(buttonVariants(), "w-full justify-center bg-amber-500 text-white hover:bg-amber-600")}
-            >
-              Get Started
-            </Link>
-          </nav>
+          ))}
+          <hr className="border-slate-100" />
+          <Link href="/login" className="text-sm font-medium text-slate-600">Log in</Link>
+          <Link href="/register" className="bg-slate-900 text-white text-sm font-medium px-5 py-3 rounded-full text-center">
+            Get Started
+          </Link>
         </div>
       )}
     </header>
