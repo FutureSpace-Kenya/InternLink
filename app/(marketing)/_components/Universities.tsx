@@ -14,7 +14,7 @@ const partners = [
 
 export default function Universities() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-4">
+    <section className="hidden md:block max-w-7xl mx-auto px-6 py-4">
       <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-ink/40 mb-12">
         Trusted by top institutions in kenya
       </p>
