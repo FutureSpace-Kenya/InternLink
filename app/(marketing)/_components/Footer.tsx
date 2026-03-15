@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const links = {
   Product: [
@@ -24,31 +23,31 @@ const links = {
 
 export default function Footer() {
   return (
-    <footer className="pt-20 pb-10 px-6 border-t border-slate-100 bg-white relative overflow-hidden">
+    <footer className="pt-20 pb-10 px-6 border-t border-ink/10 bg-surface relative overflow-hidden">
       <div className="max-w-7xl md:mb-44 mx-auto relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-6">
               <img src="/logo.png" className="rounded-full" alt="InternLink logo" width={32} height={32} />
-              <span className="text-lg font-bold tracking-tight text-slate-900">InternLink</span>
+              <span className="text-lg font-bold tracking-tight text-ink">InternLink</span>
             </Link>
-            <p className="text-slate-600 text-sm max-w-xs mb-6 leading-relaxed">
+            <p className="text-ink/70 text-sm max-w-xs mb-6 leading-relaxed">
               Connecting East African students with top internship opportunities.
               Built with care in Nairobi, Kenya.
             </p>
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-ink/50">
               © {new Date().getFullYear()} InternLink by FutureSpace. All rights reserved.
             </p>
           </div>
 
           {Object.entries(links).map(([group, items]) => (
             <div key={group}>
-              <h4 className="font-bold text-sm text-slate-900 mb-4">{group}</h4>
+              <h4 className="font-bold text-sm text-ink mb-4">{group}</h4>
               <ul className="space-y-3">
                 {items.map((l) => (
                   <li key={l.href}>
-                    <Link href={l.href} className="text-sm text-slate-600 hover:text-amber-600 transition-colors">
+                    <Link href={l.href} className="text-sm text-ink/60 hover:text-brand transition-colors">
                       {l.label}
                     </Link>
                   </li>
@@ -58,11 +57,11 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-slate-100 text-xs text-slate-600">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-ink/10 text-xs text-ink/50">
           <p>Made with precision by FutureSpace &amp; KenTom</p>
           <div className="flex gap-5">
             {["Twitter", "LinkedIn", "Instagram"].map((s) => (
-              <Link key={s} href="#" className="hover:text-slate-900 transition-colors">{s}</Link>
+              <Link key={s} href="#" className="hover:text-ink transition-colors">{s}</Link>
             ))}
           </div>
         </div>
@@ -70,7 +69,7 @@ export default function Footer() {
 
       {/* Massive background text */}
       <div
-        className="absolute hidden md:block bottom-[-10%] left-0 w-full text-center font-black text-slate-600/40 pointer-events-none select-none z-0 leading-none tracking-tighter"
+        className="absolute hidden md:block bottom-[-10%] left-0 w-full text-center font-black pointer-events-none select-none z-0 leading-none tracking-tighter text-ink/5"
         style={{ fontSize: "22vw" }}
         aria-hidden
       >

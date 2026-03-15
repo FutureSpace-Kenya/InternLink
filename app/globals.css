@@ -7,6 +7,19 @@
 
 @theme {
   --font-sans: "Figtree", sans-serif;
+
+  /* Brand palette */
+  --color-brand:   #235347; /* forest green — primary CTA, headings */
+  --color-gold:    #C9A227; /* mustard gold — accent, highlights */
+  --color-ink:     #1E1E1E; /* near-black — body text */
+  --color-surface: #FFFFFF; /* white — cards, inputs */
+  --color-canvas:  #F5F7F5; /* very light sage tint — page background */
+
+  /* Convenience shades (light fills, hover states) */
+  --color-brand-light: #2e6b5e; /* brand hover */
+  --color-brand-50:    #edf4f2; /* brand tint bg */
+  --color-gold-light:  #d4aa32; /* gold hover */
+  --color-gold-50:     #fdf8e8; /* gold tint bg */
 }
 
 @theme inline {
@@ -127,6 +140,8 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Figtree", sans-serif;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {

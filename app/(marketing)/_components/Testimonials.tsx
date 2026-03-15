@@ -13,20 +13,20 @@ const reviews = [
 
 function Card({ r }: { r: typeof reviews[number] }) {
   return (
-    <div className="w-80 shrink-0 bg-white p-7 rounded-3xl border border-slate-100 shadow-sm flex flex-col gap-4 mx-3">
+    <div className="w-80 shrink-0 bg-canvas p-7 rounded-3xl border border-slate-500/20 flex flex-col gap-4 mx-3">
       <div className="flex gap-1">
         {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+          <Star key={i} className="w-3.5 h-3.5 fill-gold text-gold" />
         ))}
       </div>
-      <p className="text-slate-600 text-sm leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
-      <div className="flex items-center gap-3 pt-4 border-t border-slate-50">
-        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-amber-300 to-orange-400 flex items-center justify-center shrink-0">
-          <span className="text-[10px] font-bold text-white">{r.initials}</span>
+      <p className="text-ink/70 text-sm leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
+      <div className="flex items-center gap-3 pt-4 border-t border-ink/10">
+        <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg, var(--color-brand), var(--color-gold))" }}>
+          <span className="text-[10px] font-bold text-surface">{r.initials}</span>
         </div>
         <div>
-          <p className="text-sm font-bold text-slate-900">{r.name}</p>
-          <p className="text-xs text-slate-600">{r.role}</p>
+          <p className="text-sm font-bold text-ink">{r.name}</p>
+          <p className="text-xs text-ink/60">{r.role}</p>
         </div>
       </div>
     </div>
@@ -41,28 +41,23 @@ export default function Testimonials() {
     <section className="py-36 overflow-hidden">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 text-center mb-20">
-        <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-slate-900 mb-5">
+        <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-ink mb-5">
           Loved by{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500">
+          <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, var(--color-brand), var(--color-gold))" }}>
             thousands
           </span>
         </h2>
         <div className="flex justify-center gap-1 mb-3">
           {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+            <Star key={i} className="w-5 h-5 fill-gold text-gold" />
           ))}
         </div>
-        <p className="text-slate-600 text-base">Based on 3,000+ reviews across students and companies</p>
+        <p className="text-ink/60 text-base">Based on 3,000+ reviews across students and companies</p>
       </div>
 
       {/* Row 1 — scrolls left */}
       <div className="relative flex mb-5">
-        <div
-          className="flex"
-          style={{
-            animation: "marquee-left 40s linear infinite",
-          }}
-        >
+        <div className="flex" style={{ animation: "marquee-left 40s linear infinite" }}>
           {[...row1, ...row1, ...row1].map((r, i) => (
             <Card key={`r1-${i}`} r={r} />
           ))}
@@ -71,12 +66,7 @@ export default function Testimonials() {
 
       {/* Row 2 — scrolls right */}
       <div className="relative flex">
-        <div
-          className="flex"
-          style={{
-            animation: "marquee-right 35s linear infinite",
-          }}
-        >
+        <div className="flex" style={{ animation: "marquee-right 35s linear infinite" }}>
           {[...row2, ...row2, ...row2].map((r, i) => (
             <Card key={`r2-${i}`} r={r} />
           ))}

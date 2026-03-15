@@ -17,19 +17,20 @@ export default function Features() {
       <div className="grid lg:grid-cols-2 gap-20 items-start">
         {/* Left: heading + illustration */}
         <div className="flex flex-col">
-          <p className="text-amber-500 font-semibold text-sm tracking-wide mb-5">Platform Features</p>
-          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-slate-900 leading-[1.05] mb-6">
+          <p className="text-gold font-semibold text-sm tracking-wide mb-5">Platform Features</p>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-ink leading-[1.05] mb-6">
             Why{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500">
+            <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, var(--color-brand), var(--color-gold))" }}>
               InternLink?
             </span>
           </h2>
-          <p className="text-slate-600 text-xl leading-relaxed mb-10">
+          <p className="text-ink/70 text-xl leading-relaxed mb-10">
             Everything you need to find, apply, and land your perfect internship - built for East African students.
           </p>
           <Link
             href="/internships"
-            className="self-start bg-slate-900 hover:bg-slate-700 text-white text-sm font-semibold px-8 py-3.5 rounded-full transition-colors shadow-lg shadow-slate-900/10 mb-16"
+            className="self-start bg-brand hover:bg-brand-light text-surface text-sm font-semibold px-8 py-3.5 rounded-full transition-colors mb-16"
+            style={{ boxShadow: "0 10px 30px rgba(35,83,71,0.15)" }}
           >
             Browse All Listings
           </Link>
@@ -50,17 +51,17 @@ export default function Features() {
             return (
               <div
                 key={f.id}
-                className="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group"
+                className="relative p-8 rounded-3xl border border-slate-500/20 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group"
               >
-                <div className="absolute top-5 right-6 text-6xl font-black text-slate-50 group-hover:text-amber-50 transition-colors select-none pointer-events-none leading-none">
+                <div className="absolute top-5 right-6 text-6xl font-black pointer-events-none select-none leading-none text-ink/5 group-hover:text-brand/10 transition-colors">
                   {f.id}
                 </div>
                 <div className="relative z-10">
-                  <div className="w-11 h-11 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-6">
+                  <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: "var(--color-brand-50)", color: "var(--color-brand)" }}>
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 mb-2 tracking-tight">{f.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{f.desc}</p>
+                  <h3 className="text-base font-bold text-ink mb-2 tracking-tight">{f.title}</h3>
+                  <p className="text-ink/70 text-sm leading-relaxed">{f.desc}</p>
                 </div>
               </div>
             );
