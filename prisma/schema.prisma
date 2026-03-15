@@ -1,0 +1,290 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// Enums
+// ─────────────────────────────────────────────
+
+enum Role {
+  INTERN
+  COMPANY
+  ADMIN
+}
+
+enum UploadType {
+  PROFILE_PICTURE
+  BANNER
+  CV
+  DOCUMENT
+  COMPANY_LOGO
+  COVER_IMAGE
+}
+
+enum LocationType {
+  ONSITE
+  REMOTE
+  HYBRID
+}
+
+enum InternshipStatus {
+  DRAFT
+  ACTIVE
+  CLOSED
+}
+
+enum ApplicationStatus {
+  PENDING
+  UNDER_REVIEW
+  SHORTLISTED
+  INTERVIEW
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+}
+
+// ─────────────────────────────────────────────
+// Core auth models
+// ─────────────────────────────────────────────
+
+model User {
+  id         String   @id @default(cuid())
+  email      String   @unique
+  role       Role     @default(INTERN)
+  isVerified Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  otps          Otp[]
+  sessions      Session[]
+  uploads       Upload[]
+  internProfile InternProfile?
+  organization  Organization?
+  notifications Notification[]
+}
+
+model Otp {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  code      String   // bcrypt hashed
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique // bcrypt hashed
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+// ─────────────────────────────────────────────
+// Upload (Cloudflare R2)
+// ─────────────────────────────────────────────
+
+model Upload {
+  id       String     @id @default(cuid())
+  userId   String
+  user     User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type     UploadType
+
+  // R2 storage
+  url      String  // Public CDN URL
+  key      String  // R2 object key (for deletion)
+  bucket   String  // R2 bucket name
+
+  // File metadata
+  fileName String
+  fileSize Int     // bytes
+  mimeType String
+
+  // Optional rich metadata (e.g. { width, height } for images)
+  metadata Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Back-relations
+  internAvatars      InternProfile[] @relation("InternAvatar")
+  internResumes      InternProfile[] @relation("InternResume")
+  orgLogos           Organization[]  @relation("OrgLogo")
+  orgBanners         Organization[]  @relation("OrgBanner")
+  applicationResumes Application[]   @relation("ApplicationResume")
+
+  @@index([userId])
+  @@index([type])
+  @@index([key])
+}
+
+// ─────────────────────────────────────────────
+// Profiles
+// ─────────────────────────────────────────────
+
+model InternProfile {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  firstName      String
+  lastName       String
+  university     String?
+  courseOfStudy  String?
+  graduationYear Int?
+  phone          String?
+  idNumber       String?
+  bio            String?
+  skills         String[]
+  socialLinks    Json?    // { linkedin, github, twitter, website }
+
+  avatarId       String?
+  avatar         Upload?  @relation("InternAvatar", fields: [avatarId], references: [id])
+  resumeId       String?
+  resume         Upload?  @relation("InternResume", fields: [resumeId], references: [id])
+
+  applications     Application[]
+  savedInternships SavedInternship[]
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Organization {
+  id          String  @id @default(cuid())
+  userId      String  @unique
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  name        String
+  slug        String  @unique
+  industry    String?
+  size        String? // "1-10", "11-50", "51-200", "200+"
+  website     String?
+  description String?
+  location    String?
+  services    String[]
+  socialLinks Json?   // { linkedin, twitter, facebook, instagram }
+  isVerified  Boolean @default(false)
+
+  logoId      String?
+  logo        Upload? @relation("OrgLogo", fields: [logoId], references: [id])
+  bannerId    String?
+  banner      Upload? @relation("OrgBanner", fields: [bannerId], references: [id])
+
+  departments  Department[]
+  internships  Internship[]
+  applications Application[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// Internships
+// ─────────────────────────────────────────────
+
+model Department {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  name           String
+
+  internships    Internship[]
+
+  @@index([organizationId])
+}
+
+model Internship {
+  id                  String           @id @default(cuid())
+  organizationId      String
+  organization        Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  departmentId        String?
+  department          Department?      @relation(fields: [departmentId], references: [id])
+
+  title               String
+  description         String
+  location            String?
+  locationType        LocationType     @default(ONSITE)
+  duration            String           // e.g. "3 months"
+  startDate           DateTime?
+  stipend             Int?             // null = unpaid; value in KES
+  skills              String[]
+  category            String?
+  applicationDeadline DateTime?
+  numberOfOpenings    Int              @default(1)
+  status              InternshipStatus @default(DRAFT)
+  isFeatured          Boolean          @default(false)
+
+  applications Application[]
+  savedBy      SavedInternship[]
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([status])
+  @@index([category])
+}
+
+model Application {
+  id             String            @id @default(cuid())
+  internId       String
+  intern         InternProfile     @relation(fields: [internId], references: [id], onDelete: Cascade)
+  internshipId   String
+  internship     Internship        @relation(fields: [internshipId], references: [id], onDelete: Cascade)
+  organizationId String
+  organization   Organization      @relation(fields: [organizationId], references: [id])
+
+  resumeId    String?
+  resume      Upload?           @relation("ApplicationResume", fields: [resumeId], references: [id])
+  coverLetter String?
+  status      ApplicationStatus @default(PENDING)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([internId, internshipId])
+  @@index([internId])
+  @@index([internshipId])
+  @@index([organizationId])
+}
+
+model SavedInternship {
+  id           String        @id @default(cuid())
+  internId     String
+  intern       InternProfile @relation(fields: [internId], references: [id], onDelete: Cascade)
+  internshipId String
+  internship   Internship    @relation(fields: [internshipId], references: [id], onDelete: Cascade)
+  createdAt    DateTime      @default(now())
+
+  @@unique([internId, internshipId])
+}
+
+// ─────────────────────────────────────────────
+// Notifications
+// ─────────────────────────────────────────────
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String   // "APPLICATION_UPDATE" | "NEW_INTERNSHIP" | "WELCOME" etc.
+  title     String
+  message   String
+  link      String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([isRead])
+}
