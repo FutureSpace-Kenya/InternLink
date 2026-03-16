@@ -44,7 +44,7 @@ export default function CtaBanner() {
               </Link>
               <Link
                 href="/register?role=company"
-                className="bg-canvas border border-ink/15 text-ink/70 hover:text-ink hover:bg-surface px-10 py-4 rounded-full font-semibold text-base transition-colors shadow-sm"
+                className="bg-canvas border border-ink/15 text-ink/70 hover:text-ink hover:bg-surface px-10 py-4 rounded-full font-semibold text-base transition-colors"
               >
                 Post an Internship
               </Link>
