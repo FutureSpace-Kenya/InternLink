@@ -215,7 +215,7 @@ export default function WaitlistForm() {
                 onKeyDown={(e) => e.key === "Enter" && requestCode()}
                 placeholder="you@example.com"
                 disabled={loading}
-                className="wl-input"
+                className="wl-input bg-canvas"
               />
               {error && step === "email" && <p className="wl-error">{error}</p>}
               <button onClick={requestCode} disabled={!emailValid || loading} className="wl-btn-primary">
