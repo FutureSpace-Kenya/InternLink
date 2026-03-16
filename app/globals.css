@@ -9,11 +9,11 @@
   --font-sans: "Figtree", sans-serif;
 
   /* Brand palette */
-  --color-brand:   #235347; /* forest green — primary CTA, headings */
-  --color-gold:    #C9A227; /* mustard gold — accent, highlights */
-  --color-ink:     #1E1E1E; /* near-black — body text */
-  --color-surface: #FFFFFF; /* white — cards, inputs */
-  --color-canvas:  #F5F7F5; /* very light sage tint — page background */
+  --color-brand:   #235347; /* forest green - primary CTA, headings */
+  --color-gold:    #C9A227; /* mustard gold - accent, highlights */
+  --color-ink:     #1E1E1E; /* near-black - body text */
+  --color-surface: #FFFFFF; /* white - cards, inputs */
+  --color-canvas:  #F5F7F5; /* very light sage tint - page background */
 
   /* Convenience shades (light fills, hover states) */
   --color-brand-light: #2e6b5e; /* brand hover */

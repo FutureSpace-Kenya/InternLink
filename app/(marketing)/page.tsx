@@ -1,4 +1,5 @@
 import Hero from "./_components/Hero";
+import WaitlistSection from "./_components/WaitlistSection";
 import Stats from "./_components/Stats";
 import Universities from "./_components/Universities";
 import Features from "./_components/Features";
@@ -12,6 +13,7 @@ export default function LandingPage() {
   return (
     <>
       <Hero />
+      <WaitlistSection />
       <Stats />
       <Universities />
       <Features />

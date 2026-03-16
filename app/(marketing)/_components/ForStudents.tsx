@@ -58,9 +58,9 @@ export default function ForStudents() {
           <div className="absolute bottom-4 -left-4 lg:-left-10 border backdrop-blur-md bg-canvas border-slate-500/20 rounded-2xl p-5 w-64">
             <p className="text-xs font-semibold text-ink/60 uppercase tracking-wider mb-4">My Applications</p>
             {[
-              { role: "Software Intern",  company: "Safaricom",   status: "Interview",   color: "brand" },
-              { role: "Finance Intern",   company: "Equity Bank", status: "Shortlisted", color: "gold" },
-              { role: "Data Intern",      company: "Twiga Foods", status: "Pending",     color: "muted" },
+              { role: "Software Intern", company: "Safaricom", status: "Interview", color: "brand" },
+              { role: "Finance Intern", company: "Equity Bank", status: "Shortlisted", color: "gold" },
+              { role: "Data Intern", company: "Twiga Foods", status: "Pending", color: "muted" },
             ].map((app) => (
               <div key={app.role} className="flex items-center gap-3 py-2.5 border-b border-ink/10 last:border-0">
                 <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: "var(--color-brand-50)" }}>
@@ -74,8 +74,8 @@ export default function ForStudents() {
                   className="text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0"
                   style={
                     app.color === "brand" ? { backgroundColor: "var(--color-brand-50)", color: "var(--color-brand)" } :
-                    app.color === "gold"  ? { backgroundColor: "var(--color-gold-50)",  color: "var(--color-gold)" } :
-                    { backgroundColor: "#f1f3f2", color: "var(--color-ink)", opacity: 0.6 }
+                      app.color === "gold" ? { backgroundColor: "var(--color-gold-50)", color: "var(--color-gold)" } :
+                        { backgroundColor: "#f1f3f2", color: "var(--color-ink)", opacity: 0.6 }
                   }
                 >
                   {app.status}

@@ -6,7 +6,7 @@ const reviews = [
   { name: "Carol Wanjiku",   role: "BSc Software Engineering, JKUAT",         initials: "CW", text: "The profile builder is super easy. I uploaded my CV, filled in my skills, and my profile was ready in minutes. Already got two internship offers." },
   { name: "David Kariuki",   role: "HR Manager, Twiga Foods",                 initials: "DK", text: "We've sourced 12 interns through InternLink this year alone. The candidate quality is consistently high, and the dashboard makes shortlisting effortless." },
   { name: "Grace Muthoni",   role: "Talent Lead, Cellulant",                  initials: "GM", text: "InternLink has become our go-to platform for intern recruitment. The students are motivated and come prepared. We couldn't ask for a better pipeline." },
-  { name: "Peter Otieno",    role: "BSc Finance, KCA University",              initials: "PO", text: "Secured a Finance internship at Equity Bank straight out of my second year. Highly recommend InternLink to all students — it actually works." },
+  { name: "Peter Otieno",    role: "BSc Finance, KCA University",              initials: "PO", text: "Secured a Finance internship at Equity Bank straight out of my second year. Highly recommend InternLink to all students - it actually works." },
   { name: "Sharon Achieng",  role: "BSc Communication, Daystar University",   initials: "SA", text: "I was skeptical at first, but within days I had interview invitations from three companies. InternLink is genuinely the easiest way to find an attachment." },
   { name: "Kevin Njoroge",   role: "Talent Acquisition, Safaricom",           initials: "KN", text: "The quality of interns from InternLink is remarkable. They arrive with relevant skills and hit the ground running. We hire from here every intake." },
 ];
@@ -55,7 +55,7 @@ export default function Testimonials() {
         <p className="text-ink/60 text-base">Based on 3,000+ reviews across students and companies</p>
       </div>
 
-      {/* Row 1 — scrolls left */}
+      {/* Row 1 - scrolls left */}
       <div className="relative flex mb-5">
         <div className="flex" style={{ animation: "marquee-left 40s linear infinite" }}>
           {[...row1, ...row1, ...row1].map((r, i) => (
@@ -64,7 +64,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Row 2 — scrolls right */}
+      {/* Row 2 - scrolls right */}
       <div className="relative flex">
         <div className="flex" style={{ animation: "marquee-right 35s linear infinite" }}>
           {[...row2, ...row2, ...row2].map((r, i) => (

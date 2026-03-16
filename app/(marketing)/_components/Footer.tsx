@@ -69,11 +69,11 @@ export default function Footer() {
 
       {/* Massive background text */}
       <div
-        className="absolute hidden md:block bottom-[-10%] left-0 w-full text-center font-black pointer-events-none select-none z-0 leading-none tracking-tighter text-ink/5"
+        className="absolute hidden md:block bottom-[-6%] left-0 w-full text-center font-black pointer-events-none select-none z-0 leading-none tracking-tighter text-ink/5"
         style={{ fontSize: "22vw" }}
         aria-hidden
       >
-        InternLink
+        <img className="px-3 opacity-70" src="/internlink_text_logo.png" alt=""/>
       </div>
     </footer>
   );

@@ -3,12 +3,12 @@ import Link from "next/link";
 import { Illustration } from "@/components/ui/Illustration";
 
 const features = [
-  { id: "01", icon: Search,        title: "Browse Listings",     desc: "Explore hundreds of vetted internship and attachment listings across every industry and location in Kenya." },
-  { id: "02", icon: UserCircle,    title: "Build Your Profile",  desc: "Create a standout intern profile with your university, skills, CV, and social links - no password needed." },
-  { id: "03", icon: SendHorizonal, title: "Apply in One Click",  desc: "Your profile is your application. Submit to any listing instantly with your saved details and CV." },
-  { id: "04", icon: Bell,          title: "Smart Notifications", desc: "Get notified the moment a new internship matching your skills and location is posted on the platform." },
-  { id: "05", icon: BarChart3,     title: "Track Applications",  desc: "Monitor your pipeline in real time - from submitted to shortlisted, interview, and accepted." },
-  { id: "06", icon: Building2,     title: "Discover Companies",  desc: "Browse company profiles, learn about their culture, and find opportunities that align with your goals." },
+  { id: "01", icon: Search, title: "Browse Listings", desc: "Explore hundreds of vetted internship and attachment listings across every industry and location in Kenya." },
+  { id: "02", icon: UserCircle, title: "Build Your Profile", desc: "Create a standout intern profile with your university, skills, CV, and social links - no password needed." },
+  { id: "03", icon: SendHorizonal, title: "Apply in One Click", desc: "Your profile is your application. Submit to any listing instantly with your saved details and CV." },
+  { id: "04", icon: Bell, title: "Smart Notifications", desc: "Get notified the moment a new internship matching your skills and location is posted on the platform." },
+  { id: "05", icon: BarChart3, title: "Track Applications", desc: "Monitor your pipeline in real time - from submitted to shortlisted, interview, and accepted." },
+  { id: "06", icon: Building2, title: "Discover Companies", desc: "Browse company profiles, learn about their culture, and find opportunities that align with your goals." },
 ];
 
 export default function Features() {

@@ -71,7 +71,7 @@ model Otp {
   id        String   @id @default(cuid())
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  code      String   // bcrypt hashed
+  code      String // bcrypt hashed
   expiresAt DateTime
   used      Boolean  @default(false)
   createdAt DateTime @default(now())
@@ -95,19 +95,19 @@ model Session {
 // ─────────────────────────────────────────────
 
 model Upload {
-  id       String     @id @default(cuid())
-  userId   String
-  user     User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  type     UploadType
+  id     String     @id @default(cuid())
+  userId String
+  user   User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type   UploadType
 
   // R2 storage
-  url      String  // Public CDN URL
-  key      String  // R2 object key (for deletion)
-  bucket   String  // R2 bucket name
+  url    String // Public CDN URL
+  key    String // R2 object key (for deletion)
+  bucket String // R2 bucket name
 
   // File metadata
   fileName String
-  fileSize Int     // bytes
+  fileSize Int // bytes
   mimeType String
 
   // Optional rich metadata (e.g. { width, height } for images)
@@ -133,9 +133,9 @@ model Upload {
 // ─────────────────────────────────────────────
 
 model InternProfile {
-  id             String   @id @default(cuid())
-  userId         String   @unique
-  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   firstName      String
   lastName       String
@@ -146,47 +146,47 @@ model InternProfile {
   idNumber       String?
   bio            String?
   skills         String[]
-  socialLinks    Json?    // { linkedin, github, twitter, website }
+  socialLinks    Json? // { linkedin, github, twitter, website }
 
-  avatarId       String?
-  avatar         Upload?  @relation("InternAvatar", fields: [avatarId], references: [id])
-  resumeId       String?
-  resume         Upload?  @relation("InternResume", fields: [resumeId], references: [id])
+  avatarId String?
+  avatar   Upload? @relation("InternAvatar", fields: [avatarId], references: [id])
+  resumeId String?
+  resume   Upload? @relation("InternResume", fields: [resumeId], references: [id])
 
   applications     Application[]
   savedInternships SavedInternship[]
 
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Organization {
-  id          String  @id @default(cuid())
-  userId      String  @unique
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   name        String
-  slug        String  @unique
+  slug        String   @unique
   industry    String?
   size        String? // "1-10", "11-50", "51-200", "200+"
   website     String?
   description String?
   location    String?
   services    String[]
-  socialLinks Json?   // { linkedin, twitter, facebook, instagram }
-  isVerified  Boolean @default(false)
+  socialLinks Json? // { linkedin, twitter, facebook, instagram }
+  isVerified  Boolean  @default(false)
 
-  logoId      String?
-  logo        Upload? @relation("OrgLogo", fields: [logoId], references: [id])
-  bannerId    String?
-  banner      Upload? @relation("OrgBanner", fields: [bannerId], references: [id])
+  logoId   String?
+  logo     Upload? @relation("OrgLogo", fields: [logoId], references: [id])
+  bannerId String?
+  banner   Upload? @relation("OrgBanner", fields: [bannerId], references: [id])
 
   departments  Department[]
   internships  Internship[]
   applications Application[]
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 // ─────────────────────────────────────────────
@@ -199,25 +199,25 @@ model Department {
   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   name           String
 
-  internships    Internship[]
+  internships Internship[]
 
   @@index([organizationId])
 }
 
 model Internship {
-  id                  String           @id @default(cuid())
-  organizationId      String
-  organization        Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  departmentId        String?
-  department          Department?      @relation(fields: [departmentId], references: [id])
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  departmentId   String?
+  department     Department?  @relation(fields: [departmentId], references: [id])
 
   title               String
   description         String
   location            String?
   locationType        LocationType     @default(ONSITE)
-  duration            String           // e.g. "3 months"
+  duration            String // e.g. "3 months"
   startDate           DateTime?
-  stipend             Int?             // null = unpaid; value in KES
+  stipend             Int? // null = unpaid; value in KES
   skills              String[]
   category            String?
   applicationDeadline DateTime?
@@ -228,8 +228,8 @@ model Internship {
   applications Application[]
   savedBy      SavedInternship[]
 
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([organizationId])
   @@index([status])
@@ -237,13 +237,13 @@ model Internship {
 }
 
 model Application {
-  id             String            @id @default(cuid())
+  id             String        @id @default(cuid())
   internId       String
-  intern         InternProfile     @relation(fields: [internId], references: [id], onDelete: Cascade)
+  intern         InternProfile @relation(fields: [internId], references: [id], onDelete: Cascade)
   internshipId   String
-  internship     Internship        @relation(fields: [internshipId], references: [id], onDelete: Cascade)
+  internship     Internship    @relation(fields: [internshipId], references: [id], onDelete: Cascade)
   organizationId String
-  organization   Organization      @relation(fields: [organizationId], references: [id])
+  organization   Organization  @relation(fields: [organizationId], references: [id])
 
   resumeId    String?
   resume      Upload?           @relation("ApplicationResume", fields: [resumeId], references: [id])
@@ -278,7 +278,7 @@ model Notification {
   id        String   @id @default(cuid())
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  type      String   // "APPLICATION_UPDATE" | "NEW_INTERNSHIP" | "WELCOME" etc.
+  type      String // "APPLICATION_UPDATE" | "NEW_INTERNSHIP" | "WELCOME" etc.
   title     String
   message   String
   link      String?
@@ -287,4 +287,44 @@ model Notification {
 
   @@index([userId])
   @@index([isRead])
+}
+
+// ─────────────────────────────────────────────
+// Waitlist
+// ─────────────────────────────────────────────
+
+enum InternshipType {
+  INTERNSHIP
+  ATTACHMENT
+}
+
+enum WaitlistRole {
+  INTERN
+  COMPANY
+}
+
+model WaitlistEntry {
+  id          String         @id @default(cuid())
+  email       String         @unique
+  name        String?
+  institution String? // university for interns, org name for companies
+  type        InternshipType @default(INTERNSHIP)
+  role        WaitlistRole   @default(INTERN)
+  position    Int            @default(autoincrement())
+  isOG        Boolean        @default(false)
+  createdAt   DateTime       @default(now())
+
+  @@index([email])
+  @@index([role])
+}
+
+model WaitlistOtp {
+  id        String   @id @default(cuid())
+  email     String
+  code      String // bcrypt hashed
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([email])
 }
