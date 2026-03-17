@@ -54,7 +54,6 @@ function ProgressRing({ step, loading }: { step: Step; loading: boolean }) {
           strokeDasharray={loading ? "40 250" : CIRC}
           strokeDashoffset={loading ? 0 : dashOffset}
           className={`wl-ring-transition ${loading ? "wl-dash" : ""}`}
-          style={{ filter: `drop-shadow(0 0 6px ${cfg.strokeColor}55)` }}
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
