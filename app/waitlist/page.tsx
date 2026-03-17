@@ -55,7 +55,7 @@ export default function WaitlistPage() {
 
               {/* Left: Clean, minimal copy */}
               <div className="flex flex-col max-w-xl">
-                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-ink/10 bg-white/50 mb-8 backdrop-blur-sm self-start">
+                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 border-y border-ink/10 mb-8 backdrop-blur-sm self-start">
                   <span className="text-sm font-medium text-ink/70">
                     Be the first to know when we go live.
                   </span>

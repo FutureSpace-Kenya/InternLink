@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { GraduationCap, Building2, Target, Paperclip, ArrowRight } from "lucide-react";
 
 type Step = "email" | "code" | "details" | "success" | "already-exists";
 type InternshipType = "INTERNSHIP" | "ATTACHMENT";
@@ -278,9 +279,9 @@ export default function WaitlistForm() {
                   <button
                     key={r}
                     onClick={() => setRole(r)}
-                    className={`flex-1 py-3 text-sm font-semibold transition-colors ${role === r ? "bg-brand text-white" : "text-ink/60 hover:bg-slate-50"}`}
+                    className={`flex-1 flex items-center justify-center gap-2 py-3 text-sm font-semibold transition-colors ${role === r ? "bg-brand text-white" : "text-ink/60 hover:bg-slate-50"}`}
                   >
-                    {r === "INTERN" ? "🎓 Student / Intern" : "🏢 Organisation"}
+                    {r === "INTERN" ? <><GraduationCap className="w-4 h-4" /> Student / Intern</> : <><Building2 className="w-4 h-4" /> Organisation</>}
                   </button>
                 ))}
               </div>
@@ -305,10 +306,10 @@ export default function WaitlistForm() {
                     <button
                       key={t}
                       onClick={() => setType(t)}
-                      className={`flex-1 py-3 text-sm font-semibold transition-colors ${type === t ? "text-white" : "text-ink/60 hover:bg-slate-50"}`}
+                      className={`flex-1 flex items-center justify-center gap-2 py-3 text-sm font-semibold transition-colors ${type === t ? "text-white" : "text-ink/60 hover:bg-slate-50"}`}
                       style={type === t ? { background: "linear-gradient(135deg, #C9A227, #a07a10)" } : {}}
                     >
-                      {t === "INTERNSHIP" ? "🎯 Internship" : "📎 Attachment"}
+                      {t === "INTERNSHIP" ? <><Target className="w-4 h-4" /> Internship</> : <><Paperclip className="w-4 h-4" /> Attachment</>}
                     </button>
                   ))}
                 </div>
@@ -316,8 +317,8 @@ export default function WaitlistForm() {
 
               {error && <p className="wl-error">{error}</p>}
 
-              <button onClick={submitForm} disabled={loading} className="wl-btn-primary">
-                {loading ? "Securing your spot…" : role === "COMPANY" ? "Request Early Access 🚀" : "Secure My Spot 🚀"}
+              <button onClick={submitForm} disabled={loading} className="wl-btn-primary flex justify-center items-center gap-2">
+                {loading ? "Securing your spot…" : role === "COMPANY" ? <>Request Early Access <ArrowRight className="w-4 h-4" /></> : <>Secure My Spot <ArrowRight className="w-4 h-4" /></>}
               </button>
               <button onClick={() => { setStep("code"); setError(""); }} className="wl-btn-ghost">
                 ← Back
